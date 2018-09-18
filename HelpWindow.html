@@ -124,6 +124,9 @@ e.g. typing <strong><code>help</code></strong> and pressing <kbd>Enter</kbd> wil
 <li>
 <p>Parameters can be in any order e.g. if the command specifies <code>n/NAME p/PHONE_NUMBER</code>, <code>p/PHONE_NUMBER n/NAME</code> is also acceptable.</p>
 </li>
+<li>
+<p>All commands have a shorthand version for easy access. Simply replace the command word with the shorthand. All other syntax is identical.</p>
+</li>
 </ul>
 </div>
 </div>
@@ -133,12 +136,18 @@ e.g. typing <strong><code>help</code></strong> and pressing <kbd>Enter</kbd> wil
 <div class="paragraph">
 <p>Format: <code>help</code></p>
 </div>
+<div class="paragraph">
+<p>Shorthand: <code>h</code></p>
+</div>
 </div>
 <div class="sect2">
 <h3 id="adding-a-person-code-add-code"><a class="link" href="#adding-a-person-code-add-code">3.2. Adding a person: <code>add</code></a></h3>
 <div class="paragraph">
 <p>Adds a person to the address book<br>
 Format: <code>add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]&#8230;&#8203;</code></p>
+</div>
+<div class="paragraph">
+<p>Shorthand: <code>a</code></p>
 </div>
 <div class="admonitionblock tip">
 <table>
@@ -172,6 +181,9 @@ A person can have any number of tags (including 0)
 <p>Shows a list of all persons in the address book.<br>
 Format: <code>list</code></p>
 </div>
+<div class="paragraph">
+<p>Shorthand: <code>l</code></p>
+</div>
 </div>
 <div class="sect2">
 <h3 id="editing-a-person-code-edit-code"><a class="link" href="#editing-a-person-code-edit-code">3.4. Editing a person : <code>edit</code></a></h3>
@@ -180,6 +192,9 @@ Format: <code>list</code></p>
 <div class="paragraph">
 <p>Edits an existing person in the address book by the list&#8217;s index.<br>
 Format: <code>edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [t/TAG]&#8230;&#8203;</code></p>
+</div>
+<div class="paragraph">
+<p>Shorthand: <code>e</code></p>
 </div>
 <div class="sidebarblock">
 <div class="content">
@@ -294,6 +309,9 @@ Edits the phone number and email address of John Doe to be ​<code>91234567​<
 <p>Finds persons whose names contain any of the given keywords.<br>
 Format: <code>find KEYWORD [MORE_KEYWORDS]</code></p>
 </div>
+<div class="paragraph">
+<p>Shorthand: <code>f</code></p>
+</div>
 <div class="sidebarblock">
 <div class="content">
 <div class="ulist">
@@ -339,6 +357,9 @@ Returns any person having names <code>Betsy</code>, <code>Tim</code>, or <code>J
 <p>Deletes the specified person from the address book.<br>
 Format: <code>delete INDEX</code></p>
 </div>
+<div class="paragraph">
+<p>Shorthand: <code>d</code></p>
+</div>
 <div class="sidebarblock">
 <div class="content">
 <div class="ulist">
@@ -379,6 +400,9 @@ Deletes the 1st person in the results of the <code>find</code> command.</p>
 <div class="paragraph">
 <p>Selects the person identified by the index number used in the displayed person list.<br>
 Format: <code>select INDEX</code></p>
+</div>
+<div class="paragraph">
+<p>Shorthand: <code>s</code></p>
 </div>
 <div class="sidebarblock">
 <div class="content">
@@ -421,6 +445,9 @@ Selects the 1st person in the results of the <code>find</code> command.</p>
 <p>Lists all the commands that you have entered in reverse chronological order.<br>
 Format: <code>history</code></p>
 </div>
+<div class="paragraph">
+<p>Shorthand: <code>hs</code></p>
+</div>
 <div class="admonitionblock note">
 <table>
 <tr>
@@ -442,6 +469,9 @@ box.</p>
 <div class="paragraph">
 <p>Restores the address book to the state before the previous <em>undoable</em> command was executed.<br>
 Format: <code>undo</code></p>
+</div>
+<div class="paragraph">
+<p>Shorthand: <code>u</code></p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -489,6 +519,9 @@ The <code>undo</code> command fails as there are no undoable commands executed p
 Format: <code>redo</code></p>
 </div>
 <div class="paragraph">
+<p>Shorthand: <code>r</code></p>
+</div>
+<div class="paragraph">
 <p>Examples:</p>
 </div>
 <div class="ulist">
@@ -520,12 +553,18 @@ The <code>redo</code> command fails as there are no <code>undo</code> commands e
 <p>Clears all entries from the address book.<br>
 Format: <code>clear</code></p>
 </div>
+<div class="paragraph">
+<p>Shorthand: <code>c</code></p>
+</div>
 </div>
 <div class="sect2">
 <h3 id="exiting-the-program-code-exit-code"><a class="link" href="#exiting-the-program-code-exit-code">3.12. Exiting the program : <code>exit</code></a></h3>
 <div class="paragraph">
 <p>Exits the program.<br>
 Format: <code>exit</code></p>
+</div>
+<div class="paragraph">
+<p>Shorthand: <code>q</code></p>
 </div>
 </div>
 <div class="sect2">
@@ -902,4 +941,4 @@ e.g.<code>select 2</code></p>
 </ul>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-09-18 15:28:06 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-09-18 15:30:32 UTC</div></div></div></body></html>
