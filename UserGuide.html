@@ -25,8 +25,16 @@
 <li><a href="#redoing-the-previously-undone-command-code-redo-code">3.10. Redoing the previously undone command : <code>redo</code></a></li>
 <li><a href="#clearing-all-entries-code-clear-code">3.11. Clearing all entries : <code>clear</code></a></li>
 <li><a href="#exiting-the-program-code-exit-code">3.12. Exiting the program : <code>exit</code></a></li>
-<li><a href="#saving-the-data">3.13. Saving the data</a></li>
-<li><a href="#encrypting-data-files-code-coming-in-v2-0-code">3.14. Encrypting data files <code>[coming in v2.0]</code></a></li>
+<li><a href="#mass-import-contacts-code-import-code">3.13. Mass import contacts: <code>import</code></a></li>
+<li><a href="#mass-export-email-addresses-code-export-code">3.14. Mass export email addresses: <code>export</code></a></li>
+<li><a href="#add-meeting-time-code-schedule-code">3.15. Add meeting time: <code>schedule</code></a></li>
+<li><a href="#view-meeting-timings-code-meetings-code">3.16. View meeting timings: <code>meetings</code></a></li>
+<li><a href="#notifications-for-expiring-plans">3.17. Notifications for expiring plans</a></li>
+<li><a href="#adding-a-picture-to-contact-code-pic-code">3.18. Adding a picture to contact: <code>pic</code></a></li>
+<li><a href="#allow-user-to-edit-contact-if-duplicate-contact-is-added">3.19. Allow user to edit contact if duplicate contact is added</a></li>
+<li><a href="#using-tags-code-tag-code">3.20. Using tags: <code>tag</code></a></li>
+<li><a href="#saving-the-data">3.21. Saving the data</a></li>
+<li><a href="#encrypting-data-files-code-coming-in-v2-0-code">3.22. Encrypting data files <code>[coming in v2.0]</code></a></li>
 </ul>
 </li>
 <li><a href="#faq">4. FAQ</a></li>
@@ -167,8 +175,10 @@ Format: <code>list</code></p>
 </div>
 <div class="sect2">
 <h3 id="editing-a-person-code-edit-code"><a class="link" href="#editing-a-person-code-edit-code">3.4. Editing a person : <code>edit</code></a></h3>
+<div class="sect3">
+<h4 id="editing-by-index"><a class="link" href="#editing-by-index">3.4.1. Editing by index</a></h4>
 <div class="paragraph">
-<p>Edits an existing person in the address book.<br>
+<p>Edits an existing person in the address book by the list&#8217;s index.<br>
 Format: <code>edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [t/TAG]&#8230;&#8203;</code></p>
 </div>
 <div class="sidebarblock">
@@ -176,7 +186,8 @@ Format: <code>edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [t/TAG]&#8230;
 <div class="ulist">
 <ul>
 <li>
-<p>Edits the person at the specified <code>INDEX</code>. The index refers to the index number shown in the displayed person list. The index <strong>must be a positive integer</strong> 1, 2, 3, &#8230;&#8203;</p>
+<p>Edits the person at the specified <code>INDEX</code>. The index refers to the index number shown in the displayed person list.
+The index <strong>must be a positive integer</strong> 1, 2, 3, &#8230;&#8203;</p>
 </li>
 <li>
 <p>At least one of the optional fields must be provided.</p>
@@ -208,6 +219,73 @@ Edits the phone number and email address of the 1st person to be <code>91234567<
 Edits the name of the 2nd person to be <code>Betsy Crower</code> and clears all existing tags.</p>
 </li>
 </ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="editing-by-name"><a class="link" href="#editing-by-name">3.4.2. Editing by name</a></h4>
+<div class="paragraph">
+<p>Edits an existing person in the address book by the person&#8217;s name.<br>
+Format: <code>edit n/NAME [p/phone] [e/EMAIL] [a/ADDRESS] [t/TAG]&#8230;&#8203;</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>Edits the person with the specified NAME. The index <strong>​must be the full name.</strong></p>
+</li>
+<li>
+<p>At least one of the optional fields must be provided.</p>
+</li>
+<li>
+<p>Existing values will be updated to the input values.</p>
+</li>
+<li>
+<p>When editing tags, the existing tags of the person will be removed i.e. adding of tags is not cumulative.</p>
+</li>
+<li>
+<p>You can remove all the person’s tags by typing ​<strong>t/</strong>​ without specifying any tags after it.</p>
+</li>
+<li>
+<p>If there are multiple contacts with the same name, address book will prompt for one unique field (address, email,
+phone or other tags) to identify the contact, after which it will ask for the fields to update.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>edit John Doe p/91234567 e/johndoe@example.com</code><br>
+Edits the phone number and email address of John Doe to be ​91234567​ and
+<a href="mailto:johndoe@example.com">johndoe@example.com</a>​ respectively.</p>
+</li>
+<li>
+<p>When there are two <code>John Doe</code> s on the list, and command provided is:</p>
+<div class="ulist">
+<ul>
+<li>
+<p><code>edit John Doe</code><br>
+Address book prompts for a unique field.</p>
+</li>
+<li>
+<p><code>p/98765432</code><br>
+You provides a unique field. In this example the <code>John Doe</code> contact you will be editing should have phone number
+<code>98765432</code>.</p>
+</li>
+<li>
+<p><code>p/91234567 e/johndoe@example.com</code><br>
+Edits the phone number and email address of John Doe to be ​<code>91234567​</code> and <code>johndoe@example.com​</code> respectively.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
 </div>
 </div>
 <div class="sect2">
@@ -351,7 +429,8 @@ Format: <code>history</code></p>
 </td>
 <td class="content">
 <div class="paragraph">
-<p>Pressing the <kbd>&uarr;</kbd> and <kbd>&darr;</kbd> arrows will display the previous and next input respectively in the command box.</p>
+<p>Pressing the <kbd>&uarr;</kbd> and <kbd>&darr;</kbd> arrows will display the previous and next input respectively in the command
+box.</p>
 </div>
 </td>
 </tr>
@@ -450,14 +529,297 @@ Format: <code>exit</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="saving-the-data"><a class="link" href="#saving-the-data">3.13. Saving the data</a></h3>
+<h3 id="mass-import-contacts-code-import-code"><a class="link" href="#mass-import-contacts-code-import-code">3.13. Mass import contacts: <code>import</code></a></h3>
+<div class="paragraph">
+<p>Import contacts from a csv file. User provides the file path as the second argument.<br>
+Format: <code>import SOURCE_FILE_PATH</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>Address book will fetch the file from the given path.</p>
+</li>
+<li>
+<p>Address book will throw an error message if the path or file type is invalid.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Example:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>import C:\Users\John Doe\Desktop\contacts.csv</code><br>
+Address book will import the contacts provided in the csv file.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="mass-export-email-addresses-code-export-code"><a class="link" href="#mass-export-email-addresses-code-export-code">3.14. Mass export email addresses: <code>export</code></a></h3>
+<div class="paragraph">
+<p>Exports all emails into a csv file in a directory that is given as the second argument.<br>
+Format: <code>export DESTINATION_DIRECTORY</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>Address book will extract all email addresses, compile into a csv and save it in the given destination with default
+name AB4DDMMYY.csv</p>
+</li>
+<li>
+<p>Address book will throw an error message if path is invalid.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Example:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>export C:\Users\John Doe\Documents</code><br>
+Email addresses are exported to <code>C:\Users\John Doe\Documents\AB4DDMMYY.csv</code></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="add-meeting-time-code-schedule-code"><a class="link" href="#add-meeting-time-code-schedule-code">3.15. Add meeting time: <code>schedule</code></a></h3>
+<div class="paragraph">
+<p>Add a meeting at the input date and time with a specified person.<br>
+Format: <code>schedule n/PERSON d/DDMMYY [t/HHMM]</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>Address book will add the meeting to your list of meetings, as well as mark the person with the meeting.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Example:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>schedule Jane Doe d/120319 t/0930</code><br>
+Address book will record that Jane Doe is scheduled for a meeting on 12 March 2019, 0930.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="view-meeting-timings-code-meetings-code"><a class="link" href="#view-meeting-timings-code-meetings-code">3.16. View meeting timings: <code>meetings</code></a></h3>
+<div class="paragraph">
+<p>Displays the details of the meeting at the input date and time.<br>
+Format: <code>meetings [d/DDMMYY] [t/HHMM]</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>If there is a meeting scheduled at the queried date and time, the details of the client the meeting is scheduled with
+are displayed.</p>
+</li>
+<li>
+<p>If the query has no time, then all meetings scheduled on the day are displayed.</p>
+</li>
+<li>
+<p>If the query has no date, then all meetings scheduled in the address book are displayed.</p>
+</li>
+<li>
+<p>If there is no meeting scheduled on the day/time, the details of the first meeting after the queried date/time are
+displayed.</p>
+</li>
+<li>
+<p>If there are no meetings on/at and after the scheduled date/time, you are notified that there are no upcoming
+meetings.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Example:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>meetings 23022018 1600</code><br>
+Address book displays meetings at that time or the earliest meeting after the specified time.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="notifications-for-expiring-plans"><a class="link" href="#notifications-for-expiring-plans">3.17. Notifications for expiring plans</a></h3>
+<div class="paragraph">
+<p>The address book entries have an optional field for date of plan expiry. You will automatically be notified of clients
+with plans expiring within a month from the day when the address book is initialized.<br>
+No additional search queries are needed.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="adding-a-picture-to-contact-code-pic-code"><a class="link" href="#adding-a-picture-to-contact-code-pic-code">3.18. Adding a picture to contact: <code>pic</code></a></h3>
+<div class="paragraph">
+<p>Adds a picture to a person in the address book.<br>
+Format: <code>​pic n/NAME [p/PHONE] [e/EMAIL] [a/ADDRESS] [t/TAG] l/FILE_LOCATION​</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>Address book will add the image to the contact.</p>
+</li>
+<li>
+<p>If there are multiple contacts with the same name, address book will prompt for one unique field (address, email,
+phone or other tags) to identify the contact. The image will then be added to the specified contact.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>pic n/John Doe l/john.jpg</code><br>
+Contact <code>John Doe</code> will now have image <code>john.jpg</code> in his contact.</p>
+</li>
+<li>
+<p>When there are two <code>John Doe</code> s on the list, and command provided is:</p>
+<div class="ulist">
+<ul>
+<li>
+<p><code>pic n/John Doe l/john.jpg</code><br>
+Address book prompts for a unique field.</p>
+</li>
+<li>
+<p><code>p/98765432</code><br>
+You provide a unique field. In this example the <code>John Doe</code> contact you will be editing should have phone number
+<code>98765432</code>. This <code>John Doe</code> will then have image <code>john.jpg</code> in his contact.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="allow-user-to-edit-contact-if-duplicate-contact-is-added"><a class="link" href="#allow-user-to-edit-contact-if-duplicate-contact-is-added">3.19. Allow user to edit contact if duplicate contact is added</a></h3>
+<div class="paragraph">
+<p>Warns you about adding a contact that has the same name and same phone number or email or address field.
+Address Book allows you to add contact with the same name as an existing contact as long as one of the other fields
+are different.</p>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>add n/John Doe p/91234567 e/johndoe@example.com a/John street, block 123, #01-01</code><br>
+<code>add n/John Doe p/98765432 e/differentemail@example.com a/Different street, block 123, #01-01</code><br>
+Address Book will warn you that an existing contact John Doe already exists. Address Book will ask you if you would like
+to go ahead and create a new contact, edit the existing contact, or cancel the operation.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="using-tags-code-tag-code"><a class="link" href="#using-tags-code-tag-code">3.20. Using tags: <code>tag</code></a></h3>
+<div class="sect3">
+<h4 id="view-contacts-by-tag"><a class="link" href="#view-contacts-by-tag">3.20.1. View contacts by tag</a></h4>
+<div class="paragraph">
+<p>View all contacts in any existing tag.<br>
+Format: <code>tag TAG_NAME</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>You can view all users that belong to the same tag.</p>
+</li>
+<li>
+<p>Address book will throw an error if an invalid <code>TAG_NAME</code> is given.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Example:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>tag Work</code><br>
+You can view all contacts with the <code>Work</code> tag.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="remove-a-tag"><a class="link" href="#remove-a-tag">3.20.2. Remove a tag</a></h4>
+<div class="paragraph">
+<p>Remove all users from a tag.<br>
+Format: <code>tag TAG_NAME remove</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>All contacts in <code>TAG_NAME</code> will be removed from the tag. Contacts that were previously tagged are not deleted.</p>
+</li>
+<li>
+<p>Address book will throw an error if an invalid <code>TAG_NAME</code> is given.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Example:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>tag Work remove</code><br>
+All contacts that were previously tagged with <code>Work</code> have the <code>Work</code> tag removed.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="saving-the-data"><a class="link" href="#saving-the-data">3.21. Saving the data</a></h3>
 <div class="paragraph">
 <p>Address book data are saved in the hard disk automatically after any command that changes the data.<br>
 There is no need to save manually.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="encrypting-data-files-code-coming-in-v2-0-code"><a class="link" href="#encrypting-data-files-code-coming-in-v2-0-code">3.14. Encrypting data files <code>[coming in v2.0]</code></a></h3>
+<h3 id="encrypting-data-files-code-coming-in-v2-0-code"><a class="link" href="#encrypting-data-files-code-coming-in-v2-0-code">3.22. Encrypting data files <code>[coming in v2.0]</code></a></h3>
 <div class="paragraph">
 <p><em>{explain how the user can enable/disable data encryption}</em></p>
 </div>
@@ -516,7 +878,28 @@ e.g.<code>select 2</code></p>
 <li>
 <p><strong>Redo</strong> : <code>redo</code></p>
 </li>
+<li>
+<p><strong>Import contacts</strong> : <code>import SOURCE_FILE_PATH</code></p>
+</li>
+<li>
+<p><strong>Export email addresses</strong> : <code>export DESTINATION_DIRECTORY</code></p>
+</li>
+<li>
+<p><strong>Schedule</strong> : <code>schedule n/NAME d/DDMMYY [t/HHMM]</code></p>
+</li>
+<li>
+<p><strong>Meetings</strong> : <code>meetings [d/DDMMYY] [t/HHMM]</code></p>
+</li>
+<li>
+<p><strong>Add picture</strong> : <code>​pic n/NAME l/FILE_LOCATION</code></p>
+</li>
+<li>
+<p><strong>View all contacts with a specified tag</strong> : <code>tag TAG_NAME</code></p>
+</li>
+<li>
+<p><strong>Remove all contacts from a specified tag</strong> : <code>tag TAG_NAME remove</code></p>
+</li>
 </ul>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-09-18 14:48:00 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-09-18 14:48:41 UTC</div></div></div></body></html>
