@@ -765,7 +765,7 @@ You provide a unique field. In this example the <code>John Doe</code> contact yo
 <div class="sect2">
 <h3 id="allow-user-to-edit-contact-if-duplicate-contact-is-added"><a class="link" href="#allow-user-to-edit-contact-if-duplicate-contact-is-added">3.19. Allow user to edit contact if duplicate contact is added</a></h3>
 <div class="paragraph">
-<p>Warns you about adding a contact that has the same name and same phone number or email or address field.
+<p>Warns user about adding a contact that has the same name and same phone number or email or address field.
 Address Book allows you to add contact with the same name as an existing contact as long as one of the other fields
 are different.</p>
 </div>
@@ -777,8 +777,8 @@ are different.</p>
 <li>
 <p><code>add n/John Doe p/91234567 e/johndoe@example.com a/John street, block 123, #01-01</code><br>
 <code>add n/John Doe p/98765432 e/differentemail@example.com a/Different street, block 123, #01-01</code><br>
-Address Book will warn you that an existing contact John Doe already exists. Address Book will ask you if you would like
-to go ahead and create a new contact, edit the existing contact, or cancel the operation.</p>
+Address Book will warn user that an existing contact John Doe already exists. Address Book will ask you if you would
+like to go ahead and create a new contact, edit the existing contact, or cancel the operation.</p>
 </li>
 </ul>
 </div>
@@ -789,14 +789,17 @@ to go ahead and create a new contact, edit the existing contact, or cancel the o
 <h4 id="view-contacts-by-tag"><a class="link" href="#view-contacts-by-tag">3.20.1. View contacts by tag</a></h4>
 <div class="paragraph">
 <p>View all contacts in any existing tag.<br>
-Format: <code>tag TAG_NAME</code></p>
+Format: <code>tag TAG_NAME [MORE_TAG_NAMES]</code></p>
+</div>
+<div class="paragraph">
+<p>Shorthand: <code>t</code></p>
 </div>
 <div class="sidebarblock">
 <div class="content">
 <div class="ulist">
 <ul>
 <li>
-<p>You can view all users that belong to the same tag.</p>
+<p>View all contacts that belong to the same tag.</p>
 </li>
 <li>
 <p>Address book will throw an error if an invalid <code>TAG_NAME</code> is given.</p>
@@ -812,7 +815,11 @@ Format: <code>tag TAG_NAME</code></p>
 <ul>
 <li>
 <p><code>tag Work</code><br>
-You can view all contacts with the <code>Work</code> tag.</p>
+Returns all contacts with the <code>Work</code> tag.</p>
+</li>
+<li>
+<p><code>tag Work Important</code><br>
+Returns all contacts with the <code>Work</code> or <code>Important</code> tags.</p>
 </li>
 </ul>
 </div>
@@ -941,4 +948,4 @@ e.g.<code>select 2</code></p>
 </ul>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-09-29 18:01:42 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-09-30 08:43:31 UTC</div></div></div></body></html>
