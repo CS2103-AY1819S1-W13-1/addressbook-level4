@@ -30,10 +30,11 @@
 <li><a href="#implementation">3. Implementation</a>
 <ul class="sectlevel2">
 <li><a href="#edit-by-name-feature">3.1. Edit By Name feature</a></li>
-<li><a href="#undo-redo-feature">3.2. Undo/Redo feature</a></li>
-<li><a href="#proposed-data-encryption">3.3. [Proposed] Data Encryption</a></li>
-<li><a href="#logging">3.4. Logging</a></li>
-<li><a href="#Implementation-Configuration">3.5. Configuration</a></li>
+<li><a href="#schedule-feature">3.2. Schedule feature</a></li>
+<li><a href="#undo-redo-feature">3.3. Undo/Redo feature</a></li>
+<li><a href="#proposed-data-encryption">3.4. [Proposed] Data Encryption</a></li>
+<li><a href="#logging">3.5. Logging</a></li>
+<li><a href="#Implementation-Configuration">3.6. Configuration</a></li>
 </ul>
 </li>
 <li><a href="#documentation">4. Documentation</a>
@@ -727,7 +728,7 @@ change many parts to add this additional feature. It also makes sense, because a
 <div class="ulist">
 <ul>
 <li>
-<p>Additioanl details: A <code>String personIdentifier</code> will be stored in the command, and upon <code>execute</code>, a person is first matched, then the edit is carried out.</p>
+<p>Additional details: A <code>String personIdentifier</code> will be stored in the command, and upon <code>execute</code>, a person is first matched, then the edit is carried out.</p>
 </li>
 <li>
 <p>Pros: Execute takes in the model as an argument, making searching for a Person convenient.</p>
@@ -760,9 +761,166 @@ change many parts to add this additional feature. It also makes sense, because a
 </div>
 </div>
 <div class="sect2">
-<h3 id="undo-redo-feature"><a class="link" href="#undo-redo-feature">3.2. Undo/Redo feature</a></h3>
+<h3 id="schedule-feature"><a class="link" href="#schedule-feature">3.2. Schedule feature</a></h3>
 <div class="sect3">
 <h4 id="current-implementation-2"><a class="link" href="#current-implementation-2">3.2.1. Current Implementation</a></h4>
+<div class="paragraph">
+<p>The schedule mechanism is facilitated by the new <code>Command</code>, <code>Schedule</code>. It extends <code>AddressBook</code> with a list of meetings, stored internally as a <code>UniqueMeetingList</code>. It also allows meetings to be associated to address book entries, since each <code>Person</code> can have up to one <code>Meeting</code>.
+Additionally, it implements the following operations:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>ScheduleCommand#createScheduledPerson(Person personToSchedule, Meeting meeting)</code> - Returns a <code>Person</code> object that has a meeting scheduled according to <code>meeting</code>.</p>
+</li>
+<li>
+<p><code>ScheduleCommand#execute()</code> - Executes the command encapsulated by <code>ScheduleCommand</code>.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Given below is an example usage scenario and how the Schedule mechanism behaves at each step.</p>
+</div>
+<div class="paragraph">
+<p>Step 1. The user launches the application and already has at least one client&#8217;s contact in InsuRen.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/ScheduleCommand1StateDiagram.png" alt="ScheduleCommand1StateDiagram" width="300">
+</div>
+</div>
+<div class="paragraph">
+<p>Step 2. The user executes <code>schedule 1 m/16/10/18 1800</code> to schedule a meeting with the person in the first index at 1800 hours on 16th October, 2018. However, there is already a meeting scheduled at this time, so it is flagged out to the user.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+No meetings are scheduled if there is a clash
+</td>
+</tr>
+</table>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/ScheduleCommand2StateDiagram.png" alt="ScheduleCommand2StateDiagram" width="300">
+</div>
+</div>
+<div class="paragraph">
+<p>Step 3. The user executes <code>schedule 1 m/32/10/18 1830</code> but since this is not a valid date, InsuRen flags it out to the user.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/ScheduleCommand3StateDiagram.png" alt="ScheduleCommand3StateDiagram" width="700">
+</div>
+</div>
+<div class="paragraph">
+<p>Step 4. The user executes <code>schedule 1 m/16/10/18 1830</code>. The meeting is schedule and the person card is changed to reflect the same accordingly.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/ScheduleCommand4StateDiagram.png" alt="ScheduleCommand4StateDiagram" width="300">
+</div>
+</div>
+<div class="paragraph">
+<p>The following activity diagram summarises what happens when a user executes the <code>ScheduleCommand</code>:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/ScheduleCommand5StateDiagram.png" alt="ScheduleCommand5StateDiagram" width="400">
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="design-considerations-2"><a class="link" href="#design-considerations-2">3.2.2. Design Considerations</a></h4>
+<div class="sect4">
+<h5 id="aspect-where-meetings-are-stored"><a class="link" href="#aspect-where-meetings-are-stored">Aspect: Where meetings are stored</a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1 (Current choice):</strong> The meetings are stored in both the <code>Person</code> model and in the global meeting list <code>UniqueMeetingList</code>.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Easy to ensure no clashes occur between meetings.</p>
+</li>
+<li>
+<p>Cons: Significant changes need to be made to the model to accomodate this.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2: </strong> The meetings are stored in only the <code>Person</code> model.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Minimal changes to the model required; prevents duplication of data.</p>
+</li>
+<li>
+<p>Cons: Difficult to ensure uniqueness of meeting times.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 3: </strong> The meetings are stored in only the <code>UniqueMeetingList</code>.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Prevents the duplication of data; easy to ensure no clashes.</p>
+</li>
+<li>
+<p>Cons: Would need additional data structures to pair the meeting to the entry.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect4">
+<h5 id="aspect-date-storage-format"><a class="link" href="#aspect-date-storage-format">Aspect: Date storage format</a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1 (Current choice):</strong> The date and time is stored as a 10-character string.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Allows the setting of a <code>none</code> value, and offers flexibility.</p>
+</li>
+<li>
+<p>Cons: Does not utilize the Java API libraries for dates and times.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2:</strong> The date and time is stored as a <code>DateAndTime</code> object.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Ability to use Java API functions for dates.</p>
+</li>
+<li>
+<p>Cons: Less flexible as all dates entered must be valid.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="undo-redo-feature"><a class="link" href="#undo-redo-feature">3.3. Undo/Redo feature</a></h3>
+<div class="sect3">
+<h4 id="current-implementation-3"><a class="link" href="#current-implementation-3">3.3.1. Current Implementation</a></h4>
 <div class="paragraph">
 <p>The undo/redo mechanism is facilitated by <code>VersionedAddressBook</code>.
 It extends <code>AddressBook</code> with an undo/redo history, stored internally as an <code>addressBookStateList</code> and <code>currentStatePointer</code>.
@@ -892,7 +1050,7 @@ If the <code>currentStatePointer</code> is at index <code>addressBookStateList.s
 </div>
 </div>
 <div class="sect3">
-<h4 id="design-considerations-2"><a class="link" href="#design-considerations-2">3.2.2. Design Considerations</a></h4>
+<h4 id="design-considerations-3"><a class="link" href="#design-considerations-3">3.3.2. Design Considerations</a></h4>
 <div class="sect4">
 <h5 id="aspect-how-undo-redo-executes"><a class="link" href="#aspect-how-undo-redo-executes">Aspect: How undo &amp; redo executes</a></h5>
 <div class="ulist">
@@ -962,20 +1120,20 @@ If the <code>currentStatePointer</code> is at index <code>addressBookStateList.s
 </div>
 </div>
 <div class="sect2">
-<h3 id="proposed-data-encryption"><a class="link" href="#proposed-data-encryption">3.3. [Proposed] Data Encryption</a></h3>
+<h3 id="proposed-data-encryption"><a class="link" href="#proposed-data-encryption">3.4. [Proposed] Data Encryption</a></h3>
 <div class="paragraph">
 <p><em>{Explain here how the data encryption feature will be implemented}</em></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="logging"><a class="link" href="#logging">3.4. Logging</a></h3>
+<h3 id="logging"><a class="link" href="#logging">3.5. Logging</a></h3>
 <div class="paragraph">
 <p>We are using <code>java.util.logging</code> package for logging. The <code>LogsCenter</code> class is used to manage the logging levels and logging destinations.</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>The logging level can be controlled using the <code>logLevel</code> setting in the configuration file (See <a href="#Implementation-Configuration">Section 3.5, &#8220;Configuration&#8221;</a>)</p>
+<p>The logging level can be controlled using the <code>logLevel</code> setting in the configuration file (See <a href="#Implementation-Configuration">Section 3.6, &#8220;Configuration&#8221;</a>)</p>
 </li>
 <li>
 <p>The <code>Logger</code> for a class can be obtained using <code>LogsCenter.getLogger(Class)</code> which will log messages according to the specified logging level</p>
@@ -1006,7 +1164,7 @@ If the <code>currentStatePointer</code> is at index <code>addressBookStateList.s
 </div>
 </div>
 <div class="sect2">
-<h3 id="Implementation-Configuration"><a class="link" href="#Implementation-Configuration">3.5. Configuration</a></h3>
+<h3 id="Implementation-Configuration"><a class="link" href="#Implementation-Configuration">3.6. Configuration</a></h3>
 <div class="paragraph">
 <p>Certain properties of the application can be controlled (e.g App name, logging level) through the configuration file (default: <code>config.json</code>).</p>
 </div>
@@ -3037,4 +3195,4 @@ Expected: Similar to previous.</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-10-16 14:58:41 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-10-16 15:01:51 UTC</div></div></div></body></html>
