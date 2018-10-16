@@ -26,12 +26,12 @@
 <li><a href="#clearing-all-entries-code-clear-code">3.11. Clearing all entries : <code>clear</code></a></li>
 <li><a href="#exiting-the-program-code-exit-code">3.12. Exiting the program : <code>exit</code></a></li>
 <li><a href="#mass-import-contacts-code-import-code">3.13. Mass import contacts: <code>import</code></a></li>
-<li><a href="#mass-export-email-addresses-code-export-code">3.14. Mass export email addresses: <code>export</code></a></li>
+<li><a href="#mass-export-email-addresses-code-export-code-code-coming-in-v2-0-code">3.14. Mass export email addresses: <code>export</code> <code>[coming in v2.0]</code></a></li>
 <li><a href="#add-meeting-time-code-schedule-code">3.15. Add meeting time: <code>schedule</code></a></li>
-<li><a href="#view-meeting-timings-code-meetings-code">3.16. View meeting timings: <code>meetings</code></a></li>
-<li><a href="#notifications-for-expiring-plans">3.17. Notifications for expiring plans</a></li>
+<li><a href="#view-meeting-timings-code-meetings-code-code-coming-in-v2-0-code">3.16. View meeting timings: <code>meetings</code> <code>[coming in v2.0]</code></a></li>
+<li><a href="#notifications-for-expiring-plans-code-coming-in-v2-0-code">3.17. Notifications for expiring plans <code>[coming in v2.0]</code></a></li>
 <li><a href="#adding-a-picture-to-contact-code-pic-code">3.18. Adding a picture to contact: <code>pic</code></a></li>
-<li><a href="#allow-user-to-edit-contact-if-duplicate-contact-is-added">3.19. Allow user to edit contact if duplicate contact is added</a></li>
+<li><a href="#allow-user-to-add-contact-if-duplicate-contact-is-added">3.19. Allow user to add contact if duplicate contact is added</a></li>
 <li><a href="#using-tags-code-tag-code">3.20. Using tags: <code>tag</code></a></li>
 <li><a href="#saving-the-data">3.21. Saving the data</a></li>
 <li><a href="#encrypting-data-files-code-coming-in-v2-0-code">3.22. Encrypting data files <code>[coming in v2.0]</code></a></li>
@@ -172,6 +172,9 @@ A person can have one name, phone, email and address, and any number of tags (in
 </li>
 <li>
 <p><code>add n/Betsy Crowe t/friend e/betsycrowe@example.com a/Newgate Prison p/1234567 t/criminal</code></p>
+</li>
+<li>
+<p><code>add n/Abigail</code></p>
 </li>
 </ul>
 </div>
@@ -613,7 +616,7 @@ Format: <code>import</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="mass-export-email-addresses-code-export-code"><a class="link" href="#mass-export-email-addresses-code-export-code">3.14. Mass export email addresses: <code>export</code></a></h3>
+<h3 id="mass-export-email-addresses-code-export-code-code-coming-in-v2-0-code"><a class="link" href="#mass-export-email-addresses-code-export-code-code-coming-in-v2-0-code">3.14. Mass export email addresses: <code>export</code> <code>[coming in v2.0]</code></a></h3>
 <div class="paragraph">
 <p>Exports all emails into a csv file in a directory that is given as the second argument.<br>
 Format: <code>export DESTINATION_DIRECTORY</code></p>
@@ -675,7 +678,7 @@ Address book will record that Jane Doe is scheduled for a meeting on 12 March 20
 </div>
 </div>
 <div class="sect2">
-<h3 id="view-meeting-timings-code-meetings-code"><a class="link" href="#view-meeting-timings-code-meetings-code">3.16. View meeting timings: <code>meetings</code></a></h3>
+<h3 id="view-meeting-timings-code-meetings-code-code-coming-in-v2-0-code"><a class="link" href="#view-meeting-timings-code-meetings-code-code-coming-in-v2-0-code">3.16. View meeting timings: <code>meetings</code> <code>[coming in v2.0]</code></a></h3>
 <div class="paragraph">
 <p>Displays the details of the meeting at the input date and time.<br>
 Format: <code>meetings [d/DDMMYY] [t/HHMM]</code></p>
@@ -719,7 +722,7 @@ Address book displays meetings at that time or the earliest meeting after the sp
 </div>
 </div>
 <div class="sect2">
-<h3 id="notifications-for-expiring-plans"><a class="link" href="#notifications-for-expiring-plans">3.17. Notifications for expiring plans</a></h3>
+<h3 id="notifications-for-expiring-plans-code-coming-in-v2-0-code"><a class="link" href="#notifications-for-expiring-plans-code-coming-in-v2-0-code">3.17. Notifications for expiring plans <code>[coming in v2.0]</code></a></h3>
 <div class="paragraph">
 <p>The address book entries have an optional field for date of plan expiry. You will automatically be notified of clients
 with plans expiring within a month from the day when the address book is initialized.<br>
@@ -730,7 +733,7 @@ No additional search queries are needed.</p>
 <h3 id="adding-a-picture-to-contact-code-pic-code"><a class="link" href="#adding-a-picture-to-contact-code-pic-code">3.18. Adding a picture to contact: <code>pic</code></a></h3>
 <div class="paragraph">
 <p>Adds a picture to a person in the address book.<br>
-Format: <code>​pic n/NAME [p/PHONE] [e/EMAIL] [a/ADDRESS] [t/TAG] l/FILE_LOCATION​</code></p>
+Format: <code>​pic INDEX l/FILE_LOCATION​</code></p>
 </div>
 <div class="sidebarblock">
 <div class="content">
@@ -738,10 +741,6 @@ Format: <code>​pic n/NAME [p/PHONE] [e/EMAIL] [a/ADDRESS] [t/TAG] l/FILE_LOCAT
 <ul>
 <li>
 <p>Address book will add the image to the contact.</p>
-</li>
-<li>
-<p>If there are multiple contacts with the same name, address book will prompt for one unique field (address, email,
-phone or other tags) to identify the contact. The image will then be added to the specified contact.</p>
 </li>
 </ul>
 </div>
@@ -753,30 +752,14 @@ phone or other tags) to identify the contact. The image will then be added to th
 <div class="ulist">
 <ul>
 <li>
-<p><code>pic n/John Doe l/john.jpg</code><br>
-Contact <code>John Doe</code> will now have image <code>john.jpg</code> in his contact.</p>
-</li>
-<li>
-<p>When there are two <code>John Doe</code> s on the list, and command provided is:</p>
-<div class="ulist">
-<ul>
-<li>
-<p><code>pic n/John Doe l/john.jpg</code><br>
-Address book prompts for a unique field.</p>
-</li>
-<li>
-<p><code>p/98765432</code><br>
-You provide a unique field. In this example the <code>John Doe</code> contact you will be editing should have phone number
-<code>98765432</code>. This <code>John Doe</code> will then have image <code>john.jpg</code> in his contact.</p>
-</li>
-</ul>
-</div>
+<p><code>pic 2 l/john.jpg</code><br>
+The second person in the list will now have image <code>john.jpg</code> in his contact.</p>
 </li>
 </ul>
 </div>
 </div>
 <div class="sect2">
-<h3 id="allow-user-to-edit-contact-if-duplicate-contact-is-added"><a class="link" href="#allow-user-to-edit-contact-if-duplicate-contact-is-added">3.19. Allow user to edit contact if duplicate contact is added</a></h3>
+<h3 id="allow-user-to-add-contact-if-duplicate-contact-is-added"><a class="link" href="#allow-user-to-add-contact-if-duplicate-contact-is-added">3.19. Allow user to add contact if duplicate contact is added</a></h3>
 <div class="paragraph">
 <p>Warns user about adding a contact that has the same name and same phone number or email or address field.
 Address Book allows you to add contact with the same name as an existing contact as long as one of the other fields
@@ -880,7 +863,30 @@ There is no need to save manually.</p>
 <div class="sect2">
 <h3 id="encrypting-data-files-code-coming-in-v2-0-code"><a class="link" href="#encrypting-data-files-code-coming-in-v2-0-code">3.22. Encrypting data files <code>[coming in v2.0]</code></a></h3>
 <div class="paragraph">
-<p><em>{explain how the user can enable/disable data encryption}</em></p>
+<p>Encrypt all data in InsuRen behind a password.<br>
+Format: <code>encrypt PASSWORD</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>The next time a user opens InsuRen, he will have to enter a password before the contact list populates.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Example:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>encrypt Pa$$w0rd</code><br>
+All data will be encrypted. The next time the user opens InsuRen, InsuRen will prompt her for a password.</p>
+</li>
+</ul>
 </div>
 </div>
 </div>
@@ -961,4 +967,4 @@ e.g.<code>select 2</code></p>
 </ul>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-10-16 13:53:55 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-10-16 14:16:24 UTC</div></div></div></body></html>
