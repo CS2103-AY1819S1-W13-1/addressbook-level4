@@ -28,7 +28,7 @@
 <li><a href="#mass-import-contacts-code-import-code">3.13. Mass import contacts: <code>import</code></a></li>
 <li><a href="#export-contact-list-code-export-code">3.14. Export contact list: <code>export</code></a></li>
 <li><a href="#add-meeting-time-code-schedule-code">3.15. Add meeting time: <code>schedule</code></a></li>
-<li><a href="#view-meeting-timings-code-meetings-code-code-coming-in-v2-0-code">3.16. View meeting timings: <code>meetings</code> <code>[coming in v2.0]</code></a></li>
+<li><a href="#view-meeting-timings-code-meetings-code">3.16. View meeting timings: <code>meetings</code></a></li>
 <li><a href="#notifications-for-expiring-plans-code-coming-in-v2-0-code">3.17. Notifications for expiring plans <code>[coming in v2.0]</code></a></li>
 <li><a href="#adding-a-picture-to-contact-code-pic-code">3.18. Adding a picture to contact: <code>pic</code></a></li>
 <li><a href="#allow-user-to-add-contact-if-duplicate-contact-is-added">3.19. Allow user to add contact if duplicate contact is added</a></li>
@@ -447,7 +447,7 @@ Format: <code>undo</code></p>
 </td>
 <td class="content">
 <div class="paragraph">
-<p>Undoable commands: those commands that modify InsuRen&#8217;s content (<code>add</code>, <code>delete</code>, <code>edit</code>, <code>import</code>, <code>meetings</code>,
+<p>Undoable commands: those commands that modify InsuRen&#8217;s content (<code>add</code>, <code>delete</code>, <code>edit</code>, <code>import</code>, <code>schedule</code>,
  <code>pic</code> and <code>clear</code>).</p>
 </div>
 </td>
@@ -658,7 +658,10 @@ InsuRen contacts are exported to <code>contactList28Nov.csv</code></p>
 <h3 id="add-meeting-time-code-schedule-code"><a class="link" href="#add-meeting-time-code-schedule-code">3.15. Add meeting time: <code>schedule</code></a></h3>
 <div class="paragraph">
 <p>Add a meeting at the input date and time with a specified person.<br>
-Format: <code>schedule n/PERSON d/DDMMYY [t/HHMM]</code></p>
+Format: <code>schedule INDEX m/DD/MM/YY HHMM</code></p>
+</div>
+<div class="paragraph">
+<p>Shorthand: <code>sch</code></p>
 </div>
 <div class="sidebarblock">
 <div class="content">
@@ -667,6 +670,12 @@ Format: <code>schedule n/PERSON d/DDMMYY [t/HHMM]</code></p>
 <li>
 <p>InsuRen will add the meeting to your list of meetings, as well as mark the person with the meeting.</p>
 </li>
+<li>
+<p>If the day is invalid, an error will be thrown.</p>
+</li>
+<li>
+<p>If there are any meetings scheduled at the same time, it will be flagged out.</p>
+</li>
 </ul>
 </div>
 </div>
@@ -677,39 +686,34 @@ Format: <code>schedule n/PERSON d/DDMMYY [t/HHMM]</code></p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>schedule Jane Doe d/120319 t/0930</code><br>
-InsuRen will record that Jane Doe is scheduled for a meeting on 12 March 2019, 0930.</p>
+<p><code>schedule 1 m/12/03/19 0930</code><br>
+InsuRen will record that a meeting is scheduled on 12 March 2019, 0930 with the first entry.</p>
 </li>
 </ul>
 </div>
 </div>
 <div class="sect2">
-<h3 id="view-meeting-timings-code-meetings-code-code-coming-in-v2-0-code"><a class="link" href="#view-meeting-timings-code-meetings-code-code-coming-in-v2-0-code">3.16. View meeting timings: <code>meetings</code> <code>[coming in v2.0]</code></a></h3>
+<h3 id="view-meeting-timings-code-meetings-code"><a class="link" href="#view-meeting-timings-code-meetings-code">3.16. View meeting timings: <code>meetings</code></a></h3>
 <div class="paragraph">
 <p>Displays the details of the meeting at the input date and time.<br>
-Format: <code>meetings [d/DDMMYY] [t/HHMM]</code></p>
+Format: <code>meetings [DD/MM/YY]</code></p>
+</div>
+<div class="paragraph">
+<p>shorthand: <code>mtngs</code></p>
 </div>
 <div class="sidebarblock">
 <div class="content">
 <div class="ulist">
 <ul>
 <li>
-<p>If there is a meeting scheduled at the queried date and time, the details of the client the meeting is scheduled with
+<p>If there are meetings scheduled on the queried date, the details of the clients the meetings are scheduled with
 are displayed.</p>
-</li>
-<li>
-<p>If the query has no time, then all meetings scheduled on the day are displayed.</p>
 </li>
 <li>
 <p>If the query has no date, then all meetings scheduled in InsuRen are displayed.</p>
 </li>
 <li>
-<p>If there is no meeting scheduled on the day/time, the details of the first meeting after the queried date/time are
-displayed.</p>
-</li>
-<li>
-<p>If there are no meetings on/at and after the scheduled date/time, you are notified that there are no upcoming
-meetings.</p>
+<p>If there is no meeting scheduled on the day, an empty list is displayed.</p>
 </li>
 </ul>
 </div>
@@ -721,8 +725,8 @@ meetings.</p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>meetings 23022018 1600</code><br>
-InsuRen displays meetings at that time or the earliest meeting after the specified time.</p>
+<p><code>meetings 23/02/18</code><br>
+InsuRen displays meetings scheduled on 23rd February, 2018.</p>
 </li>
 </ul>
 </div>
@@ -958,10 +962,10 @@ e.g.<code>select 2</code></p>
 <p><strong>Export email addresses</strong> : <code>export DESTINATION_DIRECTORY</code></p>
 </li>
 <li>
-<p><strong>Schedule</strong> : <code>schedule n/NAME d/DDMMYY [t/HHMM]</code></p>
+<p><strong>Schedule</strong> : <code>schedule INDEX m/DD/MM/YY HHMM</code></p>
 </li>
 <li>
-<p><strong>Meetings</strong> : <code>meetings [d/DDMMYY] [t/HHMM]</code></p>
+<p><strong>Meetings</strong> : <code>meetings [m/DD/MM/YY HHMM]</code></p>
 </li>
 <li>
 <p><strong>Add picture</strong> : <code>​pic n/NAME l/FILE_LOCATION</code></p>
@@ -975,4 +979,4 @@ e.g.<code>select 2</code></p>
 </ul>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-10-29 16:25:06 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-10-29 18:48:37 UTC</div></div></div></body></html>
