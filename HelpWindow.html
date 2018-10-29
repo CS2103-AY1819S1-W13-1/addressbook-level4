@@ -26,7 +26,7 @@
 <li><a href="#clearing-all-entries-code-clear-code">3.11. Clearing all entries : <code>clear</code></a></li>
 <li><a href="#exiting-the-program-code-exit-code">3.12. Exiting the program : <code>exit</code></a></li>
 <li><a href="#mass-import-contacts-code-import-code">3.13. Mass import contacts: <code>import</code></a></li>
-<li><a href="#mass-export-email-addresses-code-export-code-code-coming-in-v2-0-code">3.14. Mass export email addresses: <code>export</code> <code>[coming in v2.0]</code></a></li>
+<li><a href="#export-contact-list-code-export-code">3.14. Export contact list: <code>export</code></a></li>
 <li><a href="#add-meeting-time-code-schedule-code">3.15. Add meeting time: <code>schedule</code></a></li>
 <li><a href="#view-meeting-timings-code-meetings-code-code-coming-in-v2-0-code">3.16. View meeting timings: <code>meetings</code> <code>[coming in v2.0]</code></a></li>
 <li><a href="#notifications-for-expiring-plans-code-coming-in-v2-0-code">3.17. Notifications for expiring plans <code>[coming in v2.0]</code></a></li>
@@ -592,7 +592,7 @@ Format: <code>import</code></p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>import</code> l/D:/AddressbookCorrect.csv</p>
+<p><code>import l/D:/AddressbookCorrect.csv</code></p>
 </li>
 <li>
 <p>Regardless which method is used, InsuRen will load contacts from the given csv file</p>
@@ -617,21 +617,21 @@ Format: <code>import</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="mass-export-email-addresses-code-export-code-code-coming-in-v2-0-code"><a class="link" href="#mass-export-email-addresses-code-export-code-code-coming-in-v2-0-code">3.14. Mass export email addresses: <code>export</code> <code>[coming in v2.0]</code></a></h3>
+<h3 id="export-contact-list-code-export-code"><a class="link" href="#export-contact-list-code-export-code">3.14. Export contact list: <code>export</code></a></h3>
 <div class="paragraph">
-<p>Exports all emails into a csv file in a directory that is given as the second argument.<br>
-Format: <code>export DESTINATION_DIRECTORY</code></p>
+<p>Exports the current contact list into a csv file whose name is given as the second argument. The export file
+ can be found in the root directory of the project.<br>
+Format: <code>export DESTINATION_FILE_NAME.csv</code></p>
 </div>
 <div class="sidebarblock">
 <div class="content">
 <div class="ulist">
 <ul>
 <li>
-<p>InsuRen will extract all email addresses, compile into a csv and save it in the given destination with default
-name AB4DDMMYY.csv</p>
+<p>InsuRen will copy all contacts and format them into a csv file, with each row representing a unique contact.</p>
 </li>
 <li>
-<p>InsuRen will throw an error message if path is invalid.</p>
+<p>InsuRen will throw an error message if given file name is invalid (has no .csv suffix).</p>
 </li>
 </ul>
 </div>
@@ -643,8 +643,13 @@ name AB4DDMMYY.csv</p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>export C:\Users\John Doe\Documents</code><br>
-Email addresses are exported to <code>C:\Users\John Doe\Documents\AB4DDMMYY.csv</code></p>
+<p><code>export contactList28Nov.csv</code><br>
+InsuRen contacts are exported to <code>contactList28Nov.csv</code></p>
+<div class="imageblock">
+<div class="content">
+<img src="images/exportedCsv.png" alt="exportedCsv" width="790">
+</div>
+</div>
 </li>
 </ul>
 </div>
@@ -970,4 +975,4 @@ e.g.<code>select 2</code></p>
 </ul>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-10-28 13:09:23 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-10-29 07:31:33 UTC</div></div></div></body></html>
