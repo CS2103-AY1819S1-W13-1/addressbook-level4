@@ -745,12 +745,21 @@ No additional search queries are needed.</p>
 <p>Adds a picture to a person in InsuRen.<br>
 Format: <code>​pic INDEX l/FILE_LOCATION​</code></p>
 </div>
+<div class="paragraph">
+<p>Shorthand: <code>p</code></p>
+</div>
 <div class="sidebarblock">
 <div class="content">
 <div class="ulist">
 <ul>
 <li>
 <p>InsuRen will add the image to the contact.</p>
+</li>
+<li>
+<p>Only <code>.jpg</code> and <code>.png</code> files are accepted.</p>
+</li>
+<li>
+<p>File location can be an absolute path (<code>/Users/john/Downloads/InsuRen/images/petertan.jpg</code>), or a relative path (<code>images/petertan.jpg</code>).</p>
 </li>
 </ul>
 </div>
@@ -764,6 +773,10 @@ Format: <code>​pic INDEX l/FILE_LOCATION​</code></p>
 <li>
 <p><code>pic 2 l/john.jpg</code><br>
 The second person in the list will now have image <code>john.jpg</code> in his contact.</p>
+</li>
+<li>
+<p><code>p 1 l//Users/john/Downloads/InsuRen/images/petertan.jpg</code><br>
+The first person in the list will now have image <code>petertan.jpg</code> from the given path in his contact.</p>
 </li>
 </ul>
 </div>
@@ -968,7 +981,7 @@ e.g.<code>select 2</code></p>
 <p><strong>Meetings</strong> : <code>meetings [m/DD/MM/YY HHMM]</code></p>
 </li>
 <li>
-<p><strong>Add picture</strong> : <code>​pic n/NAME l/FILE_LOCATION</code></p>
+<p><strong>Add picture</strong> : <code>​pic INDEX l/FILE_LOCATION</code></p>
 </li>
 <li>
 <p><strong>View all contacts with a specified tag</strong> : <code>tag TAG_NAME</code></p>
@@ -979,4 +992,4 @@ e.g.<code>select 2</code></p>
 </ul>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-10-29 18:48:37 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-10-30 03:33:06 UTC</div></div></div></body></html>

@@ -662,11 +662,35 @@ It extends <code>Command</code> with an execution to set a picture, stored inter
 </div>
 </div>
 <div class="paragraph">
-<p>Step 2. The user executes <code>pic 4 l//images/david.jpg</code> to add a picture for David. The <code>pic</code> command calls <code>Model#getFilteredPersonList()</code> to retrieve the list of contacts and filters <code>index</code> 4. It then calls <code>Picture#setPicture()</code> to update the picture for the contact. Finally, <code>Model#commitAddressBook()</code> is called, causing the modified state of the address book after the <code>pic 4 l//images/david.jpg</code> command executes to be saved.</p>
+<p>Step 2. The user executes <code>pic 4 l/images/invalidpath.jpg</code> to add a picture for David. However, the file <code>invalidpath.jpg</code> does not exist.
+<code>Picture#isValidPicture()</code> validates the given file path and InsuRen informs the user that the path given is invalid.</p>
 </div>
 <div class="imageblock">
 <div class="content">
 <img src="../images/PictureCommand2StateDiagram.png" alt="PictureCommand2StateDiagram" width="800">
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+If a command fails its execution, it will not pass the validation check, <code>Picture#isValidPicture()</code>, so InsuRen will not update the user&#8217;s picture and instead return an error message.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Step 3. The user now decides to execute <code>pic 4 l/images/david.jpg</code>, a valid image located in his drive, to add a picture for David.
+The <code>pic</code> command calls <code>Model#getFilteredPersonList()</code> to retrieve the list of contacts and filters <code>index</code> 4.
+The <code>PictureCommandParser</code> retrieves the input from the user and validates it.
+<code>ParserUtil#parseFileLocation()</code> is called and the picture path is checked. If the path is valid, it then calls <code>Picture#setPicture()</code> to update the picture for the contact. Finally, <code>Model#commitAddressBook()</code> is called, causing the modified state of the address book after the <code>pic 4 l/images/david.jpg</code> command executes to be saved.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/PictureCommand3StateDiagram.png" alt="PictureCommand3StateDiagram" width="800">
 </div>
 </div>
 <div class="paragraph">
@@ -713,12 +737,81 @@ It extends <code>Command</code> with an execution to set a picture, stored inter
 </ul>
 </div>
 </div>
+<div class="sect4">
+<h5 id="aspect-type-of-picture"><a class="link" href="#aspect-type-of-picture">Aspect: Type of picture</a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1 (current choice):</strong> Picture can be a <code>.jpg</code> or <code>.png</code> file.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: <code>.jpg</code> and <code>.png</code> are common file formats that the user is used to.</p>
+</li>
+<li>
+<p>Cons: Not flexible in what image files are accepted.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2:</strong> In addition to alternative 1, the picture can also be a valid <code>URL</code> containing an image.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: More flexible. User does not have to download the image file onto his local disk in order to use it. Can retrieve pictures of his contacts online and use it directly.</p>
+</li>
+<li>
+<p>Cons: Additional checks have to be done (i.e. check if the <code>URL</code> is valid, check if the <code>URL</code> is an image file, what happens if the <code>URL</code> or server is broken?)</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect4">
+<h5 id="aspect-path-validation"><a class="link" href="#aspect-path-validation">Aspect: Path validation</a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1 (current choice):</strong> File location input from user is checked against a regular expression and <code>Files#exists()</code>.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: More secure. <code>Files#exists()</code> checks whether the file is on the disk while the regular expression checks for any ill-intended input as well as the file extension.</p>
+</li>
+<li>
+<p>Cons: Will have to check twice.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2:</strong> Just do <code>Files#exists()</code>.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Straightforward and simple.</p>
+</li>
+<li>
+<p>Cons: Less secure, might result in an error if the file is not checked properly.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
 </div>
 </div>
 <div class="sect2">
 <h3 id="proposed-data-encryption"><a class="link" href="#proposed-data-encryption">[Proposed] Data Encryption</a></h3>
 <div class="paragraph">
-<p><em>{Explain here how the data encryption feature will be implemented}</em></p>
+<p><em>{Explain here how the data encryption feature will be implemented}</em>
+Due to the Singapore Personal Data Protection Act (PDPA), any disclosure of the user&#8217;s personal information is considered to have severe implications.
+Thus, all data that are being stored in <code>Storage</code> should be encrypted using a secure encryption scheme with a secret key.
+When the user opens InsuRen, he should be prompted to login before he is able to access the secure data.</p>
 </div>
 </div>
 <div class="sect2">
@@ -2411,10 +2504,10 @@ Step 1 is repeated until the data entered are correct.</p>
 <p>User requests upload picture of client.</p>
 </li>
 <li>
-<p>InsuRen requests for the client’s name.</p>
+<p>InsuRen requests for the client’s ID.</p>
 </li>
 <li>
-<p>User specifies the client’s name.</p>
+<p>User specifies the client’s ID.</p>
 </li>
 <li>
 <p>InsuRen requests for the file location.</p>
@@ -2801,7 +2894,10 @@ Expected: Similar to previous.</p>
 <div class="sect2">
 <h3 id="proposed-data-encryption-2"><a class="link" href="#proposed-data-encryption-2">[Proposed] Data Encryption</a></h3>
 <div class="paragraph">
-<p><em>{Explain here how the data encryption feature will be implemented}</em></p>
+<p><em>{Explain here how the data encryption feature will be implemented}</em>
+Due to the Singapore Personal Data Protection Act (PDPA), any disclosure of the user&#8217;s personal information is considered to have severe implications.
+Thus, all data that are being stored in <code>Storage</code> should be encrypted using a secure encryption scheme with a secret key.
+When the user opens InsuRen, he should be prompted to login before he is able to access the secure data.</p>
 </div>
 </div>
 </div>
@@ -2814,4 +2910,4 @@ Expected: Similar to previous.</p>
 <p><em>{Optionally, you may include other projects in your portfolio.}</em></p>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-10-29 18:48:37 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-10-30 03:33:06 UTC</div></div></div></body></html>
