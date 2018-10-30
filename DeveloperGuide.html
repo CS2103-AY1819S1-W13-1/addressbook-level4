@@ -35,9 +35,10 @@
 <li><a href="#import-feature">3.4. Import feature</a></li>
 <li><a href="#export-feature">3.5. Export feature</a></li>
 <li><a href="#add-picture-feature">3.6. Add Picture feature</a></li>
-<li><a href="#proposed-data-encryption">3.7. [Proposed] Data Encryption</a></li>
-<li><a href="#logging">3.8. Logging</a></li>
-<li><a href="#Implementation-Configuration">3.9. Configuration</a></li>
+<li><a href="#tag-feature">3.7. Tag feature</a></li>
+<li><a href="#proposed-data-encryption">3.8. [Proposed] Data Encryption</a></li>
+<li><a href="#logging">3.9. Logging</a></li>
+<li><a href="#Implementation-Configuration">3.10. Configuration</a></li>
 </ul>
 </li>
 <li><a href="#documentation">4. Documentation</a>
@@ -1563,7 +1564,117 @@ The <code>PictureCommandParser</code> retrieves the input from the user and vali
 </div>
 </div>
 <div class="sect2">
-<h3 id="proposed-data-encryption"><a class="link" href="#proposed-data-encryption">3.7. [Proposed] Data Encryption</a></h3>
+<h3 id="tag-feature"><a class="link" href="#tag-feature">3.7. Tag feature</a></h3>
+<div class="sect3">
+<h4 id="current-implementation-8"><a class="link" href="#current-implementation-8">3.7.1. Current Implementation</a></h4>
+<div class="paragraph">
+<p>Each contact in Insuren can have any number of tags. The <code>tag</code> command allows the user to easily find contacts by tags.
+The user can also easily edit or delete tags using the tag command, allowing for better management of tags in Insuren.</p>
+</div>
+<div class="paragraph">
+<p>Given below is an example usage scenario and how the tag command behaves at each step.</p>
+</div>
+<div class="paragraph">
+<p>Step 1. The user launches the application and already has a few tagged contacts in InsuRen.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/TagCommand1StateDiagram.png" alt="TagCommand1StateDiagram" width="300">
+</div>
+</div>
+<div class="paragraph">
+<p>Step 2. The user executes <code>tag Important</code> to retrieve all contacts tagged with <code>Important</code>. Tags are <strong>case-sensitive</strong>.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/TagCommand2StateDiagram.png" alt="TagCommand2StateDiagram" width="300">
+</div>
+</div>
+<div class="paragraph">
+<p>Step 3. The user executes <code>tag Family Colleague</code> to retrieve all contacts tagged with <code>Family</code> or <code>Colleague</code>.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/TagCommand3StateDiagram.png" alt="TagCommand3StateDiagram" width="300">
+</div>
+</div>
+<div class="paragraph">
+<p>Step 4. If the user wants to change all instances of the <code>Colleague</code> tag to <code>Work</code>, the user can input <code>tag edit
+Colleague Work</code>. <code>edit</code> is <strong>not</strong> case-sensitive.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/TagCommand4StateDiagram.png" alt="TagCommand4StateDiagram" width="300">
+</div>
+</div>
+<div class="paragraph">
+<p>Step 5. If the user would like to delete the <code>close</code> tag, the user simply executes <code>tag close delete</code>.
+<code>delete</code> is <strong>not</strong> case-sensitive.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/TagCommand5StateDiagram.png" alt="TagCommand5StateDiagram" width="300">
+</div>
+</div>
+<div class="paragraph">
+<p>Step 6. If the user would like to delete the <code>Family</code> and <code>Colleague</code> tags together, the user simply executes <code>tag
+Family Colleague delete</code>. Both tags will be deleted.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/TagCommand6StateDiagram.png" alt="TagCommand6StateDiagram" width="300">
+</div>
+</div>
+<div class="paragraph">
+<p>All tag commands can be undone or redone with <code>undo</code> or <code>redo</code> respectively.<br>
+The following activity diagram summarizes what happens when a user executes the <code>PictureCommand</code>:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/TagCommandActivityDiagram.png" alt="TagCommandActivityDiagram" width="500">
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="design-considerations-7"><a class="link" href="#design-considerations-7">3.7.2. Design Considerations</a></h4>
+<div class="sect4">
+<h5 id="aspect-how-tag-command-works"><a class="link" href="#aspect-how-tag-command-works">Aspect: How tag command works</a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1 (current choice):</strong> Search through the address book&#8217;s list of persons to find all persons with any matching tag.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Consistent with <code>find</code> command, easy to implement.</p>
+</li>
+<li>
+<p>Cons: Performance can be slow especially if InsuRen has many contacts as InsuRen will look through every person.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2:</strong> A hashmap is used with the key values being each unique tag and the values being a list of persons associated with each tag.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Will have faster lookup, O(1) access time to get the list of persons associated with a tag.</p>
+</li>
+<li>
+<p>Cons: Will use more memory storing a separate data structure. This separate data structure also has to be updated with the right list of persons
+every time a person&#8217;s details are edited or a person is deleted. Programming such a data structure would require significantly more effort.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="proposed-data-encryption"><a class="link" href="#proposed-data-encryption">3.8. [Proposed] Data Encryption</a></h3>
 <div class="paragraph">
 <p>Due to the Singapore Personal Data Protection Act (PDPA), any disclosure of the user&#8217;s personal information is considered to have severe implications.
 Thus, all data that are being stored in <code>Storage</code> should be encrypted using a secure encryption scheme with a secret key.
@@ -1571,14 +1682,14 @@ When the user opens InsuRen, he should be prompted to login before he is able to
 </div>
 </div>
 <div class="sect2">
-<h3 id="logging"><a class="link" href="#logging">3.8. Logging</a></h3>
+<h3 id="logging"><a class="link" href="#logging">3.9. Logging</a></h3>
 <div class="paragraph">
 <p>We are using <code>java.util.logging</code> package for logging. The <code>LogsCenter</code> class is used to manage the logging levels and logging destinations.</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>The logging level can be controlled using the <code>logLevel</code> setting in the configuration file (See <a href="#Implementation-Configuration">Section 3.9, &#8220;Configuration&#8221;</a>)</p>
+<p>The logging level can be controlled using the <code>logLevel</code> setting in the configuration file (See <a href="#Implementation-Configuration">Section 3.10, &#8220;Configuration&#8221;</a>)</p>
 </li>
 <li>
 <p>The <code>Logger</code> for a class can be obtained using <code>LogsCenter.getLogger(Class)</code> which will log messages according to the specified logging level</p>
@@ -1609,7 +1720,7 @@ When the user opens InsuRen, he should be prompted to login before he is able to
 </div>
 </div>
 <div class="sect2">
-<h3 id="Implementation-Configuration"><a class="link" href="#Implementation-Configuration">3.9. Configuration</a></h3>
+<h3 id="Implementation-Configuration"><a class="link" href="#Implementation-Configuration">3.10. Configuration</a></h3>
 <div class="paragraph">
 <p>Certain properties of the application can be controlled (e.g App name, logging level) through the configuration file (default: <code>config.json</code>).</p>
 </div>
@@ -3652,4 +3763,4 @@ Expected: Similar to previous.</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-10-30 15:36:33 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-10-30 15:47:11 UTC</div></div></div></body></html>

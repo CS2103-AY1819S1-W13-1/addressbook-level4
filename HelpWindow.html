@@ -31,8 +31,8 @@
 <li><a href="#view-meeting-timings-code-meetings-code">3.16. View meeting timings: <code>meetings</code></a></li>
 <li><a href="#notifications-for-expiring-plans-code-coming-in-v2-0-code">3.17. Notifications for expiring plans <code>[coming in v2.0]</code></a></li>
 <li><a href="#adding-a-picture-to-contact-code-pic-code">3.18. Adding a picture to contact: <code>pic</code></a></li>
-<li><a href="#allow-user-to-add-contact-if-duplicate-contact-is-added">3.19. Allow user to add contact if duplicate contact is added</a></li>
-<li><a href="#using-tags-code-tag-code">3.20. Using tags: <code>tag</code></a></li>
+<li><a href="#using-tags-code-tag-code">3.19. Using tags: <code>tag</code></a></li>
+<li><a href="#edit-a-tag">3.20. Edit a tag</a></li>
 <li><a href="#saving-the-data">3.21. Saving the data</a></li>
 <li><a href="#encrypting-data-files-code-coming-in-v2-0-code">3.22. Encrypting data files <code>[coming in v2.0]</code></a></li>
 </ul>
@@ -813,30 +813,9 @@ The first person in the list will now have image <code>petertan.jpg</code> from 
 </div>
 </div>
 <div class="sect2">
-<h3 id="allow-user-to-add-contact-if-duplicate-contact-is-added"><a class="link" href="#allow-user-to-add-contact-if-duplicate-contact-is-added">3.19. Allow user to add contact if duplicate contact is added</a></h3>
-<div class="paragraph">
-<p>Warns user about adding a contact that has the same name and same phone number or email or address field.
-InsuRen allows you to add contact with the same name as an existing contact as long as one of the other fields
-are different.</p>
-</div>
-<div class="paragraph">
-<p>Examples:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>add n/John Doe p/91234567 e/johndoe@example.com a/John street, block 123, #01-01</code><br>
-<code>add n/John Doe p/98765432 e/differentemail@example.com a/Different street, block 123, #01-01</code><br>
-InsuRen will warn user that an existing contact John Doe already exists. InsuRen will ask you if you would
-like to go ahead and create a new contact, edit the existing contact, or cancel the operation.</p>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect2">
-<h3 id="using-tags-code-tag-code"><a class="link" href="#using-tags-code-tag-code">3.20. Using tags: <code>tag</code></a></h3>
+<h3 id="using-tags-code-tag-code"><a class="link" href="#using-tags-code-tag-code">3.19. Using tags: <code>tag</code></a></h3>
 <div class="sect3">
-<h4 id="view-contacts-by-tag"><a class="link" href="#view-contacts-by-tag">3.20.1. View contacts by tag</a></h4>
+<h4 id="view-contacts-by-tag"><a class="link" href="#view-contacts-by-tag">3.19.1. View contacts by tag</a></h4>
 <div class="paragraph">
 <p>View all contacts in any existing tag.<br>
 Format: <code>tag TAG_NAME [MORE_TAG_NAMES]</code></p>
@@ -850,9 +829,6 @@ Format: <code>tag TAG_NAME [MORE_TAG_NAMES]</code></p>
 <ul>
 <li>
 <p>View all contacts that belong to the same tag.</p>
-</li>
-<li>
-<p>InsuRen will throw an error if an invalid <code>TAG_NAME</code> is given.</p>
 </li>
 </ul>
 </div>
@@ -874,11 +850,44 @@ Returns all contacts with the <code>Work</code> or <code>Important</code> tags.<
 </ul>
 </div>
 </div>
+</div>
+<div class="sect2">
+<h3 id="edit-a-tag"><a class="link" href="#edit-a-tag">3.20. Edit a tag</a></h3>
+<div class="paragraph">
+<p>Edit a tag, replacing all its occurrences with a new user-specified tag.
+Format: <code>tag edit EXISTING_TAG_NAME NEW_TAG_NAME</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>All contacts tagged with <code>EXISTING_TAG_NAME</code> will have the tag replaced by <code>NEW_TAG_NAME</code>.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Example:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>tag edit Work Business</code><br>
+All contacts that had the <code>Work</code> tag have the tag changed to <code>Business</code>.</p>
+</li>
+<li>
+<p><code>t EDIT Friends Buddies</code><br>
+Usage of "edit" is <strong>not</strong> case-sensitive.</p>
+</li>
+</ul>
+</div>
 <div class="sect3">
-<h4 id="delete-a-tag"><a class="link" href="#delete-a-tag">3.20.2. Delete a tag</a></h4>
+<h4 id="delete-a-tag"><a class="link" href="#delete-a-tag">3.20.1. Delete a tag</a></h4>
 <div class="paragraph">
 <p>Delete a tag, removing it from all contacts.<br>
-Format: <code>tag TAG_NAME delete</code></p>
+Format: <code>tag TAG_NAME [MORE_TAG_NAMES&#8230;&#8203;] delete</code></p>
 </div>
 <div class="sidebarblock">
 <div class="content">
@@ -1025,4 +1034,4 @@ e.g.<code>select 2</code></p>
 </ul>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-10-30 15:36:33 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-10-30 15:47:11 UTC</div></div></div></body></html>
