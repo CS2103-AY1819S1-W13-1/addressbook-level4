@@ -29,7 +29,7 @@
 </li>
 <li><a href="#implementation">3. Implementation</a>
 <ul class="sectlevel2">
-<li><a href="#edit-by-name-feature">3.1. Edit By Name feature</a></li>
+<li><a href="#by-name-commands-feature">3.1. By-Name-Commands Feature</a></li>
 <li><a href="#schedule-feature">3.2. Schedule feature</a></li>
 <li><a href="#undo-redo-feature">3.3. Undo/Redo feature</a></li>
 <li><a href="#import-feature">3.4. Import feature</a></li>
@@ -607,31 +607,133 @@ As a more OOP model, we can store a <code>Tag</code> list in <code>Address Book<
 <p>This section describes some noteworthy details on how certain features are implemented.</p>
 </div>
 <div class="sect2">
-<h3 id="edit-by-name-feature"><a class="link" href="#edit-by-name-feature">3.1. Edit By Name feature</a></h3>
+<h3 id="by-name-commands-feature"><a class="link" href="#by-name-commands-feature">3.1. By-Name-Commands Feature</a></h3>
 <div class="sect3">
-<h4 id="current-implementation"><a class="link" href="#current-implementation">3.1.1. Current Implementation</a></h4>
+<h4 id="general-current-implementation"><a class="link" href="#general-current-implementation">3.1.1. General Current Implementation</a></h4>
 <div class="paragraph">
-<p>The edit by name mechanism is facilitated by the new <code>Command</code>, <code>EditByNameCommand</code>.
-It extends <code>EditCommand</code> with a "Person Identifier" String that is used in place of the Index (of a displayed list) used in the normal <code>EditCommand</code>.
-Additionally, it implements the following operations:</p>
+<p>The "by-name-commands" are extensions to the regular Commands, facilitated by classes that extend the regular <code>Command</code> classes. Currently implemented are the <code>EditByNameCommand</code> and the <code>DeleteByNameCommand</code>.
+They make use of <code>String</code> identifiers and the <code>PersonFinderUtil</code> to find the <code>Person</code> that the <code>Command</code> refers to, rather than an <code>Index</code>.<br>
+This allows time to be saved when trying to run a command, because instead of having to run a <code>find</code> or <code>list</code> command to display a <code>Person</code>, then type the command based on the <code>Index</code> of the list that the <code>Person</code> appears under, commands can be targeted swiftly and precisely.
+The "by-name-commands" depend on the following operation/classes:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p><code>EditByNameCommand#findPerson(Model model)</code>&#8201;&#8212;&#8201;Finds and returns the person that is uniquely identified by the <code>personIdentifier</code> in the <code>Model</code> provided.</p>
+<p><code>PersonFinderUtil#findPerson(Model model, String personIdentifier)</code>&#8201;&#8212;&#8201;Finds and returns the person that is uniquely identified by the <code>personIdentifier</code> in the <code>Model</code> provided.</p>
 </li>
+<li>
+<p><code>NameContainsAllKeywordsPredicate</code>&#8201;&#8212;&#8201;Tests as true when a person&#8217;s name matches all the keywords in the command&#8217;s arguments.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>The <code>PersonFinderUtil#findPerson</code> method makes use of the <code>NameContainsAllKeywordsPredicate</code>, which is in contrast to the <code>NameContainsKeywordsPredicate</code> used in the <code>FindCommand</code>.</p>
+</li>
+<li>
+<p>When editing by name, we need a more specific filter, rather than a general one. Instead of finding a Person that contains at least one identifier term in their name, the Person found must contain <strong>all</strong> identifier terms in their name.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Note: in the following section, the shorthand format <code>_ByNameCommand</code> and <code>_Command</code> when used in the same context will refer to a similar type of command, e.g. <code>DeleteByNameCommand</code> and <code>DeleteCommand</code>, but <code>_</code> is general to refer to either <code>Delete</code> or <code>Edit</code>.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="design-considerations"><a class="link" href="#design-considerations">3.1.2. Design Considerations</a></h4>
+<div class="sect4">
+<h5 id="aspect-whether-a-code-_bynamecommand-code-should-extend-the-regular-code-_command-code"><a class="link" href="#aspect-whether-a-code-_bynamecommand-code-should-extend-the-regular-code-_command-code">Aspect: Whether a <code>_ByNameCommand</code> should Extend the Regular <code>_Command</code></a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1 (current choice):</strong> It extends the <code>Command</code>.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Due to polymorphism, a <code>_ByNameCommand</code> can replace instances of <code>_Command</code> seamlessly in the code without having to
+change many parts to add this additional feature. It also makes sense, because a <code>_ByNameCommand</code> "is a" <code>_Command</code> (e.g. an <code>EditByNameCommand</code> is an <code>EditCommand</code>)</p>
+</li>
+<li>
+<p>Cons: There is an unused field in <code>EditCommand</code> (<code>index</code>).</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2:</strong> Create a new <code>_ByNameCommand</code>, standalone from the <code>_Command</code></p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Can save a bit of memory space on execution, since parts of the <code>_Command</code> that are not used do not provide extra baggage to the <code>_ByNameCommand</code> (e.g. no extra <code>Index</code> in the <code>EditByNameCommand</code>)</p>
+</li>
+<li>
+<p>Cons: There is a need to modify more parts of the Logic component in the code base to accommodate a new command.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect4">
+<h5 id="aspect-when-the-person-is-searched-matched"><a class="link" href="#aspect-when-the-person-is-searched-matched">Aspect: When the Person is Searched/Matched</a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1 (current choice):</strong> During the execution of <code>execute</code></p>
+<div class="ulist">
+<ul>
+<li>
+<p>Additional details: A <code>String personIdentifier</code> will be stored in the command, and upon <code>execute</code>, a person is first matched, then the edit is carried out.</p>
+</li>
+<li>
+<p>Pros: Execute takes in the model as an argument, making searching for a Person convenient.</p>
+</li>
+<li>
+<p>Cons: The same <code>_ByNameCommand</code> executed at a different time can have a different result since it does not have a unique Person, but an identifier to find a name.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2:</strong> Before creation of the command</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Additional details: The command will have a <code>Person</code></p>
+</li>
+<li>
+<p>Pros: The command is deterministic, since it targets a unique Person.</p>
+</li>
+<li>
+<p>Cons: Need to gain access to the model before the person can be found, which is not usually done by <code>AddressBookParser</code>; high level changes are necessary.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="edit-by-name-feature"><a class="link" href="#edit-by-name-feature">3.1.3. Edit By Name feature</a></h4>
+<div class="sect4">
+<h5 id="current-implementation"><a class="link" href="#current-implementation">Current Implementation</a></h5>
+<div class="paragraph">
+<p>The edit by name mechanism is facilitated by the new <code>Command</code>, <code>EditByNameCommand</code>.
+It extends <code>EditCommand</code> with a "Person Identifier" String that is used in place of the Index (of a displayed list) used in the normal <code>EditCommand</code>.
+Additionally, it implements/depends on the following operations:</p>
+</div>
+<div class="ulist">
+<ul>
 <li>
 <p><code>EditByNameCommand#execute()</code>&#8201;&#8212;&#8201;Executes the command encapsulated by this <code>EditByNameCommand</code>.</p>
 </li>
 </ul>
 </div>
 <div class="paragraph">
-<p>The <code>findPerson</code> method makes use of the <code>NameContainsAllKeywordsPredicate</code>, which is in contrast to the <code>NameContainsKeywordsPredicate</code> used in the <code>FindCommand</code>.
-This is because when editing by name, we need a more specific filter, rather than a general one.
-So instead of finding a Person that contains at least one identifier term in their name, the Person found must contain <strong>all</strong> identifier terms in their name.</p>
-</div>
-<div class="paragraph">
-<p>Given below is an example usage scenario and how the EditByName mechanism behaves at each step.</p>
+<p>Given below is an example usage scenario and how the Edit-By-Name mechanism behaves at each step.</p>
 </div>
 <div class="paragraph">
 <p>Step 1. The user launches the application and already has at least one client&#8217;s contact in InsuRen.</p>
@@ -686,79 +788,77 @@ If a command fails its execution due to multiple or no people matching the ident
 </div>
 </div>
 </div>
+</div>
 <div class="sect3">
-<h4 id="design-considerations"><a class="link" href="#design-considerations">3.1.2. Design Considerations</a></h4>
+<h4 id="delete-by-name-feature"><a class="link" href="#delete-by-name-feature">3.1.4. Delete By Name feature</a></h4>
 <div class="sect4">
-<h5 id="aspect-whether-code-editbynamecommand-code-should-extend-code-editcommand-code"><a class="link" href="#aspect-whether-code-editbynamecommand-code-should-extend-code-editcommand-code">Aspect: Whether <code>EditByNameCommand</code> should Extend <code>EditCommand</code></a></h5>
+<h5 id="current-implementation-2"><a class="link" href="#current-implementation-2">Current Implementation</a></h5>
+<div class="paragraph">
+<p>The delete by name mechanism is facilitated by the new <code>Command</code>, <code>DeleteByNameCommand</code>.
+It extends <code>DeleteCommand</code> with a "Person Identifier" String that is used in place of the Index (of a displayed list) used in the normal <code>DeleteCommand</code>.
+Additionally, it implements the following operations:</p>
+</div>
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Alternative 1 (current choice):</strong> It extends <code>EditCommand</code>.</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Pros: Due to polymorphism, <code>EditByNameCommand</code> can replace instances of <code>EditCommand</code> seamlessly in the code without having to
-change many parts to add this additional feature. It also makes sense, because an <code>EditByNameCommand</code> "is an" <code>EditCommand</code>.</p>
-</li>
-<li>
-<p>Cons: There is an unused field in <code>EditCommand</code> (<code>index</code>).</p>
+<p><code>DeleteByNameCommand#execute()</code>&#8201;&#8212;&#8201;Executes the command encapsulated by this <code>DeleteByNameCommand</code>.</p>
 </li>
 </ul>
 </div>
-</li>
-<li>
-<p><strong>Alternative 2:</strong> Create a new <code>Command</code>, standalone from <code>EditCommand</code></p>
-<div class="ulist">
-<ul>
-<li>
-<p>Pros: Can save a bit of memory space on execution, since parts of <code>EditCommand</code> that are not used do not provide extra baggage to <code>EditByNameCommand</code>.</p>
-</li>
-<li>
-<p>Cons: There is a need to modify many parts of the Logic component in the code base to accommodate a new command.</p>
-</li>
-</ul>
+<div class="paragraph">
+<p>Given below is an example usage scenario and how the Delete-By-Name mechanism behaves at each step.</p>
 </div>
-</li>
-</ul>
+<div class="paragraph">
+<p>Step 1. The user launches the application and already has at least one client&#8217;s contact in InsuRen.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/DeleteByNameCommand1StateDiagram.png" alt="DeleteByNameCommand1StateDiagram" width="800">
 </div>
 </div>
-<div class="sect4">
-<h5 id="aspect-when-the-person-is-searched-matched"><a class="link" href="#aspect-when-the-person-is-searched-matched">Aspect: When the Person is Searched/Matched</a></h5>
-<div class="ulist">
-<ul>
-<li>
-<p><strong>Alternative 1 (current choice):</strong> During the execution of <code>execute</code></p>
-<div class="ulist">
-<ul>
-<li>
-<p>Additional details: A <code>String personIdentifier</code> will be stored in the command, and upon <code>execute</code>, a person is first matched, then the edit is carried out.</p>
-</li>
-<li>
-<p>Pros: Execute takes in the model as an argument, making searching for a Person convenient.</p>
-</li>
-<li>
-<p>Cons: The same <code>EditByNameCommand</code> executed at a different time can have a different result since it does not have a unique Person, but a identifier to find a name.</p>
-</li>
-</ul>
+<div class="paragraph">
+<p>Step 2. The user executes <code>delete Alice</code> to delete Alice from InsuRen. However, there are more than two people with a name that matches Alice, so InsuRen notifies the user.</p>
 </div>
-</li>
-<li>
-<p><strong>Alternative 2:</strong> Before creation of the command</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Additional details: The command will have a <code>Person</code></p>
-</li>
-<li>
-<p>Pros: The command is deterministic, since it targets a unique Person.</p>
-</li>
-<li>
-<p>Cons: Need to gain access to the model before the person can be found, which is not usually done by AddressBookParser; high level changes are necessary.</p>
-</li>
-</ul>
+<div class="imageblock">
+<div class="content">
+<img src="images/DeleteByNameCommand2StateDiagram.png" alt="DeleteByNameCommand2StateDiagram" width="800">
 </div>
-</li>
-</ul>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+If a command fails its execution due to multiple or no people matching the identifier, it will not delete any contact details.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Step 3. The user uses a much more specific name identifier, <code>delete Alice Tay Ren Ying</code>, but this does not match any contact, so InsuRen notifies the user.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/DeleteByNameCommand3StateDiagram.png" alt="DeleteByNameCommand3StateDiagram" width="800">
+</div>
+</div>
+<div class="paragraph">
+<p>Step 4. The user uses a name identifier that uniquely identifies one person, <code>delete Alice Tay</code>. The delete command is carried out, Alice Tay is removed from InsuRen&#8217;s contact list.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/DeleteByNameCommand4StateDiagram.png" alt="DeleteByNameCommand4StateDiagram" width="800">
+</div>
+</div>
+<div class="paragraph">
+<p>The following activity diagram summarizes what happens when a user executes the <code>DeleteByNameCommand</code>:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/DeleteByNameCommandActivityDiagram.png" alt="DeleteByNameCommandActivityDiagram" width="500">
+</div>
 </div>
 </div>
 </div>
@@ -766,7 +866,7 @@ change many parts to add this additional feature. It also makes sense, because a
 <div class="sect2">
 <h3 id="schedule-feature"><a class="link" href="#schedule-feature">3.2. Schedule feature</a></h3>
 <div class="sect3">
-<h4 id="current-implementation-2"><a class="link" href="#current-implementation-2">3.2.1. Current Implementation</a></h4>
+<h4 id="current-implementation-3"><a class="link" href="#current-implementation-3">3.2.1. Current Implementation</a></h4>
 <div class="paragraph">
 <p>The schedule mechanism is facilitated by the new <code>Command</code>, <code>Schedule</code>. It extends <code>AddressBook</code> with a list of meetings, stored internally as a <code>UniqueMeetingList</code>. It also allows meetings to be associated to InsuRen entries, since each <code>Person</code> can have up to one <code>Meeting</code>.
 The complete list of meetings, as well as the meetings scheduled on a single day, can subsequently be accessed using the <code>Meetings</code> command.
@@ -924,7 +1024,7 @@ No meetings are scheduled if there is a clash
 <div class="sect2">
 <h3 id="undo-redo-feature"><a class="link" href="#undo-redo-feature">3.3. Undo/Redo feature</a></h3>
 <div class="sect3">
-<h4 id="current-implementation-3"><a class="link" href="#current-implementation-3">3.3.1. Current Implementation</a></h4>
+<h4 id="current-implementation-4"><a class="link" href="#current-implementation-4">3.3.1. Current Implementation</a></h4>
 <div class="paragraph">
 <p>The undo/redo mechanism is facilitated by <code>VersionedAddressBook</code>.
 It extends <code>AddressBook</code> with an undo/redo history, stored internally as an <code>addressBookStateList</code> and <code>currentStatePointer</code>.
@@ -1126,7 +1226,7 @@ If the <code>currentStatePointer</code> is at index <code>addressBookStateList.s
 <div class="sect2">
 <h3 id="import-feature"><a class="link" href="#import-feature">3.4. Import feature</a></h3>
 <div class="sect3">
-<h4 id="current-implementation-4"><a class="link" href="#current-implementation-4">3.4.1. Current Implementation</a></h4>
+<h4 id="current-implementation-5"><a class="link" href="#current-implementation-5">3.4.1. Current Implementation</a></h4>
 <div class="paragraph">
 <p>The import contacts feature is facilitated by the new <code>Command</code>, <code>import</code>. It adds a list of contacts from a properly formatted csv file
 to <code>AddressBook</code>. The rules pertaining to accepted formatting of csv files can be found in the user guide. Additionally, it
@@ -1232,7 +1332,7 @@ not cause import to crash.</p>
 <div class="sect2">
 <h3 id="export-feature"><a class="link" href="#export-feature">3.5. Export feature</a></h3>
 <div class="sect3">
-<h4 id="current-implementation-5"><a class="link" href="#current-implementation-5">3.5.1. Current Implementation</a></h4>
+<h4 id="current-implementation-6"><a class="link" href="#current-implementation-6">3.5.1. Current Implementation</a></h4>
 <div class="paragraph">
 <p>The export contacts feature is facilitated by the new <code>Command</code>, <code>export</code>. It takes the current list of contacts in InsuRen
 and exports it as a csv file, whose file name is given by the user and MUST end with .csv. The exported contact list will be
@@ -1302,7 +1402,7 @@ Export makes use of model.getAddressBook() and the getPersonList method within.<
 <div class="sect2">
 <h3 id="add-picture-feature"><a class="link" href="#add-picture-feature">3.6. Add Picture feature</a></h3>
 <div class="sect3">
-<h4 id="current-implementation-6"><a class="link" href="#current-implementation-6">3.6.1. Current Implementation</a></h4>
+<h4 id="current-implementation-7"><a class="link" href="#current-implementation-7">3.6.1. Current Implementation</a></h4>
 <div class="paragraph">
 <p>The picture mechanism is facilitated by the new <code>PictureCommand</code>.
 It extends <code>Command</code> with an execution to set a picture, stored internally in <code>Person</code> as <code>picture</code>.</p>
@@ -3552,4 +3652,4 @@ Expected: Similar to previous.</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-10-30 07:28:15 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-10-30 08:26:00 UTC</div></div></div></body></html>
