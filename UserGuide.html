@@ -597,7 +597,7 @@ Format: <code>import</code></p>
 </div>
 </div>
 <div class="paragraph">
-<p>Example:</p>
+<p>Example (user does not provide a file path):</p>
 </div>
 <div class="ulist">
 <ul>
@@ -615,21 +615,47 @@ Format: <code>import</code></p>
 </ul>
 </div>
 <div class="paragraph">
-<p>Example (user gives a file path):</p>
+<p>Example (user provides a file path):</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p><code>import l/D:/AddressbookCorrect.csv</code></p>
+<p>FOR WINDOWS:</p>
+<div class="ulist">
+<ul>
+<li>
+<p><code>import l/D:/AddressbookCorrect.csv</code> (absolute pathing) or</p>
 </li>
 <li>
-<p>Regardless which method is used, InsuRen will load contacts from the given csv file</p>
+<p><code>import l/AddressbookCorrect.csv</code> (relative pathing - if you save the .csv file in the same directory as the .jar file).</p>
+</li>
+</ul>
+</div>
 </li>
 <li>
-<p>Each contact in these files must have the name, phone number, email and address fields filled up in that order.</p>
+<p>FOR MAC:</p>
+<div class="ulist">
+<ul>
+<li>
+<p><code>import l//FILEPATH</code> (absolute pathing - note the double slashes) or</p>
 </li>
 <li>
-<p>Any invalid entries will be ignored.</p>
+<p><code>import l/AddressbookCorrect.csv</code> (relative pathing).</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Regardless which method is used, InsuRen will load contacts from the given csv file.</p>
+</li>
+<li>
+<p>Each contact&#8217;s Name, Phone, Email, Address, Meeting and Tag(s) fields must be keyed in the csv in that order.</p>
+</li>
+<li>
+<p>All fields are optional, and can be left blank, except for Name.</p>
+</li>
+<li>
+<p>Any invalid entries (contacts with no name) will be ignored.</p>
 </li>
 <li>
 <p>Examples of properly formatted csv files are shown below.</p>
@@ -654,6 +680,9 @@ Format: <code>import</code></p>
  can be found in the root directory of the project.<br>
 Format: <code>export DESTINATION_FILE_NAME.csv</code></p>
 </div>
+<div class="paragraph">
+<p>Shorthand: <code>x</code></p>
+</div>
 <div class="sidebarblock">
 <div class="content">
 <div class="ulist">
@@ -674,8 +703,8 @@ Format: <code>export DESTINATION_FILE_NAME.csv</code></p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>export contactList28Nov.csv</code><br>
-InsuRen contacts are exported to <code>contactList28Nov.csv</code></p>
+<p><code>export 28Nov.csv</code><br>
+InsuRen contacts are exported to <code>28Nov.csv</code></p>
 <div class="imageblock">
 <div class="content">
 <img src="images/exportedCsv.png" alt="exportedCsv" width="790">
@@ -1034,4 +1063,4 @@ e.g.<code>select 2</code></p>
 </ul>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-11-01 10:45:44 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-11-01 10:47:05 UTC</div></div></div></body></html>
