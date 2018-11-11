@@ -34,6 +34,7 @@
 <li><a href="#using-tags-code-tag-code">3.19. Using tags: <code>tag</code></a></li>
 <li><a href="#saving-the-data">3.20. Saving the data</a></li>
 <li><a href="#encrypting-data-files-code-coming-in-v2-0-code">3.21. Encrypting data files <code>[coming in v2.0]</code></a></li>
+<li><a href="#adding-a-picture-from-url-to-contact-code-coming-in-v2-0-code">3.22. Adding a picture from URL to contact <code>[coming in v2.0]</code></a></li>
 </ul>
 </li>
 <li><a href="#faq">4. FAQ</a></li>
@@ -825,7 +826,20 @@ Format: <code>​pic INDEX l/FILE_LOCATION​</code></p>
 <p>Only <code>.jpg</code> and <code>.png</code> files are accepted.</p>
 </li>
 <li>
-<p>File location can be an absolute path (<code>/Users/john/Downloads/InsuRen/images/petertan.jpg</code>), or a relative path (<code>images/petertan.jpg</code>).</p>
+<p>Supports file location for any <a href="DeveloperGuide.html#mainstream-os">mainstream OS</a>.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Windows: <code>C:/Users/John/Downloads/InsuRen/images/petertan.jpg</code></p>
+</li>
+<li>
+<p>Mac: <code>/Users/John/Downloads/Insuren/images/petertan.jpg</code></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>File location can be an absolute path (<code>/Users/John/Downloads/InsuRen/images/petertan.jpg</code>), or a relative path (<code>images/petertan.jpg</code>).</p>
 </li>
 <li>
 <p>If the picture gets deleted or renamed, InsuRen will show the default user picture.</p>
@@ -844,8 +858,12 @@ Format: <code>​pic INDEX l/FILE_LOCATION​</code></p>
 The second person in the list will now have image <code>john.jpg</code> in his contact.</p>
 </li>
 <li>
-<p><code>p 1 l//Users/john/Downloads/InsuRen/images/petertan.jpg</code><br>
+<p><code>pic 1 l//Users/John/Downloads/InsuRen/images/petertan.jpg</code><br>
 The first person in the list will now have image <code>petertan.jpg</code> from the given path in his contact.</p>
+</li>
+<li>
+<p><code>p 3 l/C:/Users/John/Downloads/InsuRen/images/davidlee.png</code><br>
+The third person in the list will now have image <code>davidlee.png</code> from the given path in his contact.</p>
 </li>
 </ul>
 </div>
@@ -992,6 +1010,41 @@ All data will be encrypted. The next time the user opens InsuRen, InsuRen will p
 </ul>
 </div>
 </div>
+<div class="sect2">
+<h3 id="adding-a-picture-from-url-to-contact-code-coming-in-v2-0-code"><a class="link" href="#adding-a-picture-from-url-to-contact-code-coming-in-v2-0-code">3.22. Adding a picture from URL to contact <code>[coming in v2.0]</code></a></h3>
+<div class="paragraph">
+<p>Adds a picture from a URL to a person in InsuRen.<br>
+Format: <code>​pic INDEX l/FILE_URL​</code></p>
+</div>
+<div class="paragraph">
+<p>Shorthand: <code>p</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>InsuRen will add the image to the contact.</p>
+</li>
+<li>
+<p>If the URL is broken after it is successfully added, InsuRen will show a picture indicating that the URL is broken.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>pic 1 l/https://cs2103-ay1819s1-w13-1.github.io/main/images/denzelchung.png</code><br>
+The first person in the list will now have image <code>denzelchung.png</code> from the <code>Github</code> webpage in his contact.</p>
+</li>
+</ul>
+</div>
+</div>
 </div>
 </div>
 <div class="sect1">
@@ -1072,4 +1125,4 @@ e.g.<code>select 2</code></p>
 </ul>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-11-11 14:09:12 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-11-11 14:10:39 UTC</div></div></div></body></html>
