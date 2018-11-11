@@ -37,8 +37,9 @@
 <li><a href="#add-picture-feature">3.6. Add Picture feature</a></li>
 <li><a href="#tag-feature">3.7. Tag feature</a></li>
 <li><a href="#proposed-data-encryption">3.8. [Proposed] Data Encryption</a></li>
-<li><a href="#logging">3.9. Logging</a></li>
-<li><a href="#Implementation-Configuration">3.10. Configuration</a></li>
+<li><a href="#proposed-add-picture-from-url">3.9. [Proposed] Add Picture from URL</a></li>
+<li><a href="#logging">3.10. Logging</a></li>
+<li><a href="#Implementation-Configuration">3.11. Configuration</a></li>
 </ul>
 </li>
 <li><a href="#documentation">4. Documentation</a>
@@ -1439,7 +1440,15 @@ The <code>PictureCommandParser</code> retrieves the input from the user and vali
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="images/PictureCommandActivityDiagram.png" alt="PictureCommandActivityDiagram" width="500">
+<img src="images/PictureCommandActivityDiagram.png" alt="PictureCommandActivityDiagram" width="400">
+</div>
+</div>
+<div class="paragraph">
+<p>The following sequence diagram shows what happens when a user executes the <code>PictureCommand</code>:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/PictureCommandSequenceDiagram.png" alt="PictureCommandSequenceDiagram" width="800">
 </div>
 </div>
 </div>
@@ -1516,11 +1525,11 @@ The <code>PictureCommandParser</code> retrieves the input from the user and vali
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Alternative 1 (current choice):</strong> File location input from user is checked against a regular expression and <code>Files#exists()</code>.</p>
+<p><strong>Alternative 1 (current choice):</strong> File location input from user is checked against <code>Files#exists()</code> and whether it ends with a <code>.png</code> or <code>.jpg</code>.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Pros: More secure. <code>Files#exists()</code> checks whether the file is on the disk while the regular expression checks for any ill-intended input as well as the file extension.</p>
+<p>Pros: More secure. <code>Files#exists()</code> checks whether the file is on the disk while the other checks for the file extension.</p>
 </li>
 <li>
 <p>Cons: Will have to check twice.</p>
@@ -1665,14 +1674,22 @@ When the user opens InsuRen, he should be prompted to login before he is able to
 </div>
 </div>
 <div class="sect2">
-<h3 id="logging"><a class="link" href="#logging">3.9. Logging</a></h3>
+<h3 id="proposed-add-picture-from-url"><a class="link" href="#proposed-add-picture-from-url">3.9. [Proposed] Add Picture from URL</a></h3>
+<div class="paragraph">
+<p>The current implementation of the <code>pic</code> command in v1.4 only allows users to upload images that are available on their local drives.
+Giving users the option to upload images that is available on the internet would be much more convenient to the user.
+Users can simply go to their client&#8217;s Facebook or other social media accounts to retrieve the image URL.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="logging"><a class="link" href="#logging">3.10. Logging</a></h3>
 <div class="paragraph">
 <p>We are using <code>java.util.logging</code> package for logging. The <code>LogsCenter</code> class is used to manage the logging levels and logging destinations.</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>The logging level can be controlled using the <code>logLevel</code> setting in the configuration file (See <a href="#Implementation-Configuration">Section 3.10, &#8220;Configuration&#8221;</a>)</p>
+<p>The logging level can be controlled using the <code>logLevel</code> setting in the configuration file (See <a href="#Implementation-Configuration">Section 3.11, &#8220;Configuration&#8221;</a>)</p>
 </li>
 <li>
 <p>The <code>Logger</code> for a class can be obtained using <code>LogsCenter.getLogger(Class)</code> which will log messages according to the specified logging level</p>
@@ -1703,7 +1720,7 @@ When the user opens InsuRen, he should be prompted to login before he is able to
 </div>
 </div>
 <div class="sect2">
-<h3 id="Implementation-Configuration"><a class="link" href="#Implementation-Configuration">3.10. Configuration</a></h3>
+<h3 id="Implementation-Configuration"><a class="link" href="#Implementation-Configuration">3.11. Configuration</a></h3>
 <div class="paragraph">
 <p>Certain properties of the application can be controlled (e.g App name, logging level) through the configuration file (default: <code>config.json</code>).</p>
 </div>
@@ -2846,13 +2863,19 @@ Use case resumes at step 1.</p>
 <p>InsuRen should work on any <a href="#mainstream-os">mainstream OS</a> as long as it has Java <code>9</code> or higher installed.</p>
 </li>
 <li>
-<p>InsuRen should be able to hold up to 1000 persons without a noticeable sluggishness in performance for typical usage.</p>
+<p>InsuRen should be able to hold up to 1000 clients' contact without a noticeable sluggishness in performance for typical usage.</p>
 </li>
 <li>
 <p>InsuRen should process a user command in 1 second or less, without any noticeable delay.</p>
 </li>
 <li>
+<p>InsuRen should display a clear and concise error message to provide feedback to the user when an invalid input is received.</p>
+</li>
+<li>
 <p>All data entries are backed-up regularly.</p>
+</li>
+<li>
+<p>All data entries are stored in a xml file.</p>
 </li>
 <li>
 <p>A user should be able to learn and use the product without any form of training.</p>
@@ -2861,10 +2884,22 @@ Use case resumes at step 1.</p>
 <p>A user with above average typing speed for regular English text (i.e. not code, not system admin commands) should be able to accomplish most of the tasks faster using commands than using the mouse.</p>
 </li>
 <li>
+<p>The UI should be responsive to changes.</p>
+</li>
+<li>
 <p>The product should be self-explanatory and intuitive such that an insurance agent is able to adapt to it within the first 10 minutes of using the product for the first time.</p>
 </li>
 <li>
 <p>When the program crashes, all data up till the point of crash will still be available upon relaunch of the program.</p>
+</li>
+<li>
+<p>The system should work by running on the JAR file without any installation.</p>
+</li>
+<li>
+<p>The system should work even if the user does not have any internet connection.</p>
+</li>
+<li>
+<p>The JAR file should be small in size (&lt; 50 MB).</p>
 </li>
 </ol>
 </div>
@@ -2996,4 +3031,4 @@ Expected: Similar to previous.</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-11-11 14:08:02 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-11-11 14:09:12 UTC</div></div></div></body></html>
