@@ -1534,7 +1534,7 @@ b. Require developers to download those libraries manually (this creates extra w
 <td class="tableblock halign-left valign-top"><p class="tableblock">To identify them by picture and name</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* *</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Insurance Agent who needs to maintain contact</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Display frequently contacted people</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Contact them fast</p></td>
@@ -1548,8 +1548,20 @@ b. Require developers to download those libraries manually (this creates extra w
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>* *</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Insurance Agent who has different networks</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Create groups of contacts</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">To contact groups of contact instead of individually</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">View tagged contacts</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Quickly view related contacts</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Insurance Agent who has tagged contacts</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Edit tags</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Keep my contact book updated</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Insurance Agent who has tagged contacts</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Delete tags</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Keep my contact book updated</p></td>
 </tr>
 </tbody>
 </table>
@@ -2021,17 +2033,17 @@ Use case resumes at step 1.</p>
 </li>
 </ul>
 </div>
-<h3 id="use-case-list-frequently-contacted-clients" class="discrete">Use Case: List Frequently Contacted Clients</h3>
+<h3 id="use-case-view-tagged-contacts" class="discrete">Use Case: View tagged contacts</h3>
 <div class="paragraph">
 <p><strong>MSS</strong></p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>User requests to list frequently contacted clients.</p>
+<p>User requests all contacts with any number of user-specified tags.</p>
 </li>
 <li>
-<p>InsuRen shows a list of frequently contacted clients.</p>
+<p>InsuRen lists all contacts that contain any one of the user-specified tags.</p>
 <div class="paragraph">
 <p>Use case ends.</p>
 </div>
@@ -2044,43 +2056,34 @@ Use case resumes at step 1.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>1a. User requests to limit or extend the list results.</p>
+<p>1a. User enters tags that are not present in any contacts in Insuren.</p>
 <div class="ulist none">
 <ul class="none">
 <li>
-<p>1a1. InsuRen requests for a upper limit.</p>
-</li>
-<li>
-<p>1a2. User enters upper limit.</p>
+<p>1a1. InsuRen shows an empty contact list.</p>
 <div class="paragraph">
-<p>Use case resumes from step 2.</p>
+<p>Use case resumes at step 1.</p>
 </div>
 </li>
 </ul>
 </div>
 </li>
-<li>
-<p>2a. The list is empty.</p>
-<div class="paragraph">
-<p>Use case ends.</p>
-</div>
-</li>
 </ul>
 </div>
-<h3 id="use-case-allow-user-to-edit-contact-if-duplicate-contact-is-added" class="discrete">Use Case: Allow User to Edit Contact if Duplicate Contact is Added</h3>
+<h3 id="use-case-edit-tags" class="discrete">Use Case: Edit tags</h3>
 <div class="paragraph">
 <p><strong>MSS</strong></p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>User adds client with the same name and same phone number or email or address (at least one of the three fields) as an existing contact.</p>
+<p>User requests to edit a tag, specifying an existing tag and a new tag name.</p>
 </li>
 <li>
-<p>InsuRen recognises that the contact is a duplicate and informs user of existing contact.</p>
+<p>InsuRen updates all contacts with the existing tag, changing the tag name to the new user-specified tag name.</p>
 </li>
 <li>
-<p>User can choose to edit existing contact.</p>
+<p>InsuRen lists all contacts whose tags have been updated.</p>
 <div class="paragraph">
 <p>Use case ends.</p>
 </div>
@@ -2093,51 +2096,11 @@ Use case resumes at step 1.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>1a. User intends to create a contact with the same name and phone number or email or address (at least one of the three fields) as an existing contact.</p>
+<p>1a. User enters tags that are not present in any contacts in Insuren.</p>
 <div class="ulist none">
 <ul class="none">
 <li>
-<p>1a1. InsuRen allows user to create near-duplicate contact instead of editing existing contact.</p>
-<div class="paragraph">
-<p>Use case ends.</p>
-</div>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
-<h3 id="use-case-create-groups-of-contacts" class="discrete">Use Case: Create groups of contacts</h3>
-<div class="paragraph">
-<p><strong>MSS</strong></p>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>User creates a group in InsuRen that can store clients’ contacts, specifying the group name.</p>
-</li>
-<li>
-<p>InsuRen creates a new group.</p>
-</li>
-<li>
-<p>User can create new contacts within the group or add existing contacts to the group.</p>
-<div class="paragraph">
-<p>Use case ends.</p>
-</div>
-</li>
-</ol>
-</div>
-<div class="paragraph">
-<p><strong>Extensions</strong></p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>1a. User creates a group with the same name as an existing group.</p>
-<div class="ulist none">
-<ul class="none">
-<li>
-<p>1a1. InsuRen prompts user to choose a different name that will be unique.</p>
+<p>1a1. InsuRen shows an empty contact list, stating that 0 contacts have their tags changed.</p>
 <div class="paragraph">
 <p>Use case resumes at step 1.</p>
 </div>
@@ -2146,11 +2109,77 @@ Use case resumes at step 1.</p>
 </div>
 </li>
 <li>
-<p>1b. User enters a group name with an no characters (empty string).</p>
+<p>1b. User does not enter any tag to edit.</p>
 <div class="ulist none">
 <ul class="none">
 <li>
-<p>1b1. InsuRen prompts user to type in a group name.</p>
+<p>1b1. InsuRen shows an error message.</p>
+<div class="paragraph">
+<p>Use case resumes at step 1.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>1c. User does not enter a new tag name.</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1c1. InsuRen shows an error message.</p>
+<div class="paragraph">
+<p>Use case resumes at step 1.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<h3 id="use-case-delete-tags" class="discrete">Use Case: Delete tags</h3>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>User requests to delete a tag, specifying any number of tags he or she wants to delete.</p>
+</li>
+<li>
+<p>InsuRen finds all instances of any of the user-specified tags and deletes them from each contact.</p>
+</li>
+<li>
+<p>InsuRen lists all contacts whose tags have been deleted.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Extensions</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>1a. User enters tags that are not present in any contacts in Insuren.</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1a1. InsuRen shows an empty contact list, stating that 0 contacts have their tags deleted.</p>
+<div class="paragraph">
+<p>Use case resumes at step 1.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>1b. User does not enter any tag to delete.</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1b1. InsuRen shows an empty contact list, stating that 0 contacts have their tags deleted.</p>
 <div class="paragraph">
 <p>Use case resumes at step 1.</p>
 </div>
@@ -2178,6 +2207,15 @@ Use case resumes at step 1.</p>
 </li>
 <li>
 <p>InsuRen should display a clear and concise error message to provide feedback to the user when an invalid input is received.</p>
+</li>
+<li>
+<p>InsuRen should be backward compatible with data produced by earlier versions of Insuren.</p>
+</li>
+<li>
+<p>InsuRen should be open-source.</p>
+</li>
+<li>
+<p>InsuRen is offered as a free product.</p>
 </li>
 <li>
 <p>All data entries are backed-up regularly.</p>
@@ -2618,7 +2656,202 @@ Expected: Similar to previous.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="adding-a-meeting"><a class="link" href="#adding-a-meeting">Adding a Meeting</a></h3>
+<h3 id="viewing-tags"><a class="link" href="#viewing-tags">Viewing tags</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Viewing all user-specified tags</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisites: InsuRen should have these contacts initially:</p>
+<div class="ulist">
+<ul>
+<li>
+<p><code>n/Anne Loh t/Friend</code></p>
+</li>
+<li>
+<p><code>n/Ben Chua t/Friend</code></p>
+</li>
+<li>
+<p><code>n/Charlie Dong t/Friend t/Buddy</code></p>
+</li>
+<li>
+<p><code>n/David Ee t/Buddy</code></p>
+</li>
+<li>
+<p><code>n/Euler Foo t/Buddy t/Close</code></p>
+</li>
+<li>
+<p><code>n/Fiona Goh</code></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Test case: <code>tag Friend</code><br>
+Expected: <code>Anne Loh</code>, <code>Ben Chua</code> and <code>Charlie Dong</code> contacts are displayed.</p>
+</li>
+<li>
+<p>Test case: <code>tag Friend Buddy</code><br>
+Expected: <code>Anne Loh</code>, <code>Ben Chua</code>, <code>Charlie Dong</code>, <code>David Ee</code> and <code>Euler Foo</code> contacts are displayed.</p>
+</li>
+<li>
+<p>Test case: <code>tag Friend Close</code><br>
+Expected: <code>Anne Loh</code>, <code>Ben Chua</code>, <code>Charlie Dong</code> and <code>Euler Foo</code> contacts are displayed.</p>
+</li>
+<li>
+<p>Test case: <code>tag friend Close</code><br>
+Expected: <code>Euler Foo</code> contact is displayed.</p>
+</li>
+<li>
+<p>Test case: <code>tag Friend buddy close</code><br>
+Expected: <code>Anne Loh</code>, <code>Ben Chua</code> and <code>Charlie Dong</code> contacts are displayed.</p>
+</li>
+<li>
+<p>Test case: <code>tag friend buddy close</code><br>
+Expected: No contacts are displayed.</p>
+</li>
+<li>
+<p>Test case: <code>tag</code><br>
+Expected: Error details shown in the status message.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="editing-tags"><a class="link" href="#editing-tags">Editing tags</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Editing a user-specified tag</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisites: InsuRen should have these contacts initially:</p>
+<div class="ulist">
+<ul>
+<li>
+<p><code>n/Anne Loh t/Friend</code></p>
+</li>
+<li>
+<p><code>n/Ben Chua t/Friend</code></p>
+</li>
+<li>
+<p><code>n/Charlie Dong t/Friend t/Buddy</code></p>
+</li>
+<li>
+<p><code>n/David Ee t/Buddy</code></p>
+</li>
+<li>
+<p><code>n/Euler Foo t/Buddy t/Close</code></p>
+</li>
+<li>
+<p><code>n/Fiona Goh</code></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Test case: <code>tag edit Friend friend</code><br>
+Expected: <code>Anne Loh</code>, <code>Ben Chua</code> and <code>Charlie Dong</code> contacts are displayed. Their tags are updated to <code>friend</code>.</p>
+</li>
+<li>
+<p>Test case: <code>tag edit Close bestie</code><br>
+Expected: <code>Euler Foo</code> contact is displayed. His tags are now <code>t/Buddy t/bestie</code>.</p>
+</li>
+<li>
+<p>Test case: <code>tag edit test testing</code><br>
+Expected: No contacts are displayed, no tags are edited.</p>
+</li>
+<li>
+<p>Test case: <code>tag edit test</code><br>
+Expected: Nothing is updated. Error details shown in the status message. Status bar remains the same.</p>
+</li>
+<li>
+<p>Test case: <code>tag edit</code><br>
+Expected: Nothing is updated. Error details shown in the status message. Status bar remains the same.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="deleting-tags"><a class="link" href="#deleting-tags">Deleting tags</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Deleting all user-specified tags</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisites: InsuRen should have these contacts initially:</p>
+<div class="ulist">
+<ul>
+<li>
+<p><code>n/Anne Loh t/Friend</code></p>
+</li>
+<li>
+<p><code>n/Ben Chua t/Friend</code></p>
+</li>
+<li>
+<p><code>n/Charlie Dong t/Friend t/Buddy</code></p>
+</li>
+<li>
+<p><code>n/David Ee t/Buddy</code></p>
+</li>
+<li>
+<p><code>n/Euler Foo t/Buddy t/Close t/Family</code></p>
+</li>
+<li>
+<p><code>n/Fiona Goh t/Family</code></p>
+</li>
+<li>
+<p><code>n/George Ho t/Family t/Dad</code></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Test case: <code>tag delete friend</code><br>
+Expected: Nothing is updated. Error details shown in the status message. Status bar remains the same.</p>
+</li>
+<li>
+<p>Test case: <code>tag delete friend buddy close</code><br>
+Expected: Nothing is updated. Error details shown in the status message. Status bar remains the same.</p>
+</li>
+<li>
+<p>Test case: <code>tag delete Close</code><br>
+Expected: <code>Euler Foo</code> is displayed. His tags are updated to <code>t/Buddy</code>. <code>Close</code> tag is deleted.</p>
+</li>
+<li>
+<p>Test case: <code>tag delete Friend</code><br>
+Expected: <code>Anne Loh</code>, <code>Ben Chua</code> and <code>Charlie Dong</code> contacts are displayed. They no longer have the <code>Friend</code> tag.</p>
+</li>
+<li>
+<p>Test case: <code>tag delete Buddy Family</code><br>
+Expected: <code>Charlie Dong</code>, <code>David Ee</code>, <code>Euler Foo</code>, <code>Fiona Goh</code> and <code>George Ho</code> contacts are displayed.
+They all do no have the <code>Buddy</code> or <code>Family</code> tags.</p>
+</li>
+<li>
+<p>Test case: <code>tag delete</code> =
+Expected: Nothing is updated. Error details shown in the status message. Status bar remains the same.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="paragraph">
+<p>=== Adding a Meeting</p>
+</div>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -2649,9 +2882,9 @@ Expected: Nothing is updated. Error details shown in the status message. Status 
 </li>
 </ol>
 </div>
+<div class="paragraph">
+<p>=== Searching by Meetings</p>
 </div>
-<div class="sect2">
-<h3 id="searching-by-meetings"><a class="link" href="#searching-by-meetings">Searching by Meetings</a></h3>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -2686,23 +2919,23 @@ Expected: Nothing is updated. Error details shown in the status message. Status 
 </li>
 </ol>
 </div>
+<div class="paragraph">
+<p>=== [Proposed] Data Encryption</p>
 </div>
-<div class="sect2">
-<h3 id="proposed-data-encryption-2"><a class="link" href="#proposed-data-encryption-2">[Proposed] Data Encryption</a></h3>
 <div class="paragraph">
 <p>Due to the Singapore Personal Data Protection Act (PDPA), any disclosure of the user&#8217;s personal information is considered to have severe implications.
 Thus, all data that are being stored in <code>Storage</code> should be encrypted using a secure encryption scheme with a secret key.
 When the user opens InsuRen, he should be prompted to login before he is able to access the secure data.</p>
 </div>
+<div class="paragraph">
+<p>== PROJECT: PowerPointLabs</p>
 </div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="project-powerpointlabs"><a class="link" href="#project-powerpointlabs">PROJECT: PowerPointLabs</a></h2>
-<div class="sectionbody">
 <hr>
 <div class="paragraph">
 <p><em>{Optionally, you may include other projects in your portfolio.}</em></p>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-11-12 14:01:17 UTC</div></div></div></body></html>
+</div>
+</div>
+</div>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-11-12 14:36:46 UTC</div></div></div></body></html>
