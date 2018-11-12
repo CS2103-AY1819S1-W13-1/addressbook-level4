@@ -84,6 +84,8 @@
 <li><a href="#importing-contacts">F.6. Importing contacts</a></li>
 <li><a href="#exporting-contacts">F.7. Exporting contacts</a></li>
 <li><a href="#adding-picture">F.8. Adding picture</a></li>
+<li><a href="#adding-a-meeting">F.9. Adding a Meeting</a></li>
+<li><a href="#searching-by-meetings">F.10. Searching by Meetings</a></li>
 </ul>
 </li>
 </ul>
@@ -3380,5 +3382,75 @@ Expected: Similar to previous.</p>
 </ol>
 </div>
 </div>
+<div class="sect2">
+<h3 id="adding-a-meeting"><a class="link" href="#adding-a-meeting">F.9. Adding a Meeting</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Adding a meeting to a person while all persons all listed.</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisites: List all persons using the <code>list</code> command. Multiple persons in the list.</p>
+</li>
+<li>
+<p>Test case: <code>schedule 1 m/21/02/18 1430</code><br>
+Expected: First client is scheduled for a meeting on 21st February 2018, at 1430. Timestamp in the status bar is updated.</p>
+</li>
+<li>
+<p>Test case: <code>schedule 0 m/21/02/18 1430</code><br>
+Expected: Nothing is updated. Error details shown in the status message. Status bar remains the same.</p>
+</li>
+<li>
+<p>Test case: <code>schedule 1 m/31/02/18 1430</code><br>
+Expected: Nothing is updated. Error details shown in the status message. Status bar remains the same.</p>
+</li>
+<li>
+<p>Test case: <code>schedule 1 m/21/02/18 2630</code><br>
+Expected: Nothing is updated. Error details shown in the status message. Status bar remains the same.</p>
+</li>
+</ol>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-11-12 13:19:43 UTC</div></div></div></body></html>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="searching-by-meetings"><a class="link" href="#searching-by-meetings">F.10. Searching by Meetings</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Searching for people by meetings.</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisites: Two persons in the list. One must have a meeting scheduled on 21st February 2018, and the other must have a meeting scheduled on 23rd February 2018.</p>
+</li>
+<li>
+<p>Test case: <code>meetings 21/02/18</code><br>
+Expected: The client with the meeting on 21st February 2018 is listed.</p>
+</li>
+<li>
+<p>Test case: <code>meetings 23/02/18</code><br>
+Expected: The client with the meeting on 23rd February 2018 is listed.</p>
+</li>
+<li>
+<p>Test case: <code>meetings</code><br>
+Expected: Both clients are listed.</p>
+</li>
+<li>
+<p>Test case: <code>meetings 24/02/18</code><br>
+Expected: No clients are listed.</p>
+</li>
+<li>
+<p>Test case: <code>meetings 31/02/18</code><br>
+Expected: Nothing is updated. Error details shown in the status message. Status bar remains the same.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+</div>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-11-12 13:33:53 UTC</div></div></div></body></html>
