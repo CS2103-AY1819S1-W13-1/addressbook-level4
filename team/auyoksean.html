@@ -542,6 +542,15 @@ Insuren compiles a list of contacts and runs the <code>add</code> Command on all
 <img src="../images/importActivityDiagram.png" alt="importActivityDiagram" width="400">
 </div>
 </div>
+<div class="paragraph">
+<p>The following sequence diagram shows what happens when a user executes the <code>Import</code> Command (user input mode only,
+file browser mode omitted):</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/ImportSequenceDiagram.png" alt="ImportSequenceDiagram" width="800">
+</div>
+</div>
 </div>
 <div class="sect3">
 <h4 id="design-considerations-2"><a class="link" href="#design-considerations-2">Design Considerations</a></h4>
@@ -614,6 +623,14 @@ does not end with .csv, InsuRen throws an error message.</p>
 <div class="imageblock">
 <div class="content">
 <img src="../images/ExportActivityDiagram.png" alt="ExportActivityDiagram" width="400">
+</div>
+</div>
+<div class="paragraph">
+<p>The following sequence diagram shows what happens when a user executes the <code>Export</code> Command:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/ExportSequenceDiagram.png" alt="ExportSequenceDiagram" width="800">
 </div>
 </div>
 </div>
@@ -1766,7 +1783,7 @@ Use case resumes at step 1.</p>
 </li>
 </ul>
 </div>
-<h3 id="use-case-mass-import-contact-details" class="discrete">Use Case: Mass Import Contact Details</h3>
+<h3 id="use-case-mass-import-contacts-into-insuren" class="discrete">Use Case: Mass import contacts into InsuRen</h3>
 <div class="paragraph">
 <p><strong>MSS</strong></p>
 </div>
@@ -1789,7 +1806,7 @@ Use case resumes at step 1.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>1a. No file at directory path or invalid file type (must be a csv)</p>
+<p>1a. File does not exist at directory path or invalid file type (must be .csv or .txt)</p>
 <div class="ulist none">
 <ul class="none">
 <li>
@@ -1803,17 +1820,17 @@ Use case resumes at step 1.</p>
 </li>
 </ul>
 </div>
-<h3 id="use-case-export-email-addresses" class="discrete">Use Case: Export Email Addresses</h3>
+<h3 id="use-case-export-contact-list-from-insuren" class="discrete">Use Case: Export contact list from InsuRen</h3>
 <div class="paragraph">
 <p><strong>MSS</strong></p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>User requests to export email addresses to a user-given directory.</p>
+<p>User requests to export current state of InsuRen to a csv file whose name is given by the user.</p>
 </li>
 <li>
-<p>InsuRen compiles all emails into a csv, saves it in the given directory.</p>
+<p>InsuRen compiles all contacts into a csv (with the given name), saves it in the root project/application directory.</p>
 <div class="paragraph">
 <p>Use case ends.</p>
 </div>
@@ -1826,7 +1843,7 @@ Use case resumes at step 1.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>1a. No file directory given</p>
+<p>1a. No file name given, or given file name does not contain .csv suffix</p>
 <div class="ulist none">
 <ul class="none">
 <li>
@@ -2303,4 +2320,4 @@ When the user opens InsuRen, he should be prompted to login before he is able to
 <p><em>{Optionally, you may include other projects in your portfolio.}</em></p>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-11-12 06:44:42 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-11-12 07:31:45 UTC</div></div></div></body></html>

@@ -20,29 +20,45 @@
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Major enhancement</strong>: added <strong>the ability to undo/redo previous commands</strong></p>
+<p><strong>Code contributed</strong>: <a href="https://nus-cs2103-ay1819s1.github.io/cs2103-dashboard/#=undefined&amp;search=chantca95">Project Code Dashboard</a></p>
+</li>
+<li>
+<p><strong>Major enhancement</strong>: added <strong>the ability to import contacts from a CSV file</strong></p>
 <div class="ulist">
 <ul>
 <li>
-<p>What it does: allows the user to undo all previous commands one at a time. Preceding undo commands can be reversed by using the redo command.</p>
+<p>What it does: allows the user to import contacts into InsuRen from a previously appropriately-formatted Excel CSV file.</p>
 </li>
 <li>
-<p>Justification: This feature improves the product significantly because a user can make mistakes in commands and the app should provide a convenient way to rectify them.</p>
+<p>Justification: This feature makes it convenient for users who want to populate their own InsuRen apps with existing lists of contacts. Rather than manually copying and adding contacts one by one into InsuRen, users can instead simply format their contact lists into a CSV as shown in the user guide, and import them into InsuRen in one go.</p>
 </li>
 <li>
-<p>Highlights: This enhancement affects existing commands and commands to be added in future. It required an in-depth analysis of design alternatives. The implementation too was challenging as it required changes to existing commands.</p>
+<p>Highlights: This enhancement uses a new <strong>Command</strong>, <strong>ImportCommand</strong>. Users can choose CSV files using a mouse and file browser, or if they are familiar with pathing formats on their respective Operating Systems, they can also enter the path (either relative and absolute) of the required CSV.</p>
 </li>
 <li>
-<p>Credits: <em>{mention here if you reused any code/ideas from elsewhere or if a third-party library is heavily used in the feature so that a reader can make a more accurate judgement of how much effort went into the feature}</em></p>
+<p>Credits: none</p>
 </li>
 </ul>
 </div>
 </li>
 <li>
-<p><strong>Minor enhancement</strong>: added a history command that allows the user to navigate to previous commands using up/down keys.</p>
+<p><strong>Minor enhancement</strong>: added <strong>the ability to export InsuRen data into a CSV file</strong></p>
+<div class="ulist">
+<ul>
+<li>
+<p>What it does: allows the user to export the current contacts in InsuRen into a new CSV file, whose name is given by the user.</p>
 </li>
 <li>
-<p><strong>Code contributed</strong>: [<a href="https://github.com">Functional code</a>] [<a href="https://github.com">Test code</a>] <em>{give links to collated code files}</em></p>
+<p>Justification: This feature allows for convenient movement of a user&#8217;s contact list. Some usages include keeping a back up of one&#8217;s contact list, allowing one to view his InsuRen data on mobile platforms, etc.</p>
+</li>
+<li>
+<p>Highlights: This enhancement uses a new <strong>Command</strong>, <strong>ExportCommand</strong>.</p>
+</li>
+<li>
+<p>Credits: <a href="http://javaonlineguide.net/2014/10/compare-two-files-in-java-example-code.html" class="bare">http://javaonlineguide.net/2014/10/compare-two-files-in-java-example-code.html</a></p>
+</li>
+</ul>
+</div>
 </li>
 <li>
 <p><strong>Other contributions</strong>:</p>
@@ -53,7 +69,7 @@
 <div class="ulist">
 <ul>
 <li>
-<p>Managed releases <code>v1.3</code> - <code>v1.5rc</code> (3 releases) on GitHub</p>
+<p>Ensured high test coverage, thorough tests</p>
 </li>
 </ul>
 </div>
@@ -63,10 +79,13 @@
 <div class="ulist">
 <ul>
 <li>
-<p>Updated the GUI color scheme (Pull requests <a href="https://github.com">#33</a>, <a href="https://github.com">#34</a>)</p>
+<p>Added Coloured Tags</p>
 </li>
 <li>
-<p>Wrote additional tests for existing features to increase coverage from 88% to 92% (Pull requests <a href="https://github.com">#36</a>, <a href="https://github.com">#38</a>)</p>
+<p>Import works based on Add Command - adding multiple Contacts based on csv files</p>
+</li>
+<li>
+<p>Export utilizes the current state of the Model to create an csv file.</p>
 </li>
 </ul>
 </div>
@@ -76,7 +95,13 @@
 <div class="ulist">
 <ul>
 <li>
-<p>Did cosmetic tweaks to existing contents of the User Guide: <a href="https://github.com">#14</a></p>
+<p>Edited our README to reflect our product&#8217;s purpose, vision and branding: <a href="https://github.com/CS2103-AY1819S1-W13-1/main/pull/6/files">#6</a></p>
+</li>
+<li>
+<p>Did general changes to existing contents of the User Guide and Developer Guide to reflect InsuRen branding: <a href="https://github.com/CS2103-AY1819S1-W13-1/main/pull/73/files">#73</a></p>
+</li>
+<li>
+<p>Updated <code>ImportCommand</code> and <code>ExportCommand</code> documentation on the User Guide and Developer Guide: <a href="https://github.com/CS2103-AY1819S1-W13-1/main/pull/83/files">#83</a> <a href="https://github.com/CS2103-AY1819S1-W13-1/main/pull/113/files">#113</a></p>
 </li>
 </ul>
 </div>
@@ -86,29 +111,9 @@
 <div class="ulist">
 <ul>
 <li>
-<p>PRs reviewed (with non-trivial review comments): <a href="https://github.com">#12</a>, <a href="https://github.com">#32</a>, <a href="https://github.com">#19</a>, <a href="https://github.com">#42</a></p>
-</li>
-<li>
-<p>Contributed to forum discussions (examples:  <a href="https://github.com">1</a>, <a href="https://github.com">2</a>, <a href="https://github.com">3</a>, <a href="https://github.com">4</a>)</p>
-</li>
-<li>
-<p>Reported bugs and suggestions for other teams in the class (examples:  <a href="https://github.com">1</a>, <a href="https://github.com">2</a>, <a href="https://github.com">3</a>)</p>
-</li>
-<li>
-<p>Some parts of the history feature I added was adopted by several other class mates (<a href="https://github.com">1</a>, <a href="https://github.com">2</a>)</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p>Tools:</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Integrated a third party library (Natty) to the project (<a href="https://github.com">#42</a>)</p>
-</li>
-<li>
-<p>Integrated a new Github plugin (CircleCI) to the team repo</p>
+<p>Reported bugs and suggestions for other teams in the class (examples:  <a href="https://github.com/CS2103-AY1819S1-W17-2/main/issues/263">1</a>, <a href="https://github.com/CS2103-AY1819S1-W17-2/main/issues/262">2</a>, <a href="https://github.com/CS2103-AY1819S1-W17-2/main/issues/261">3</a>,
+<a href="https://github.com/CS2103-AY1819S1-W17-2/main/issues/258">4</a>, <a href="https://github.com/CS2103-AY1819S1-W17-2/main/issues/257">5</a>, <a href="https://github.com/CS2103-AY1819S1-W17-2/main/issues/259">6</a>,
+<a href="https://github.com/CS2103-AY1819S1-W17-2/main/issues/254">7</a>)</p>
 </li>
 </ul>
 </div>
@@ -117,9 +122,6 @@
 </div>
 </li>
 </ul>
-</div>
-<div class="paragraph">
-<p><em>{you can add/remove categories in the list above}</em></p>
 </div>
 </div>
 </div>
@@ -137,101 +139,133 @@
 </tbody>
 </table>
 <div class="sect2">
-<h3 id="undoing-previous-command-code-undo-code"><a class="link" href="#undoing-previous-command-code-undo-code">Undoing previous command : <code>undo</code></a></h3>
+<h3 id="mass-import-contacts-code-import-code"><a class="link" href="#mass-import-contacts-code-import-code">Mass import contacts: <code>import</code></a></h3>
 <div class="paragraph">
-<p>Restores InsuRen to the state before the previous <em>undoable</em> command was executed.<br>
-Format: <code>undo</code></p>
-</div>
-<div class="paragraph">
-<p>Shorthand: <code>u</code></p>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-<div class="paragraph">
-<p>Undoable commands: those commands that modify InsuRen&#8217;s content (<code>add</code>, <code>delete</code>, <code>edit</code>, <code>import</code>, <code>schedule</code>,
- <code>pic</code> and <code>clear</code>).</p>
-</div>
-</td>
-</tr>
-</table>
+<p>Import contacts from a csv file.
+If no file path is given, a file browser will open for users to navigate to their desired file (.txt and .csv only)
+If a file path is given, InsuRen will attempt to obtain and read the file specified by the given file path.
+Format: <code>import</code></p>
 </div>
 <div class="paragraph">
-<p>Examples:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>delete 1</code><br>
-<code>list</code><br>
-<code>undo</code> (reverses the <code>delete 1</code> command)<br></p>
-</li>
-<li>
-<p><code>select 1</code><br>
-<code>list</code><br>
-<code>undo</code><br>
-The <code>undo</code> command fails as there are no undoable commands executed previously.</p>
-</li>
-<li>
-<p><code>delete 1</code><br>
-<code>clear</code><br>
-<code>undo</code> (reverses the <code>clear</code> command)<br>
-<code>undo</code> (reverses the <code>delete 1</code> command)<br></p>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect2">
-<h3 id="redoing-the-previously-undone-command-code-redo-code"><a class="link" href="#redoing-the-previously-undone-command-code-redo-code">Redoing the previously undone command : <code>redo</code></a></h3>
-<div class="paragraph">
-<p>Reverses the most recent <code>undo</code> command.<br>
-Format: <code>redo</code></p>
-</div>
-<div class="paragraph">
-<p>Shorthand: <code>r</code></p>
-</div>
-<div class="paragraph">
-<p>Examples:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>delete 1</code><br>
-<code>undo</code> (reverses the <code>delete 1</code> command)<br>
-<code>redo</code> (reapplies the <code>delete 1</code> command)<br></p>
-</li>
-<li>
-<p><code>delete 1</code><br>
-<code>redo</code><br>
-The <code>redo</code> command fails as there are no <code>undo</code> commands executed previously.</p>
-</li>
-<li>
-<p><code>delete 1</code><br>
-<code>clear</code><br>
-<code>undo</code> (reverses the <code>clear</code> command)<br>
-<code>undo</code> (reverses the <code>delete 1</code> command)<br>
-<code>redo</code> (reapplies the <code>delete 1</code> command)<br>
-<code>redo</code> (reapplies the <code>clear</code> command)<br></p>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect2">
-<h3 id="encrypting-data-files-code-coming-in-v2-0-code"><a class="link" href="#encrypting-data-files-code-coming-in-v2-0-code">Encrypting data files <code>[coming in v2.0]</code></a></h3>
-<div class="paragraph">
-<p>Encrypt all data in InsuRen behind a password.<br>
-Format: <code>encrypt PASSWORD</code></p>
+<p>Shorthand: <code>i</code></p>
 </div>
 <div class="sidebarblock">
 <div class="content">
 <div class="ulist">
 <ul>
 <li>
-<p>The next time a user opens InsuRen, he will have to enter a password before the contact list populates.</p>
+<p>InsuRen will fetch the file from the given path.</p>
+</li>
+<li>
+<p>InsuRen will throw an error message if the file cannot be found from the given (typed) file path</p>
+</li>
+<li>
+<p>InsuRen will NOT throw an error message if the formatting of the file is incorrect.</p>
+</li>
+<li>
+<p>Improperly formatted contacts and/or duplicate contacts will be ignored.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Example (user does not provide a file path):</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>import</code></p>
+</li>
+<li>
+<p>A file browser will pop up as shown below:</p>
+<div class="imageblock">
+<div class="content">
+<img src="../images/import.png" alt="import" width="790">
+</div>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Example (user provides a file path):</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>FOR WINDOWS:</p>
+<div class="ulist">
+<ul>
+<li>
+<p><code>import l/D:/AddressbookCorrect.csv</code> (absolute pathing) or</p>
+</li>
+<li>
+<p><code>import l/AddressbookCorrect.csv</code> (relative pathing - if you save the .csv file in the same directory as the .jar file).</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>FOR MAC:</p>
+<div class="ulist">
+<ul>
+<li>
+<p><code>import l//FILEPATH</code> (absolute pathing - note the double slashes) or</p>
+</li>
+<li>
+<p><code>import l/AddressbookCorrect.csv</code> (relative pathing).</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Regardless which method is used, InsuRen will load contacts from the given csv file.</p>
+</li>
+<li>
+<p>Each contact&#8217;s Name, Phone, Email, Address, Meeting and Tag(s) fields must be keyed in the csv in that order.</p>
+</li>
+<li>
+<p>All fields are optional, except for Name. Contacts with no Address, Phone etc. must have those fields left BLANK. Ie. the
+corresponding Excel cell MUST have nothing in it.</p>
+</li>
+<li>
+<p>Any invalid entries (contacts with no name) will be ignored.</p>
+</li>
+<li>
+<p>Examples of properly formatted csv files are shown below.</p>
+<div class="imageblock">
+<div class="content">
+<img src="../images/import-acceptable-csv.png" alt="import acceptable csv" width="790">
+</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/import-acceptable-csv2.png" alt="import acceptable csv2" width="790">
+</div>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="export-contact-list-code-export-code"><a class="link" href="#export-contact-list-code-export-code">Export contact list: <code>export</code></a></h3>
+<div class="paragraph">
+<p>Exports the current contact list into a csv file whose name is given as the second argument. The export file
+ can be found in the root directory of the project/application.<br>
+Format: <code>export DESTINATION_FILE_NAME.csv</code></p>
+</div>
+<div class="paragraph">
+<p>Shorthand: <code>x</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>InsuRen will copy all contacts and format them into a csv file, with each row representing a unique contact.</p>
+</li>
+<li>
+<p>InsuRen will throw an error message if given file name is invalid (has no .csv suffix).</p>
 </li>
 </ul>
 </div>
@@ -243,8 +277,13 @@ Format: <code>encrypt PASSWORD</code></p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>encrypt Pa$$w0rd</code><br>
-All data will be encrypted. The next time the user opens InsuRen, InsuRen will prompt her for a password.</p>
+<p><code>export 28Nov.csv</code><br>
+InsuRen contacts are exported to <code>28Nov.csv</code></p>
+<div class="imageblock">
+<div class="content">
+<img src="../images/exportedCsv.png" alt="exportedCsv" width="790">
+</div>
+</div>
 </li>
 </ul>
 </div>
@@ -265,211 +304,9 @@ All data will be encrypted. The next time the user opens InsuRen, InsuRen will p
 </tbody>
 </table>
 <div class="sect2">
-<h3 id="undo-redo-feature"><a class="link" href="#undo-redo-feature">Undo/Redo feature</a></h3>
-<div class="sect3">
-<h4 id="current-implementation"><a class="link" href="#current-implementation">Current Implementation</a></h4>
-<div class="paragraph">
-<p>The undo/redo mechanism is facilitated by <code>VersionedAddressBook</code>.
-It extends <code>AddressBook</code> with an undo/redo history, stored internally as an <code>addressBookStateList</code> and <code>currentStatePointer</code>.
-Additionally, it implements the following operations:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>VersionedAddressBook#commit()</code>&#8201;&#8212;&#8201;Saves the current address book state in its history.</p>
-</li>
-<li>
-<p><code>VersionedAddressBook#undo()</code>&#8201;&#8212;&#8201;Restores the previous address book state from its history.</p>
-</li>
-<li>
-<p><code>VersionedAddressBook#redo()</code>&#8201;&#8212;&#8201;Restores a previously undone address book state from its history.</p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>These operations are exposed in the <code>Model</code> interface as <code>Model#commitAddressBook()</code>, <code>Model#undoAddressBook()</code> and <code>Model#redoAddressBook()</code> respectively.</p>
-</div>
-<div class="paragraph">
-<p>Given below is an example usage scenario and how the undo/redo mechanism behaves at each step.</p>
-</div>
-<div class="paragraph">
-<p>Step 1. The user launches the application for the first time. The <code>VersionedAddressBook</code> will be initialized with the initial address book state, and the <code>currentStatePointer</code> pointing to that single address book state.</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="../images/UndoRedoStartingStateListDiagram.png" alt="UndoRedoStartingStateListDiagram" width="800">
-</div>
-</div>
-<div class="paragraph">
-<p>Step 2. The user executes <code>delete 5</code> command to delete the 5th person in the address book. The <code>delete</code> command calls <code>Model#commitAddressBook()</code>, causing the modified state of the address book after the <code>delete 5</code> command executes to be saved in the <code>addressBookStateList</code>, and the <code>currentStatePointer</code> is shifted to the newly inserted address book state.</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="../images/UndoRedoNewCommand1StateListDiagram.png" alt="UndoRedoNewCommand1StateListDiagram" width="800">
-</div>
-</div>
-<div class="paragraph">
-<p>Step 3. The user executes <code>add n/David &#8230;&#8203;</code> to add a new person. The <code>add</code> command also calls <code>Model#commitAddressBook()</code>, causing another modified address book state to be saved into the <code>addressBookStateList</code>.</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="../images/UndoRedoNewCommand2StateListDiagram.png" alt="UndoRedoNewCommand2StateListDiagram" width="800">
-</div>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-If a command fails its execution, it will not call <code>Model#commitAddressBook()</code>, so the address book state will not be saved into the <code>addressBookStateList</code>.
-</td>
-</tr>
-</table>
-</div>
-<div class="paragraph">
-<p>Step 4. The user now decides that adding the person was a mistake, and decides to undo that action by executing the <code>undo</code> command. The <code>undo</code> command will call <code>Model#undoAddressBook()</code>, which will shift the <code>currentStatePointer</code> once to the left, pointing it to the previous address book state, and restores the address book to that state.</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="../images/UndoRedoExecuteUndoStateListDiagram.png" alt="UndoRedoExecuteUndoStateListDiagram" width="800">
-</div>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-If the <code>currentStatePointer</code> is at index 0, pointing to the initial address book state, then there are no previous address book states to restore. The <code>undo</code> command uses <code>Model#canUndoAddressBook()</code> to check if this is the case. If so, it will return an error to the user rather than attempting to perform the undo.
-</td>
-</tr>
-</table>
-</div>
-<div class="paragraph">
-<p>The following sequence diagram shows how the undo operation works:</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="../images/UndoRedoSequenceDiagram.png" alt="UndoRedoSequenceDiagram" width="800">
-</div>
-</div>
-<div class="paragraph">
-<p>The <code>redo</code> command does the opposite&#8201;&#8212;&#8201;it calls <code>Model#redoAddressBook()</code>, which shifts the <code>currentStatePointer</code> once to the right, pointing to the previously undone state, and restores the address book to that state.</p>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-If the <code>currentStatePointer</code> is at index <code>addressBookStateList.size() - 1</code>, pointing to the latest address book state, then there are no undone address book states to restore. The <code>redo</code> command uses <code>Model#canRedoAddressBook()</code> to check if this is the case. If so, it will return an error to the user rather than attempting to perform the redo.
-</td>
-</tr>
-</table>
-</div>
-<div class="paragraph">
-<p>Step 5. The user then decides to execute the command <code>list</code>. Commands that do not modify the address book, such as <code>list</code>, will usually not call <code>Model#commitAddressBook()</code>, <code>Model#undoAddressBook()</code> or <code>Model#redoAddressBook()</code>. Thus, the <code>addressBookStateList</code> remains unchanged.</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="../images/UndoRedoNewCommand3StateListDiagram.png" alt="UndoRedoNewCommand3StateListDiagram" width="800">
-</div>
-</div>
-<div class="paragraph">
-<p>Step 6. The user executes <code>clear</code>, which calls <code>Model#commitAddressBook()</code>. Since the <code>currentStatePointer</code> is not pointing at the end of the <code>addressBookStateList</code>, all address book states after the <code>currentStatePointer</code> will be purged. We designed it this way because it no longer makes sense to redo the <code>add n/David &#8230;&#8203;</code> command. This is the behavior that most modern desktop applications follow.</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="../images/UndoRedoNewCommand4StateListDiagram.png" alt="UndoRedoNewCommand4StateListDiagram" width="800">
-</div>
-</div>
-<div class="paragraph">
-<p>The following activity diagram summarizes what happens when a user executes a new command:</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="../images/UndoRedoActivityDiagram.png" alt="UndoRedoActivityDiagram" width="650">
-</div>
-</div>
-</div>
-<div class="sect3">
-<h4 id="design-considerations"><a class="link" href="#design-considerations">Design Considerations</a></h4>
-<div class="sect4">
-<h5 id="aspect-how-undo-redo-executes"><a class="link" href="#aspect-how-undo-redo-executes">Aspect: How undo &amp; redo executes</a></h5>
-<div class="ulist">
-<ul>
-<li>
-<p><strong>Alternative 1 (current choice):</strong> Saves the entire address book.</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Pros: Easy to implement.</p>
-</li>
-<li>
-<p>Cons: May have performance issues in terms of memory usage.</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p><strong>Alternative 2:</strong> Individual command knows how to undo/redo by itself.</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Pros: Will use less memory (e.g. for <code>delete</code>, just save the person being deleted).</p>
-</li>
-<li>
-<p>Cons: We must ensure that the implementation of each individual command are correct.</p>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect4">
-<h5 id="aspect-data-structure-to-support-the-undo-redo-commands"><a class="link" href="#aspect-data-structure-to-support-the-undo-redo-commands">Aspect: Data structure to support the undo/redo commands</a></h5>
-<div class="ulist">
-<ul>
-<li>
-<p><strong>Alternative 1 (current choice):</strong> Use a list to store the history of address book states.</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Pros: Easy for new Computer Science student undergraduates to understand, who are likely to be the new incoming developers of our project.</p>
-</li>
-<li>
-<p>Cons: Logic is duplicated twice. For example, when a new command is executed, we must remember to update both <code>HistoryManager</code> and <code>VersionedAddressBook</code>.</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p><strong>Alternative 2:</strong> Use <code>HistoryManager</code> for undo/redo</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Pros: We do not need to maintain a separate list, and just reuse what is already in the codebase.</p>
-</li>
-<li>
-<p>Cons: Requires dealing with commands that have already been undone: We must remember to skip these commands. Violates Single Responsibility Principle and Separation of Concerns as <code>HistoryManager</code> now needs to do two different things.</p>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
-</div>
-</div>
-</div>
-<div class="sect2">
 <h3 id="import-feature"><a class="link" href="#import-feature">Import feature</a></h3>
 <div class="sect3">
-<h4 id="current-implementation-2"><a class="link" href="#current-implementation-2">Current Implementation</a></h4>
+<h4 id="current-implementation"><a class="link" href="#current-implementation">Current Implementation</a></h4>
 <div class="paragraph">
 <p>The import contacts feature is facilitated by the new <code>Command</code>, <code>import</code>. It adds a list of contacts from a properly formatted csv file
 to <code>AddressBook</code>. The rules pertaining to accepted formatting of csv files can be found in the user guide. Additionally, it
@@ -542,9 +379,18 @@ Insuren compiles a list of contacts and runs the <code>add</code> Command on all
 <img src="../images/importActivityDiagram.png" alt="importActivityDiagram" width="400">
 </div>
 </div>
+<div class="paragraph">
+<p>The following sequence diagram shows what happens when a user executes the <code>Import</code> Command (user input mode only,
+file browser mode omitted):</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/ImportSequenceDiagram.png" alt="ImportSequenceDiagram" width="800">
+</div>
+</div>
 </div>
 <div class="sect3">
-<h4 id="design-considerations-2"><a class="link" href="#design-considerations-2">Design Considerations</a></h4>
+<h4 id="design-considerations"><a class="link" href="#design-considerations">Design Considerations</a></h4>
 <div class="sect4">
 <h5 id="aspect-how-import-executes"><a class="link" href="#aspect-how-import-executes">Aspect: How import executes</a></h5>
 <div class="ulist">
@@ -575,7 +421,7 @@ not cause import to crash.</p>
 <div class="sect2">
 <h3 id="export-feature"><a class="link" href="#export-feature">Export feature</a></h3>
 <div class="sect3">
-<h4 id="current-implementation-3"><a class="link" href="#current-implementation-3">Current Implementation</a></h4>
+<h4 id="current-implementation-2"><a class="link" href="#current-implementation-2">Current Implementation</a></h4>
 <div class="paragraph">
 <p>The export contacts feature is facilitated by the new <code>Command</code>, <code>export</code>. It takes the current list of contacts in InsuRen
 and exports it as a csv file, whose file name is given by the user and MUST end with .csv. The exported contact list will be
@@ -616,9 +462,17 @@ does not end with .csv, InsuRen throws an error message.</p>
 <img src="../images/ExportActivityDiagram.png" alt="ExportActivityDiagram" width="400">
 </div>
 </div>
+<div class="paragraph">
+<p>The following sequence diagram shows what happens when a user executes the <code>Export</code> Command:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/ExportSequenceDiagram.png" alt="ExportSequenceDiagram" width="800">
+</div>
+</div>
 </div>
 <div class="sect3">
-<h4 id="design-considerations-3"><a class="link" href="#design-considerations-3">Design Considerations</a></h4>
+<h4 id="design-considerations-2"><a class="link" href="#design-considerations-2">Design Considerations</a></h4>
 <div class="sect4">
 <h5 id="aspect-how-export-executes"><a class="link" href="#aspect-how-export-executes">Aspect: How export executes</a></h5>
 <div class="ulist">
@@ -642,1665 +496,5 @@ Export makes use of model.getAddressBook() and the getPersonList method within.<
 </div>
 </div>
 </div>
-<div class="sect2">
-<h3 id="add-picture-feature"><a class="link" href="#add-picture-feature">Add Picture feature</a></h3>
-<div class="sect3">
-<h4 id="current-implementation-4"><a class="link" href="#current-implementation-4">Current Implementation</a></h4>
-<div class="paragraph">
-<p>The picture mechanism is facilitated by the new <code>PictureCommand</code>.
-It extends <code>Command</code> with an execution to set a picture, stored internally in <code>Person</code> as <code>picture</code>.</p>
 </div>
-<div class="paragraph">
-<p>Given below is an example usage scenario and how the picture mechanism behaves at each step.</p>
-</div>
-<div class="paragraph">
-<p>Step 1. The user launches the application and already has at least one client&#8217;s contact in InsuRen.</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="../images/PictureCommand1StateDiagram.png" alt="PictureCommand1StateDiagram" width="800">
-</div>
-</div>
-<div class="paragraph">
-<p>Step 2. The user executes <code>pic 4 l/images/invalidpath.jpg</code> to add a picture for David. However, the file <code>invalidpath.jpg</code> does not exist.
-<code>Picture#isValidPicture()</code> validates the given file path and InsuRen informs the user that the path given is invalid.</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="../images/PictureCommand2StateDiagram.png" alt="PictureCommand2StateDiagram" width="800">
-</div>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-If a command fails its execution, it will not pass the validation check, <code>Picture#isValidPicture()</code>, so InsuRen will not update the user&#8217;s picture and instead return an error message.
-</td>
-</tr>
-</table>
-</div>
-<div class="paragraph">
-<p>Step 3. The user now decides to execute <code>pic 4 l/images/david.jpg</code>, a valid image located in his drive, to add a picture for David.
-The <code>pic</code> command calls <code>Model#getFilteredPersonList()</code> to retrieve the list of contacts and filters <code>index</code> 4.
-The <code>PictureCommandParser</code> retrieves the input from the user and validates it.
-<code>ParserUtil#parseFileLocation()</code> is called and the picture path is checked. If the path is valid, it then calls <code>Picture#setPicture()</code> to update the picture for the contact. Finally, <code>Model#commitAddressBook()</code> is called, causing the modified state of the address book after the <code>pic 4 l/images/david.jpg</code> command executes to be saved.</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="../images/PictureCommand3StateDiagram.png" alt="PictureCommand3StateDiagram" width="800">
-</div>
-</div>
-<div class="paragraph">
-<p>The following activity diagram summarizes what happens when a user executes the <code>PictureCommand</code>:</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="../images/PictureCommandActivityDiagram.png" alt="PictureCommandActivityDiagram" width="400">
-</div>
-</div>
-<div class="paragraph">
-<p>The following sequence diagram shows what happens when a user executes the <code>PictureCommand</code>:</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="../images/PictureCommandSequenceDiagram.png" alt="PictureCommandSequenceDiagram" width="800">
-</div>
-</div>
-</div>
-<div class="sect3">
-<h4 id="design-considerations-4"><a class="link" href="#design-considerations-4">Design Considerations</a></h4>
-<div class="sect4">
-<h5 id="aspect-how-picture-is-stored"><a class="link" href="#aspect-how-picture-is-stored">Aspect: How picture is stored</a></h5>
-<div class="ulist">
-<ul>
-<li>
-<p><strong>Alternative 1 (current choice):</strong> <code>Person</code> has a picture field.</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Pros: <code>Picture</code> can have it&#8217;s own <code>Picture#isValidPicture()</code> method to validate the input. It is consistent with the other fields within <code>Person</code>.</p>
-</li>
-<li>
-<p>Cons: More memory is used as there is a need to store an object. A new <code>Picture</code> class has to be made and implemented.</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p><strong>Alternative 2:</strong> <code>Person</code> will store a <code>Path</code> or <code>String</code> instead.</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Pros: Will use less memory (do not have to implement a new class and store an object).</p>
-</li>
-<li>
-<p>Cons: All checks have to be done within the <code>execute</code> method. Might overlook certain details and cause bugs.</p>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect4">
-<h5 id="aspect-type-of-picture"><a class="link" href="#aspect-type-of-picture">Aspect: Type of picture</a></h5>
-<div class="ulist">
-<ul>
-<li>
-<p><strong>Alternative 1 (current choice):</strong> Picture can be a <code>.jpg</code> or <code>.png</code> file.</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Pros: <code>.jpg</code> and <code>.png</code> are common file formats that the user is used to.</p>
-</li>
-<li>
-<p>Cons: Not flexible in what image files are accepted.</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p><strong>Alternative 2:</strong> In addition to alternative 1, the picture can also be a valid <code>URL</code> containing an image.</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Pros: More flexible. User does not have to download the image file onto his local disk in order to use it. Can retrieve pictures of his contacts online and use it directly.</p>
-</li>
-<li>
-<p>Cons: Additional checks have to be done (i.e. check if the <code>URL</code> is valid, check if the <code>URL</code> is an image file, what happens if the <code>URL</code> or server is broken?)</p>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect4">
-<h5 id="aspect-path-validation"><a class="link" href="#aspect-path-validation">Aspect: Path validation</a></h5>
-<div class="ulist">
-<ul>
-<li>
-<p><strong>Alternative 1 (current choice):</strong> File location input from user is checked against <code>Files#exists()</code> and whether it ends with a <code>.png</code> or <code>.jpg</code>.</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Pros: More secure. <code>Files#exists()</code> checks whether the file is on the disk while the other checks for the file extension.</p>
-</li>
-<li>
-<p>Cons: Will have to check twice.</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p><strong>Alternative 2:</strong> Just do <code>Files#exists()</code>.</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Pros: Straightforward and simple.</p>
-</li>
-<li>
-<p>Cons: Less secure, might result in an error if the file is not checked properly.</p>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="tag-feature"><a class="link" href="#tag-feature">Tag feature</a></h3>
-<div class="sect3">
-<h4 id="current-implementation-5"><a class="link" href="#current-implementation-5">Current Implementation</a></h4>
-<div class="paragraph">
-<p>Each contact in Insuren can have any number of tags. The <code>tag</code> command allows the user to easily find contacts by tags.
-The user can also easily edit or delete tags using the tag command, allowing for better management of tags in Insuren.</p>
-</div>
-<div class="paragraph">
-<p>Given below is an example usage scenario and how the tag command behaves at each step.</p>
-</div>
-<div class="paragraph">
-<p>Step 1. The user launches the application and already has a few tagged contacts in InsuRen.</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="../images/TagCommand1StateDiagram.png" alt="TagCommand1StateDiagram" width="300">
-</div>
-</div>
-<div class="paragraph">
-<p>Step 2. The user executes <code>tag Important</code> to retrieve all contacts tagged with <code>Important</code>. Tags are <strong>case-sensitive</strong>.</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="../images/TagCommand2StateDiagram.png" alt="TagCommand2StateDiagram" width="300">
-</div>
-</div>
-<div class="paragraph">
-<p>Step 3. The user executes <code>tag Family Colleague</code> to retrieve all contacts tagged with <code>Family</code> or <code>Colleague</code>.</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="../images/TagCommand3StateDiagram.png" alt="TagCommand3StateDiagram" width="300">
-</div>
-</div>
-<div class="paragraph">
-<p>Step 4. If the user wants to change all instances of the <code>Colleague</code> tag to <code>Work</code>, the user can input <code>tag edit
-Colleague Work</code>. <code>edit</code> is <strong>not</strong> case-sensitive.</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="../images/TagCommand4StateDiagram.png" alt="TagCommand4StateDiagram" width="300">
-</div>
-</div>
-<div class="paragraph">
-<p>Step 5. If the user would like to delete the <code>close</code> tag, the user simply executes <code>tag close delete</code>.
-<code>delete</code> is <strong>not</strong> case-sensitive.</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="../images/TagCommand5StateDiagram.png" alt="TagCommand5StateDiagram" width="300">
-</div>
-</div>
-<div class="paragraph">
-<p>Step 6. If the user would like to delete the <code>Family</code> and <code>Colleague</code> tags together, the user simply executes <code>tag
-Family Colleague delete</code>. Both tags will be deleted.</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="../images/TagCommand6StateDiagram.png" alt="TagCommand6StateDiagram" width="300">
-</div>
-</div>
-<div class="paragraph">
-<p>All tag commands can be undone or redone with <code>undo</code> or <code>redo</code> respectively.<br>
-The following activity diagram summarizes what happens when a user executes the <code>PictureCommand</code>:</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="../images/TagCommandActivityDiagram.png" alt="TagCommandActivityDiagram" width="500">
-</div>
-</div>
-</div>
-<div class="sect3">
-<h4 id="design-considerations-5"><a class="link" href="#design-considerations-5">Design Considerations</a></h4>
-<div class="sect4">
-<h5 id="aspect-how-tag-command-works"><a class="link" href="#aspect-how-tag-command-works">Aspect: How tag command works</a></h5>
-<div class="ulist">
-<ul>
-<li>
-<p><strong>Alternative 1 (current choice):</strong> Search through the address book&#8217;s list of persons to find all persons with any matching tag.</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Pros: Consistent with <code>find</code> command, easy to implement.</p>
-</li>
-<li>
-<p>Cons: Performance can be slow especially if InsuRen has many contacts as InsuRen will look through every person.</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p><strong>Alternative 2:</strong> A hashmap is used with the key values being each unique tag and the values being a list of persons associated with each tag.</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Pros: Will have faster lookup, O(1) access time to get the list of persons associated with a tag.</p>
-</li>
-<li>
-<p>Cons: Will use more memory storing a separate data structure. This separate data structure also has to be updated with the right list of persons
-every time a person&#8217;s details are edited or a person is deleted. Programming such a data structure would require significantly more effort.</p>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="proposed-data-encryption"><a class="link" href="#proposed-data-encryption">[Proposed] Data Encryption</a></h3>
-<div class="paragraph">
-<p>Due to the Singapore Personal Data Protection Act (PDPA), any disclosure of the user&#8217;s personal information is considered to have severe implications.
-Thus, all data that are being stored in <code>Storage</code> should be encrypted using a secure encryption scheme with a secret key.
-When the user opens InsuRen, he should be prompted to login before he is able to access the secure data.</p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="proposed-add-picture-from-url"><a class="link" href="#proposed-add-picture-from-url">[Proposed] Add Picture from URL</a></h3>
-<div class="paragraph">
-<p>The current implementation of the <code>pic</code> command in v1.4 only allows users to upload images that are available on their local drives.
-Giving users the option to upload images that is available on the internet would be much more convenient to the user.
-Users can simply go to their client&#8217;s Facebook or other social media accounts to retrieve the image URL.</p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="logging"><a class="link" href="#logging">Logging</a></h3>
-<div class="paragraph">
-<p>We are using <code>java.util.logging</code> package for logging. The <code>LogsCenter</code> class is used to manage the logging levels and logging destinations.</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>The logging level can be controlled using the <code>logLevel</code> setting in the configuration file (See <a href="#Implementation-Configuration">Configuration</a>)</p>
-</li>
-<li>
-<p>The <code>Logger</code> for a class can be obtained using <code>LogsCenter.getLogger(Class)</code> which will log messages according to the specified logging level</p>
-</li>
-<li>
-<p>Currently log messages are output through: <code>Console</code> and to a <code>.log</code> file.</p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p><strong>Logging Levels</strong></p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>SEVERE</code> : Critical problem detected which may possibly cause the termination of the application</p>
-</li>
-<li>
-<p><code>WARNING</code> : Can continue, but with caution</p>
-</li>
-<li>
-<p><code>INFO</code> : Information showing the noteworthy actions by the App</p>
-</li>
-<li>
-<p><code>FINE</code> : Details that is not usually noteworthy but may be useful in debugging e.g. print the actual list instead of just its size</p>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect2">
-<h3 id="Implementation-Configuration"><a class="link" href="#Implementation-Configuration">Configuration</a></h3>
-<div class="paragraph">
-<p>Certain properties of the application can be controlled (e.g App name, logging level) through the configuration file (default: <code>config.json</code>).</p>
-</div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="documentation"><a class="link" href="#documentation">Documentation</a></h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>We use asciidoc for writing documentation.</p>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-We chose asciidoc over Markdown because asciidoc, although a bit more complex than Markdown, provides more flexibility in formatting.
-</td>
-</tr>
-</table>
-</div>
-<div class="sect2">
-<h3 id="editing-documentation"><a class="link" href="#editing-documentation">Editing Documentation</a></h3>
-<div class="paragraph">
-<p>See <a href="UsingGradle.html#rendering-asciidoc-files">UsingGradle.adoc</a> to learn how to render <code>.adoc</code> files locally to preview the end result of your edits.
-Alternatively, you can download the AsciiDoc plugin for IntelliJ, which allows you to preview the changes you have made to your <code>.adoc</code> files in real-time.</p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="publishing-documentation"><a class="link" href="#publishing-documentation">Publishing Documentation</a></h3>
-<div class="paragraph">
-<p>See <a href="UsingTravis.html#deploying-github-pages">UsingTravis.adoc</a> to learn how to deploy GitHub Pages using Travis.</p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="converting-documentation-to-pdf-format"><a class="link" href="#converting-documentation-to-pdf-format">Converting Documentation to PDF format</a></h3>
-<div class="paragraph">
-<p>We use <a href="https://www.google.com/chrome/browser/desktop/">Google Chrome</a> for converting documentation to PDF format, as Chrome&#8217;s PDF engine preserves hyperlinks used in webpages.</p>
-</div>
-<div class="paragraph">
-<p>Here are the steps to convert the project documentation files to PDF format.</p>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>Follow the instructions in <a href="UsingGradle.html#rendering-asciidoc-files">UsingGradle.adoc</a> to convert the AsciiDoc files in the <code>docs/</code> directory to HTML format.</p>
-</li>
-<li>
-<p>Go to your generated HTML files in the <code>build/docs</code> folder, right click on them and select <code>Open with</code> &#8594; <code>Google Chrome</code>.</p>
-</li>
-<li>
-<p>Within Chrome, click on the <code>Print</code> option in Chrome&#8217;s menu.</p>
-</li>
-<li>
-<p>Set the destination to <code>Save as PDF</code>, then click <code>Save</code> to save a copy of the file in PDF format. For best results, use the settings indicated in the screenshot below.</p>
-</li>
-</ol>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="../images/chrome_save_as_pdf.png" alt="chrome save as pdf" width="300">
-</div>
-<div class="title">Figure 1. Saving documentation as PDF files in Chrome</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="Docs-SiteWideDocSettings"><a class="link" href="#Docs-SiteWideDocSettings">Site-wide Documentation Settings</a></h3>
-<div class="paragraph">
-<p>The <a href="{repoURL}/build.gradle"><code>build.gradle</code></a> file specifies some project-specific <a href="https://asciidoctor.org/docs/user-manual/#attributes">asciidoc attributes</a> which affects how all documentation files within this project are rendered.</p>
-</div>
-<div class="admonitionblock tip">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-tip" title="Tip"></i>
-</td>
-<td class="content">
-Attributes left unset in the <code>build.gradle</code> file will use their <strong>default value</strong>, if any.
-</td>
-</tr>
-</table>
-</div>
-<table class="tableblock frame-all grid-all spread">
-<caption class="title">Table 1. List of site-wide attributes</caption>
-<colgroup>
-<col style="width: 25%;">
-<col style="width: 50%;">
-<col style="width: 25%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">Attribute name</th>
-<th class="tableblock halign-left valign-top">Description</th>
-<th class="tableblock halign-left valign-top">Default value</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>site-name</code></p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>The name of the website.
-If set, the name will be displayed near the top of the page.</p>
-</div></div></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><em>not set</em></p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>site-githuburl</code></p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>URL to the site&#8217;s repository on <a href="https://github.com">GitHub</a>.
-Setting this will add a "View on GitHub" link in the navigation bar.</p>
-</div></div></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><em>not set</em></p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>site-seedu</code></p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>Define this attribute if the project is an official SE-EDU project.
-This will render the SE-EDU navigation bar at the top of the page, and add some SE-EDU-specific navigation items.</p>
-</div></div></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><em>not set</em></p></td>
-</tr>
-</tbody>
-</table>
-</div>
-<div class="sect2">
-<h3 id="Docs-PerFileDocSettings"><a class="link" href="#Docs-PerFileDocSettings">Per-file Documentation Settings</a></h3>
-<div class="paragraph">
-<p>Each <code>.adoc</code> file may also specify some file-specific <a href="https://asciidoctor.org/docs/user-manual/#attributes">asciidoc attributes</a> which affects how the file is rendered.</p>
-</div>
-<div class="paragraph">
-<p>Asciidoctor&#8217;s <a href="https://asciidoctor.org/docs/user-manual/#builtin-attributes">built-in attributes</a> may be specified and used as well.</p>
-</div>
-<div class="admonitionblock tip">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-tip" title="Tip"></i>
-</td>
-<td class="content">
-Attributes left unset in <code>.adoc</code> files will use their <strong>default value</strong>, if any.
-</td>
-</tr>
-</table>
-</div>
-<table class="tableblock frame-all grid-all spread">
-<caption class="title">Table 2. List of per-file attributes, excluding Asciidoctor&#8217;s built-in attributes</caption>
-<colgroup>
-<col style="width: 25%;">
-<col style="width: 50%;">
-<col style="width: 25%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">Attribute name</th>
-<th class="tableblock halign-left valign-top">Description</th>
-<th class="tableblock halign-left valign-top">Default value</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>site-section</code></p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>Site section that the document belongs to.
-This will cause the associated item in the navigation bar to be highlighted.
-One of: <code>UserGuide</code>, <code>DeveloperGuide</code>, <code>LearningOutcomes</code>*, <code>AboutUs</code>, <code>ContactUs</code></p>
-</div>
-<div class="paragraph">
-<p><em>* Official SE-EDU projects only</em></p>
-</div></div></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><em>not set</em></p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>no-site-header</code></p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>Set this attribute to remove the site navigation bar.</p>
-</div></div></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><em>not set</em></p></td>
-</tr>
-</tbody>
-</table>
-</div>
-<div class="sect2">
-<h3 id="site-template"><a class="link" href="#site-template">Site Template</a></h3>
-<div class="paragraph">
-<p>The files in <a href="{repoURL}/docs/stylesheets"><code>docs/stylesheets</code></a> are the <a href="https://developer.mozilla.org/en-US/docs/Web/CSS">CSS stylesheets</a> of the site.
-You can modify them to change some properties of the site&#8217;s design.</p>
-</div>
-<div class="paragraph">
-<p>The files in <a href="{repoURL}/docs/templates"><code>docs/templates</code></a> controls the rendering of <code>.adoc</code> files into HTML5.
-These template files are written in a mixture of <a href="https://www.ruby-lang.org">Ruby</a> and <a href="http://slim-lang.com">Slim</a>.</p>
-</div>
-<div class="admonitionblock warning">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-warning" title="Warning"></i>
-</td>
-<td class="content">
-<div class="paragraph">
-<p>Modifying the template files in <a href="{repoURL}/docs/templates"><code>docs/templates</code></a> requires some knowledge and experience with Ruby and Asciidoctor&#8217;s API.
-You should only modify them if you need greater control over the site&#8217;s layout than what stylesheets can provide.
-The SE-EDU team does not provide support for modified template files.</p>
-</div>
-</td>
-</tr>
-</table>
-</div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="Testing"><a class="link" href="#Testing">Testing</a></h2>
-<div class="sectionbody">
-<div class="sect2">
-<h3 id="running-tests"><a class="link" href="#running-tests">Running Tests</a></h3>
-<div class="paragraph">
-<p>There are three ways to run tests.</p>
-</div>
-<div class="admonitionblock tip">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-tip" title="Tip"></i>
-</td>
-<td class="content">
-The most reliable way to run tests is the 3rd one. The first two methods might fail some GUI tests due to platform/resolution-specific idiosyncrasies.
-</td>
-</tr>
-</table>
-</div>
-<div class="paragraph">
-<p><strong>Method 1: Using IntelliJ JUnit test runner</strong></p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>To run all tests, right-click on the <code>src/test/java</code> folder and choose <code>Run 'All Tests'</code></p>
-</li>
-<li>
-<p>To run a subset of tests, you can right-click on a test package, test class, or a test and choose <code>Run 'ABC'</code></p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p><strong>Method 2: Using Gradle</strong></p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>Open a console and run the command <code>gradlew clean allTests</code> (Mac/Linux: <code>./gradlew clean allTests</code>)</p>
-</li>
-</ul>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-See <a href="UsingGradle.html">UsingGradle.adoc</a> for more info on how to run tests using Gradle.
-</td>
-</tr>
-</table>
-</div>
-<div class="paragraph">
-<p><strong>Method 3: Using Gradle (headless)</strong></p>
-</div>
-<div class="paragraph">
-<p>Thanks to the <a href="https://github.com/TestFX/TestFX">TestFX</a> library we use, our GUI tests can be run in the <em>headless</em> mode. In the headless mode, GUI tests do not show up on the screen. That means the developer can do other things on the Computer while the tests are running.</p>
-</div>
-<div class="paragraph">
-<p>To run tests in headless mode, open a console and run the command <code>gradlew clean headless allTests</code> (Mac/Linux: <code>./gradlew clean headless allTests</code>)</p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="types-of-tests"><a class="link" href="#types-of-tests">Types of tests</a></h3>
-<div class="paragraph">
-<p>We have two types of tests:</p>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p><strong>GUI Tests</strong> - These are tests involving the GUI. They include,</p>
-<div class="olist loweralpha">
-<ol class="loweralpha" type="a">
-<li>
-<p><em>System Tests</em> that test the entire App by simulating user actions on the GUI. These are in the <code>systemtests</code> package.</p>
-</li>
-<li>
-<p><em>Unit tests</em> that test the individual components. These are in <code>seedu.address.ui</code> package.</p>
-</li>
-</ol>
-</div>
-</li>
-<li>
-<p><strong>Non-GUI Tests</strong> - These are tests not involving the GUI. They include,</p>
-<div class="olist loweralpha">
-<ol class="loweralpha" type="a">
-<li>
-<p><em>Unit tests</em> targeting the lowest level methods/classes.<br>
-e.g. <code>seedu.address.commons.StringUtilTest</code></p>
-</li>
-<li>
-<p><em>Integration tests</em> that are checking the integration of multiple code units (those code units are assumed to be working).<br>
-e.g. <code>seedu.address.storage.StorageManagerTest</code></p>
-</li>
-<li>
-<p>Hybrids of unit and integration tests. These test are checking multiple code units as well as how the are connected together.<br>
-e.g. <code>seedu.address.logic.LogicManagerTest</code></p>
-</li>
-</ol>
-</div>
-</li>
-</ol>
-</div>
-</div>
-<div class="sect2">
-<h3 id="troubleshooting-testing"><a class="link" href="#troubleshooting-testing">Troubleshooting Testing</a></h3>
-<div class="paragraph">
-<p><strong>Problem: <code>HelpWindowTest</code> fails with a <code>NullPointerException</code>.</strong></p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>Reason: One of its dependencies, <code>HelpWindow.html</code> in <code>src/main/resources/docs</code> is missing.</p>
-</li>
-<li>
-<p>Solution: Execute Gradle task <code>processResources</code>.</p>
-</li>
-</ul>
-</div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="dev-ops"><a class="link" href="#dev-ops">Dev Ops</a></h2>
-<div class="sectionbody">
-<div class="sect2">
-<h3 id="build-automation"><a class="link" href="#build-automation">Build Automation</a></h3>
-<div class="paragraph">
-<p>See <a href="UsingGradle.html">UsingGradle.adoc</a> to learn how to use Gradle for build automation.</p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="continuous-integration"><a class="link" href="#continuous-integration">Continuous Integration</a></h3>
-<div class="paragraph">
-<p>We use <a href="https://travis-ci.org/">Travis CI</a> and <a href="https://www.appveyor.com/">AppVeyor</a> to perform <em>Continuous Integration</em> on our projects. See <a href="UsingTravis.html">UsingTravis.adoc</a> and <a href="UsingAppVeyor.html">UsingAppVeyor.adoc</a> for more details.</p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="coverage-reporting"><a class="link" href="#coverage-reporting">Coverage Reporting</a></h3>
-<div class="paragraph">
-<p>We use <a href="https://coveralls.io/">Coveralls</a> to track the code coverage of our projects. See <a href="UsingCoveralls.html">UsingCoveralls.adoc</a> for more details.</p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="documentation-previews"><a class="link" href="#documentation-previews">Documentation Previews</a></h3>
-<div class="paragraph">
-<p>When a pull request has changes to asciidoc files, you can use <a href="https://www.netlify.com/">Netlify</a> to see a preview of how the HTML version of those asciidoc files will look like when the pull request is merged. See <a href="UsingNetlify.html">UsingNetlify.adoc</a> for more details.</p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="making-a-release"><a class="link" href="#making-a-release">Making a Release</a></h3>
-<div class="paragraph">
-<p>Here are the steps to create a new release.</p>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>Update the version number in <a href="{repoURL}/src/main/java/seedu/address/MainApp.java"><code>MainApp.java</code></a>.</p>
-</li>
-<li>
-<p>Generate a JAR file <a href="UsingGradle.html#creating-the-jar-file">using Gradle</a>.</p>
-</li>
-<li>
-<p>Tag the repo with the version number. e.g. <code>v0.1</code></p>
-</li>
-<li>
-<p><a href="https://help.github.com/articles/creating-releases/">Create a new release using GitHub</a> and upload the JAR file you created.</p>
-</li>
-</ol>
-</div>
-</div>
-<div class="sect2">
-<h3 id="managing-dependencies"><a class="link" href="#managing-dependencies">Managing Dependencies</a></h3>
-<div class="paragraph">
-<p>A project often depends on third-party libraries. For example, InsuRen depends on the <a href="http://wiki.fasterxml.com/JacksonHome">Jackson library</a> for XML parsing. Managing these <em>dependencies</em> can be automated using Gradle. For example, Gradle can download the dependencies automatically, which is better than these alternatives.<br>
-a. Include those libraries in the repo (this bloats the repo size)<br>
-b. Require developers to download those libraries manually (this creates extra work for developers)</p>
-</div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="product-scope"><a class="link" href="#product-scope">Appendix A: Product Scope</a></h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p><strong>Target user profile</strong>:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>Insurance Agents</p>
-</li>
-<li>
-<p>needs to manage many meetings with clients</p>
-</li>
-<li>
-<p>has a need to manage a significant number of contacts</p>
-</li>
-<li>
-<p>prefer desktop apps over other types</p>
-</li>
-<li>
-<p>can type fast</p>
-</li>
-<li>
-<p>prefers typing over mouse input</p>
-</li>
-<li>
-<p>is reasonably comfortable using CLI apps</p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p><strong>Value proposition</strong>:
-* Specific to Insurance Agents
-* Manage contacts faster than a typical mouse/GUI driven app</p>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="user-stories"><a class="link" href="#user-stories">Appendix B: User Stories</a></h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>Priorities: High (must have) - <code>* * *</code>, Medium (nice to have) - <code>* *</code>, Low (unlikely to have) - <code>*</code></p>
-</div>
-<table class="tableblock frame-all grid-all" style="width: 59%;">
-<colgroup>
-<col style="width: 22%;">
-<col style="width: 23%;">
-<col style="width: 25%;">
-<col style="width: 30%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">Priority</th>
-<th class="tableblock halign-left valign-top">As a &#8230;&#8203;</th>
-<th class="tableblock halign-left valign-top">I want to &#8230;&#8203;</th>
-<th class="tableblock halign-left valign-top">So that I can&#8230;&#8203;</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">New User</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">see usage instructions</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">refer to instructions when I forget how to use the App</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Insurance Agent getting new customers</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Add clients (including incomplete ones)</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Be able to add clients who did not fill their forms completely</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Insurance Agent</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">delete a client&#8217;s details</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">remove clients that I no longer need</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Insurance Agent</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">find a client by name</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">locate details of clients without having to go through the entire list</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* *</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Insurance Agent</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">hide <a href="#private-contact-detail">private contact details</a> by default</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">minimize chance of someone else seeing them by accident</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>*</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Insurance Agent with many clients</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">sort clients by name</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">locate a client easily</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Insurance Agent</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Maintain updated contacts to my clients</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Maintain my network</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* *</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Insurance Agent with many meetings</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">See when my meetings with clients are</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Set aside time to meet them</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* *</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Insurance Agent, concerned about customer’s plan being cancelled</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Be notified when customer&#8217;s deadlines for payments are near</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Notify my clients of impending payments on time</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* *</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Experienced Insurance Agent</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Mass import contact details (via excel)</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Load my existing contacts without keying them manually</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* *</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Insurance Agent</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Export email addresses</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Email the contacts</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Insurance Agent who needs to maintain contact</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Add a picture for my contacts</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">To identify them by picture and name</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Insurance Agent who needs to maintain contact</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Display frequently contacted people</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Contact them fast</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* *</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Insurance Agent</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Remove accidental duplicates</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Keep my contact book neat</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* *</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Insurance Agent who has different networks</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Create groups of contacts</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">To contact groups of contact instead of individually</p></td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-<div class="sect1">
-<h2 id="use-cases"><a class="link" href="#use-cases">Appendix C: Use Cases</a></h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>(For all use cases below, the <strong>System</strong> is the <code>InsuRen</code> and the <strong>Actor</strong> is the <code>user</code>, unless specified otherwise)</p>
-</div>
-<h3 id="use-case-add-clients" class="discrete">Use Case: Add Clients</h3>
-<div class="paragraph">
-<p><strong>MSS</strong></p>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>User requests to add client, specifying the compulsory field (name) and non-compulsory fields (address, email, phone number, and tags).</p>
-</li>
-<li>
-<p>InsuRen stores the new client, and displays a confirmation message.</p>
-<div class="paragraph">
-<p>Use case ends.</p>
-</div>
-</li>
-</ol>
-</div>
-<div class="paragraph">
-<p><strong>Extensions</strong></p>
-</div>
-<div class="ulist none">
-<ul class="none">
-<li>
-<p>1a. The user does not include the person’s name.</p>
-<div class="ulist none">
-<ul class="none">
-<li>
-<p>1a1. InsuRen shows an error message.
-Use case resumes at step 1.</p>
-<div class="paragraph">
-<p>Use case resumes at step 2.</p>
-</div>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p>1b. The user does not include non-compulsory fields (refer to 1.).</p>
-<div class="ulist none">
-<ul class="none">
-<li>
-<p>1b1. InsuRen prompts user to include any more missing fields, or to input nothing and continue otherwise.</p>
-</li>
-<li>
-<p>1b2. User inputs any additional fields/nothing.</p>
-<div class="paragraph">
-<p>Use case resumes at step 2.</p>
-</div>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
-<h3 id="use-case-delete-person" class="discrete">Use case: Delete person</h3>
-<div class="paragraph">
-<p><strong>MSS</strong></p>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>User requests to list persons</p>
-</li>
-<li>
-<p>InsuRen shows a list of persons</p>
-</li>
-<li>
-<p>User requests to delete a specific person in the list</p>
-</li>
-<li>
-<p>InsuRen deletes the person</p>
-<div class="paragraph">
-<p>Use case ends.</p>
-</div>
-</li>
-</ol>
-</div>
-<div class="paragraph">
-<p><strong>Extensions</strong></p>
-</div>
-<div class="ulist none">
-<ul class="none">
-<li>
-<p>2a. The list is empty.</p>
-<div class="paragraph">
-<p>Use case ends.</p>
-</div>
-</li>
-<li>
-<p>3a. The given index is invalid.</p>
-<div class="ulist none">
-<ul class="none">
-<li>
-<p>3a1. InsuRen shows an error message.</p>
-<div class="paragraph">
-<p>Use case resumes at step 2.</p>
-</div>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
-<h3 id="use-case-see-meeting-timings-with-clients" class="discrete">Use Case: See Meeting Timings with Clients</h3>
-<div class="paragraph">
-<p><strong>MSS</strong></p>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>User inputs the customers’ meeting times in their address book entries.</p>
-</li>
-<li>
-<p>InsuRen stores the meeting times, and displays them in the person card of the client.</p>
-</li>
-<li>
-<p>User searches for meetings with clients by time, and InsuRen returns the client details if there is a meeting scheduled at that time.</p>
-<div class="paragraph">
-<p>Use case ends.</p>
-</div>
-</li>
-</ol>
-</div>
-<div class="paragraph">
-<p><strong>Extensions</strong></p>
-</div>
-<div class="ulist none">
-<ul class="none">
-<li>
-<p>2a. There are no meetings scheduled for the time searched.</p>
-<div class="ulist none">
-<ul class="none">
-<li>
-<p>2a1. InsuRen returns the next meeting after the specified time.</p>
-<div class="paragraph">
-<p>Use case ends.</p>
-</div>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p>2b. There are no meetings scheduled for any time after the searched time.</p>
-<div class="ulist none">
-<ul class="none">
-<li>
-<p>2b1. InsuRen states that there are no meetings scheduled</p>
-<div class="paragraph">
-<p>Use case ends.</p>
-</div>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
-<h3 id="use-case-add-meeting-field-to-an-entry" class="discrete">Use Case: Add meeting field to an entry</h3>
-<div class="paragraph">
-<p><strong>MSS</strong></p>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>User adds meeting time with specific client.</p>
-</li>
-<li>
-<p>InsuRen will add meeting field to specified contact. Meeting will be displayed the next time user executes ‘list’.</p>
-<div class="paragraph">
-<p>Use case ends.</p>
-</div>
-</li>
-</ol>
-</div>
-<div class="paragraph">
-<p><strong>Extensions</strong></p>
-</div>
-<div class="ulist none">
-<ul class="none">
-<li>
-<p>1a. User inputs invalid contact/meeting time.</p>
-<div class="ulist none">
-<ul class="none">
-<li>
-<p>1a1. InsuRen prints error message, prompting user to re-enter a valid ‘schedule’ command.</p>
-<div class="paragraph">
-<p>Use case resumes at step 1.</p>
-</div>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
-<h3 id="use-case-be-notified-of-expiring-plans" class="discrete">Use Case: Be notified of expiring plans</h3>
-<div class="paragraph">
-<p><strong>MSS</strong></p>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>User inputs an expiry date field for each client’s insurance plan.</p>
-</li>
-<li>
-<p>InsuRen alerts the user of clients with expiring insurance plans every time it is initialized.</p>
-<div class="paragraph">
-<p>Use case ends.</p>
-</div>
-</li>
-</ol>
-</div>
-<div class="paragraph">
-<p><strong>Extensions</strong></p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>2a. There are no plans expiring soon.</p>
-<div class="ulist none">
-<ul class="none">
-<li>
-<p>2a1. InsuRen notifies the user that there are no imminent expiries.</p>
-<div class="paragraph">
-<p>Use case ends.</p>
-</div>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
-<h3 id="use-case-mass-import-contact-details" class="discrete">Use Case: Mass Import Contact Details</h3>
-<div class="paragraph">
-<p><strong>MSS</strong></p>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>User requests to add import contacts from a file in a user-given directory.</p>
-</li>
-<li>
-<p>InsuRen loads new contacts from import file, appending the new contacts to the end of the existing contact list.</p>
-<div class="paragraph">
-<p>Use case ends.</p>
-</div>
-</li>
-</ol>
-</div>
-<div class="paragraph">
-<p><strong>Extensions</strong></p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>1a. No file at directory path or invalid file type (must be a csv)</p>
-<div class="ulist none">
-<ul class="none">
-<li>
-<p>1a1. InsuRen shows an error message.</p>
-<div class="paragraph">
-<p>Use case resumes at step 1.</p>
-</div>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
-<h3 id="use-case-export-email-addresses" class="discrete">Use Case: Export Email Addresses</h3>
-<div class="paragraph">
-<p><strong>MSS</strong></p>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>User requests to export email addresses to a user-given directory.</p>
-</li>
-<li>
-<p>InsuRen compiles all emails into a csv, saves it in the given directory.</p>
-<div class="paragraph">
-<p>Use case ends.</p>
-</div>
-</li>
-</ol>
-</div>
-<div class="paragraph">
-<p><strong>Extensions</strong></p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>1a. No file directory given</p>
-<div class="ulist none">
-<ul class="none">
-<li>
-<p>1a1. InsuRen shows an error message.</p>
-<div class="paragraph">
-<p>Use case resumes at step 1.</p>
-</div>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
-<h3 id="use-case-edit-clients-by-name" class="discrete">Use Case: Edit Clients by Name</h3>
-<div class="paragraph">
-<p><strong>MSS</strong></p>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>User requests to edit client, specifying the name of the client and any fields to be modified.</p>
-</li>
-<li>
-<p>InsuRen edits the client’s respective fields, and displays a confirmation message.</p>
-<div class="paragraph">
-<p>Use case ends.</p>
-</div>
-</li>
-</ol>
-</div>
-<div class="paragraph">
-<p><strong>Extensions</strong></p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>1a. The user does not include the person’s name.</p>
-<div class="ulist none">
-<ul class="none">
-<li>
-<p>1a1. InsuRen shows an error message.</p>
-<div class="paragraph">
-<p>Use case resumes at step 1.</p>
-</div>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p>1b. The user does not include any field to edit</p>
-<div class="ulist none">
-<ul class="none">
-<li>
-<p>1b1. InsuRen prompts user to include any missing fields, or to input nothing and continue otherwise.</p>
-</li>
-<li>
-<p>1b2. User inputs any additional fields/nothing.</p>
-<div class="paragraph">
-<p>Use case resumes at step 2 if fields are inputted, otherwise display a confirmation message that nothing was changed.</p>
-</div>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p>1c. There are multiple clients with the same name.</p>
-<div class="ulist none">
-<ul class="none">
-<li>
-<p>1c3. InsuRen prompts the user to use the standard edit command.</p>
-<div class="paragraph">
-<p>Use case ends.</p>
-</div>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
-<h3 id="use-case-upload-picture-of-client" class="discrete">Use Case: Upload Picture of Client</h3>
-<div class="paragraph">
-<p><strong>MSS</strong></p>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>User requests upload picture of client.</p>
-</li>
-<li>
-<p>InsuRen requests for the client’s ID.</p>
-</li>
-<li>
-<p>User specifies the client’s ID.</p>
-</li>
-<li>
-<p>InsuRen requests for the file location.</p>
-</li>
-<li>
-<p>User specifies the file location.</p>
-</li>
-<li>
-<p>InsuRen uploads the file and tags it to the client’s profile.</p>
-<div class="paragraph">
-<p>Use case ends.</p>
-</div>
-</li>
-</ol>
-</div>
-<div class="paragraph">
-<p><strong>Extensions</strong></p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>3a. InsuRen detects an error in the entered data.</p>
-<div class="ulist none">
-<ul class="none">
-<li>
-<p>3a1. InsuRen requests for the correct data.</p>
-<div class="paragraph">
-<p>Use case resumes from step 3.</p>
-</div>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p>5a. InsuRen detects an error in the entered data.</p>
-<div class="ulist none">
-<ul class="none">
-<li>
-<p>5a1. InsuRen requests for the correct data.</p>
-<div class="paragraph">
-<p>Use case resumes from step 5.</p>
-</div>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
-<h3 id="use-case-list-frequently-contacted-clients" class="discrete">Use Case: List Frequently Contacted Clients</h3>
-<div class="paragraph">
-<p><strong>MSS</strong></p>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>User requests to list frequently contacted clients.</p>
-</li>
-<li>
-<p>InsuRen shows a list of frequently contacted clients.</p>
-<div class="paragraph">
-<p>Use case ends.</p>
-</div>
-</li>
-</ol>
-</div>
-<div class="paragraph">
-<p><strong>Extensions</strong></p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>1a. User requests to limit or extend the list results.</p>
-<div class="ulist none">
-<ul class="none">
-<li>
-<p>1a1. InsuRen requests for a upper limit.</p>
-</li>
-<li>
-<p>1a2. User enters upper limit.</p>
-<div class="paragraph">
-<p>Use case resumes from step 2.</p>
-</div>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p>2a. The list is empty.</p>
-<div class="paragraph">
-<p>Use case ends.</p>
-</div>
-</li>
-</ul>
-</div>
-<h3 id="use-case-allow-user-to-edit-contact-if-duplicate-contact-is-added" class="discrete">Use Case: Allow User to Edit Contact if Duplicate Contact is Added</h3>
-<div class="paragraph">
-<p><strong>MSS</strong></p>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>User adds client with the same name and same phone number or email or address (at least one of the three fields) as an existing contact.</p>
-</li>
-<li>
-<p>InsuRen recognises that the contact is a duplicate and informs user of existing contact.</p>
-</li>
-<li>
-<p>User can choose to edit existing contact.</p>
-<div class="paragraph">
-<p>Use case ends.</p>
-</div>
-</li>
-</ol>
-</div>
-<div class="paragraph">
-<p><strong>Extensions</strong></p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>1a. User intends to create a contact with the same name and phone number or email or address (at least one of the three fields) as an existing contact.</p>
-<div class="ulist none">
-<ul class="none">
-<li>
-<p>1a1. InsuRen allows user to create near-duplicate contact instead of editing existing contact.</p>
-<div class="paragraph">
-<p>Use case ends.</p>
-</div>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
-<h3 id="use-case-create-groups-of-contacts" class="discrete">Use Case: Create groups of contacts</h3>
-<div class="paragraph">
-<p><strong>MSS</strong></p>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>User creates a group in InsuRen that can store clients’ contacts, specifying the group name.</p>
-</li>
-<li>
-<p>InsuRen creates a new group.</p>
-</li>
-<li>
-<p>User can create new contacts within the group or add existing contacts to the group.</p>
-<div class="paragraph">
-<p>Use case ends.</p>
-</div>
-</li>
-</ol>
-</div>
-<div class="paragraph">
-<p><strong>Extensions</strong></p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>1a. User creates a group with the same name as an existing group.</p>
-<div class="ulist none">
-<ul class="none">
-<li>
-<p>1a1. InsuRen prompts user to choose a different name that will be unique.</p>
-<div class="paragraph">
-<p>Use case resumes at step 1.</p>
-</div>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p>1b. User enters a group name with an no characters (empty string).</p>
-<div class="ulist none">
-<ul class="none">
-<li>
-<p>1b1. InsuRen prompts user to type in a group name.</p>
-<div class="paragraph">
-<p>Use case resumes at step 1.</p>
-</div>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="non-functional-requirements"><a class="link" href="#non-functional-requirements">Appendix D: Non Functional Requirements</a></h2>
-<div class="sectionbody">
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>InsuRen should work on any <a href="#mainstream-os">mainstream OS</a> as long as it has Java <code>9</code> or higher installed.</p>
-</li>
-<li>
-<p>InsuRen should be able to hold up to 1000 clients' contact without a noticeable sluggishness in performance for typical usage.</p>
-</li>
-<li>
-<p>InsuRen should process a user command in 1 second or less, without any noticeable delay.</p>
-</li>
-<li>
-<p>InsuRen should display a clear and concise error message to provide feedback to the user when an invalid input is received.</p>
-</li>
-<li>
-<p>All data entries are backed-up regularly.</p>
-</li>
-<li>
-<p>All data entries are stored in a xml file.</p>
-</li>
-<li>
-<p>A user should be able to learn and use the product without any form of training.</p>
-</li>
-<li>
-<p>A user with above average typing speed for regular English text (i.e. not code, not system admin commands) should be able to accomplish most of the tasks faster using commands than using the mouse.</p>
-</li>
-<li>
-<p>The UI should be responsive to changes.</p>
-</li>
-<li>
-<p>The product should be self-explanatory and intuitive such that an insurance agent is able to adapt to it within the first 10 minutes of using the product for the first time.</p>
-</li>
-<li>
-<p>When the program crashes, all data up till the point of crash will still be available upon relaunch of the program.</p>
-</li>
-<li>
-<p>The system should work by running on the JAR file without any installation.</p>
-</li>
-<li>
-<p>The system should work even if the user does not have any internet connection.</p>
-</li>
-<li>
-<p>The JAR file should be small in size (&lt; 50 MB).</p>
-</li>
-</ol>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="glossary"><a class="link" href="#glossary">Appendix E: Glossary</a></h2>
-<div class="sectionbody">
-<div class="dlist">
-<dl>
-<dt class="hdlist1"><a id="mainstream-os"></a> Mainstream OS</dt>
-<dd>
-<p>Windows, Linux, Unix, OS-X</p>
-</dd>
-<dt class="hdlist1"><a id="private-contact-detail"></a> Private contact detail</dt>
-<dd>
-<p>A contact detail that is not meant to be shared with others</p>
-</dd>
-</dl>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="instructions-for-manual-testing"><a class="link" href="#instructions-for-manual-testing">Appendix F: Instructions for Manual Testing</a></h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>Given below are instructions to test the app manually.</p>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-These instructions only provide a starting point for testers to work on; testers are expected to do more <em>exploratory</em> testing.
-</td>
-</tr>
-</table>
-</div>
-<div class="sect2">
-<h3 id="launch-and-shutdown"><a class="link" href="#launch-and-shutdown">Launch and Shutdown</a></h3>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>Initial launch</p>
-<div class="olist loweralpha">
-<ol class="loweralpha" type="a">
-<li>
-<p>Download the jar file and copy into an empty folder</p>
-</li>
-<li>
-<p>Double-click the jar file<br>
-Expected: Shows the GUI with a set of sample contacts. The window size may not be optimum.</p>
-</li>
-</ol>
-</div>
-</li>
-<li>
-<p>Saving window preferences</p>
-<div class="olist loweralpha">
-<ol class="loweralpha" type="a">
-<li>
-<p>Resize the window to an optimum size. Move the window to a different location. Close the window.</p>
-</li>
-<li>
-<p>Re-launch the app by double-clicking the jar file.<br>
-Expected: The most recent window size and location is retained.</p>
-</li>
-</ol>
-</div>
-</li>
-</ol>
-</div>
-<div class="paragraph">
-<p><em>{ more test cases &#8230;&#8203; }</em></p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="deleting-a-person"><a class="link" href="#deleting-a-person">Deleting a person</a></h3>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>Deleting a person while all persons are listed</p>
-<div class="olist loweralpha">
-<ol class="loweralpha" type="a">
-<li>
-<p>Prerequisites: List all persons using the <code>list</code> command. Multiple persons in the list.</p>
-</li>
-<li>
-<p>Test case: <code>delete 1</code><br>
-Expected: First contact is deleted from the list. Details of the deleted contact shown in the status message. Timestamp in the status bar is updated.</p>
-</li>
-<li>
-<p>Test case: <code>delete 0</code><br>
-Expected: No person is deleted. Error details shown in the status message. Status bar remains the same.</p>
-</li>
-<li>
-<p>Other incorrect delete commands to try: <code>delete</code>, <code>delete x</code> (where x is larger than the list size) <em>{give more}</em><br>
-Expected: Similar to previous.</p>
-</li>
-</ol>
-</div>
-</li>
-</ol>
-</div>
-<div class="paragraph">
-<p><em>{ more test cases &#8230;&#8203; }</em></p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="saving-data"><a class="link" href="#saving-data">Saving data</a></h3>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>Dealing with missing/corrupted data files</p>
-<div class="olist loweralpha">
-<ol class="loweralpha" type="a">
-<li>
-<p><em>{explain how to simulate a missing/corrupted file and the expected behavior}</em></p>
-</li>
-</ol>
-</div>
-</li>
-</ol>
-</div>
-<div class="paragraph">
-<p><em>{ more test cases &#8230;&#8203; }</em></p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="proposed-data-encryption-2"><a class="link" href="#proposed-data-encryption-2">[Proposed] Data Encryption</a></h3>
-<div class="paragraph">
-<p>Due to the Singapore Personal Data Protection Act (PDPA), any disclosure of the user&#8217;s personal information is considered to have severe implications.
-Thus, all data that are being stored in <code>Storage</code> should be encrypted using a secure encryption scheme with a secret key.
-When the user opens InsuRen, he should be prompted to login before he is able to access the secure data.</p>
-</div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="project-powerpointlabs"><a class="link" href="#project-powerpointlabs">PROJECT: PowerPointLabs</a></h2>
-<div class="sectionbody">
-<hr>
-<div class="paragraph">
-<p><em>{Optionally, you may include other projects in your portfolio.}</em></p>
-</div>
-</div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-11-12 06:44:42 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-11-12 07:31:45 UTC</div></div></div></body></html>
