@@ -181,7 +181,7 @@ Format: <code>import</code></p>
 <p>A file browser will pop up as shown below:</p>
 <div class="imageblock">
 <div class="content">
-<img src="../images/import.png" alt="import" width="550">
+<img src="../images/import.png" alt="import" width="400">
 </div>
 </div>
 </li>
@@ -232,15 +232,10 @@ corresponding Excel cell MUST have nothing in it.</p>
 <p>Any invalid entries (contacts with no name) will be ignored.</p>
 </li>
 <li>
-<p>Examples of properly formatted csv files are shown below.</p>
+<p>Examples of properly formatted csv files are shown below. (Can be both csv or txt)</p>
 <div class="imageblock">
 <div class="content">
-<img src="../images/import-acceptable-csv.png" alt="import acceptable csv" width="550">
-</div>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="../images/import-acceptable-csv2.png" alt="import acceptable csv2" width="550">
+<img src="../images/import-acceptable-csv3.png" alt="import acceptable csv3" width="400">
 </div>
 </div>
 </li>
@@ -281,7 +276,7 @@ Format: <code>export DESTINATION_FILE_NAME.csv</code></p>
 InsuRen contacts are exported to <code>28Nov.csv</code></p>
 <div class="imageblock">
 <div class="content">
-<img src="../images/exportedCsv.png" alt="exportedCsv" width="550">
+<img src="../images/exportedCsv.png" alt="exportedCsv" width="400">
 </div>
 </div>
 </li>
@@ -338,12 +333,12 @@ If the user includes a file path, InsuRen will attempt to retrieve the file from
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="../images/import.png" alt="import" width="550">
+<img src="../images/import.png" alt="import" width="400">
 </div>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="../images/import_user_input.png" alt="import user input" width="550">
+<img src="../images/import_user_input.png" alt="import user input" width="400">
 </div>
 </div>
 <div class="paragraph">
@@ -351,7 +346,7 @@ If the user includes a file path, InsuRen will attempt to retrieve the file from
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="../images/import_user_input_fail.png" alt="import user input fail" width="550">
+<img src="../images/import_user_input_fail.png" alt="import user input fail" width="400">
 </div>
 </div>
 <div class="paragraph">
@@ -363,12 +358,12 @@ Insuren compiles a list of contacts and runs the <code>add</code> Command on all
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="../images/import_success.png" alt="import success" width="550">
+<img src="../images/import_success.png" alt="import success" width="400">
 </div>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="../images/import_duplicates.png" alt="import duplicates" width="550">
+<img src="../images/import_duplicates.png" alt="import duplicates" width="400">
 </div>
 </div>
 <div class="paragraph">
@@ -385,7 +380,7 @@ file browser mode omitted):</p>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="../images/ImportSequenceDiagram.png" alt="ImportSequenceDiagram" width="800">
+<img src="../images/ImportSequenceDiagram2.png" alt="ImportSequenceDiagram2" width="400">
 </div>
 </div>
 </div>
@@ -444,57 +439,7 @@ not cause import to crash.</p>
 <li>
 <p>1a1. InsuRen shows an error message.</p>
 <div class="paragraph">
-<p>Use case resumes at step 1.
-=== Importing contacts</p>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>Importing a fresh list of contacts into an empty InsuRen.</p>
-<div class="olist loweralpha">
-<ol class="loweralpha" type="a">
-<li>
-<p>Prerequisites: clear all persons using the <code>clear</code> command. No persons in the list.
-Also ensure that there is a populated csv file within the application&#8217;s ROOT directory. An example of an acceptable csv is shown in the user guide. Let&#8217;s call this file asdf.csv</p>
-</li>
-<li>
-<p>Test case: <code>import l/asdf.csv</code><br>
-Expected: InsuRen will be populated with the contacts in asdf.csv.</p>
-</li>
-</ol>
-</div>
-</li>
-<li>
-<p>Importing a contact into InsuRen when such contacts are already in InsuRen.</p>
-<div class="olist loweralpha">
-<ol class="loweralpha" type="a">
-<li>
-<p>Prerequisites: Take the starting point of this test to be the end of the previous - ie. after you have
-successfully imported contacts from asdf.csv.</p>
-</li>
-<li>
-<p>Test case: <code>import</code><br>
-Expected: A file browser will pop up. Navigate to and select asdf.csv one more time. Error messages should be
-displayed, stating that no contacts have been imported as InsuRen has found duplicate contacts.</p>
-</li>
-</ol>
-</div>
-</li>
-<li>
-<p>Importing invalid contacts into InsuRen.</p>
-<div class="olist loweralpha">
-<ol class="loweralpha" type="a">
-<li>
-<p>Prerequisites: Clear InsuRen like in (1) above, then deliberately corrupt some of the entries in asdf.csv by removing names or giving invalid phone numbers, meetings etc.</p>
-</li>
-<li>
-<p>Test case: <code>import l/asdf.csv</code><br>
-Expected: Valid contacts will be imported into InsuRen. Additionally, an error will be displayed, stating that InsuRen has found invalid contacts.</p>
-</li>
-</ol>
-</div>
-</li>
-</ol>
+<p>Use case resumes at step 1.</p>
 </div>
 </li>
 </ul>
@@ -554,7 +499,7 @@ does not end with .csv, InsuRen throws an error message.</p>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="../images/ExportSequenceDiagram.png" alt="ExportSequenceDiagram" width="800">
+<img src="../images/ExportSequenceDiagram2.png" alt="ExportSequenceDiagram2" width="400">
 </div>
 </div>
 </div>
@@ -609,9 +554,71 @@ Export makes use of model.getAddressBook() and the getPersonList method within.<
 <li>
 <p>1a1. InsuRen shows an error message.</p>
 <div class="paragraph">
-<p>Use case resumes at step 1.
-=== Exporting contacts</p>
+<p>Use case resumes at step 1.</p>
 </div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="importing-contacts"><a class="link" href="#importing-contacts">Importing contacts</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Importing a fresh list of contacts into an empty InsuRen.</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisites: clear all persons using the <code>clear</code> command. No persons in the list.
+Also ensure that there is a populated csv file within the application&#8217;s ROOT directory. An example of an acceptable csv is shown in the user guide. Let&#8217;s call this file asdf.csv</p>
+</li>
+<li>
+<p>Test case: <code>import l/asdf.csv</code><br>
+Expected: InsuRen will be populated with the contacts in asdf.csv.</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Importing a contact into InsuRen when such contacts are already in InsuRen.</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisites: Take the starting point of this test to be the end of the previous - ie. after you have
+successfully imported contacts from asdf.csv.</p>
+</li>
+<li>
+<p>Test case: <code>import</code><br>
+Expected: A file browser will pop up. Navigate to and select asdf.csv one more time. Error messages should be
+displayed, stating that no contacts have been imported as InsuRen has found duplicate contacts.</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Importing invalid contacts into InsuRen.</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisites: Clear InsuRen like in (1) above, then deliberately corrupt some of the entries in asdf.csv by removing names or giving invalid phone numbers, meetings etc.</p>
+</li>
+<li>
+<p>Test case: <code>import l/asdf.csv</code><br>
+Expected: Valid contacts will be imported into InsuRen. Additionally, an error will be displayed, stating that InsuRen has found invalid contacts.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="exporting-contacts"><a class="link" href="#exporting-contacts">Exporting contacts</a></h3>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -644,14 +651,6 @@ Expected: Error message will be thrown by InsuRen, stating that an incorrect exp
 </li>
 </ol>
 </div>
-</li>
-</ul>
-</div>
-</li>
-</ul>
 </div>
 </div>
-</div>
-</div>
-</div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-11-12 13:33:53 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-11-12 13:48:28 UTC</div></div></div></body></html>
