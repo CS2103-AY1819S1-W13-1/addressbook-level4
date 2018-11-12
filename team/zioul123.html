@@ -1,0 +1,769 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]--><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="Asciidoctor 1.5.6.1"><title>Louiz Kim-Chan - Project Portfolio</title><link rel="stylesheet" href="../stylesheets/gh-pages.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="../stylesheets/coderay-asciidoctor.css"></head><body class="article"><div id="site-header"><nav class="navbar navbar-light bg-light"><div class="container"><a class="navbar-brand" href="../index.html">InsuRen</a><ul class="navbar-nav"><li class="nav-item"><a class="nav-link" href="../UserGuide.html">User Guide</a></li><li class="nav-item"><a class="nav-link" href="../DeveloperGuide.html">Developer Guide</a></li><li class="nav-item"><a class="nav-link active" href="../AboutUs.html">About Us</a></li><li class="nav-item"><a class="nav-link" href="../ContactUs.html">Contact Us</a></li><li class="navitem"><a class="nav-link" href="https://github.com/CS2103-AY1819S1-W13-1/main"><span class="fa fa-github fa-lg" aria-hidden="true"></span>&nbsp;View on GitHub</a></li></ul></div></nav></div><div id="header"><h1>Louiz Kim-Chan - Project Portfolio</h1></div><div id="content"><div class="sect1">
+<h2 id="project-insuren"><a class="link" href="#project-insuren">PROJECT: InsuRen</a></h2>
+<div class="sectionbody">
+<hr>
+</div>
+</div>
+<div class="sect1">
+<h2 id="overview"><a class="link" href="#overview">Overview</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>'Ren' in Mandarin translates to 'person' or 'people', and true to our name, this app is all about managing one’s network of clients in an organized, efficient and intuitive manner. InsuRen is geared to the needs of the modern Insurance salesman, but anyone whose business is their strong rapport with their clients will find this to be an indispensable tool.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="summary-of-contributions"><a class="link" href="#summary-of-contributions">Summary of contributions</a></h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Major enhancement</strong>: added the ability to <strong>edit client contact information and delete client contacts by name</strong>.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>What it does: Instead of having to edit or delete contact info by using an index, you can edit and delete contacts directly using their name, provided their name is distinguishable from all other names present in InsuRen.</p>
+</li>
+<li>
+<p>Justification: This feature improves the product significantly because normally, editing requires scrolling or using <code>find</code> to filter the list first. Since we don&#8217;t want the user to have to use the mouse, and we want to speed up processes, editing by name will help achieve the product&#8217;s goals.</p>
+</li>
+<li>
+<p>Highlights: This enhancement extends the <code>edit</code> and <code>delete</code> commands and makes use of a new <code>Predicate</code> and <code>PersonFinderUtil</code> to find a <code>Person</code> when provided a unique identifier.</p>
+</li>
+<li>
+<p>Credits: Nil.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Minor enhancement</strong>: Make the address, email and phone number fields <code>Optional</code> (Pull requests <a href="https://github.com">#16</a>, <a href="https://github.com">#33</a>).</p>
+<div class="ulist">
+<ul>
+<li>
+<p>What it does: Instead of requiring all fields to be filled when adding a person, which may require an Insurance Agent to fill placeholder information, she can leave several fields blank instead.</p>
+</li>
+<li>
+<p>Justification: This feature improves the product significantly, because insurance agents do not always have all the information about their clients they need, but they may still need to keep track of them and contact them with whatever incomplete information they have. This feature thus adds a degree of freedom and ease of use to insurance agents.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Code contributed</strong>: [<a href="https://nus-cs2103-ay1819s1.github.io/cs2103-dashboard/#=undefined&amp;search=zioul123">RepoSense</a>]</p>
+</li>
+<li>
+<p><strong>Other contributions</strong>:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Project management:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Managed release <code>v1.2</code> and <code>v1.3.1</code> on GitHub</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Enhancements to existing features:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Add a display for the number of people in InsuRen on the status bar (Pull request <a href="https://github.com">#8</a>)</p>
+</li>
+<li>
+<p>Change aesthetics and add text wrapping to Person Cards (Pull request <a href="https://github.com">#4</a>)</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Documentation:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Update the About Us page to reflect our team (Pull requests <a href="https://github.com">#14</a>, <a href="https://github.com">#15</a>)</p>
+</li>
+<li>
+<p>Update the images shown on the project page (Pull requests <a href="https://github.com">#2</a>, <a href="https://github.com">#15</a>, <a href="https://github.com">#28</a>, <a href="https://github.com">#56</a>))</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Community:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>PRs reviewed (with non-trivial review comments): <a href="https://github.com">#22</a>, <a href="https://github.com">#23</a>, <a href="https://github.com">#40</a>, <a href="https://github.com">#57</a>, <a href="https://github.com">#58</a>, <a href="https://github.com">#60</a>, <a href="https://github.com">#71</a></p>
+</li>
+<li>
+<p>Reported bugs and suggestions for other teams in the class (examples: <a href="https://github.com/CS2103-AY1819S1-F11-4/main/issues/169">1</a>, <a href="https://github.com/CS2103-AY1819S1-F11-4/main/issues/171">2</a>, <a href="https://github.com/CS2103-AY1819S1-F11-4/main/issues/184">3</a>, <a href="https://github.com/CS2103-AY1819S1-F11-4/main/issues/186">4</a>, <a href="https://github.com/CS2103-AY1819S1-F11-4/main/issues/190">5</a>)</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Tools:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Get CI tools to print stack traces on failed tests (Pull request <a href="https://github.com">#77</a>)</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="contributions-to-the-user-guide"><a class="link" href="#contributions-to-the-user-guide">Contributions to the User Guide</a></h2>
+<div class="sectionbody">
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Given below are sections I contributed to the User Guide. They showcase my ability to write documentation targeting end-users.</em></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect1">
+<h2 id="contributions-to-the-developer-guide"><a class="link" href="#contributions-to-the-developer-guide">Contributions to the Developer Guide</a></h2>
+<div class="sectionbody">
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Given below are sections I contributed to the Developer Guide. They showcase my ability to write technical documentation and the technical depth of my contributions to the project.</em></p></td>
+</tr>
+</tbody>
+</table>
+<div class="sect2">
+<h3 id="by-name-commands-feature"><a class="link" href="#by-name-commands-feature">By-Name-Commands Feature</a></h3>
+<div class="sect3">
+<h4 id="general-current-implementation"><a class="link" href="#general-current-implementation">General Current Implementation</a></h4>
+<div class="paragraph">
+<p>The "by-name-commands" are extensions to the regular Commands, facilitated by classes that extend the regular <code>Command</code> classes. Currently implemented are the <code>EditByNameCommand</code> and the <code>DeleteByNameCommand</code>.
+They make use of <code>String</code> identifiers and the <code>PersonFinderUtil</code> to find the <code>Person</code> that the <code>Command</code> refers to, rather than an <code>Index</code>.<br>
+This allows time to be saved when trying to run a command, because instead of having to run a <code>find</code> or <code>list</code> command to display a <code>Person</code>, then type the command based on the <code>Index</code> of the list that the <code>Person</code> appears under, commands can be targeted swiftly and precisely.
+The "by-name-commands" depend on the following operation/classes:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>PersonFinderUtil#findPerson(Model model, String personIdentifier)</code>&#8201;&#8212;&#8201;Finds and returns the <code>Person</code> that is uniquely identified by the <code>personIdentifier</code> in the <code>Model</code> provided.</p>
+</li>
+<li>
+<p><code>NameContainsAllKeywordsPredicate</code>&#8201;&#8212;&#8201;Tests as true when the name of a <code>Person</code> matches all the keywords in the command&#8217;s arguments.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>The <code>PersonFinderUtil#findPerson</code> method makes use of the <code>NameContainsAllKeywordsPredicate</code>, which is in contrast to the <code>NameContainsKeywordsPredicate</code> used in the <code>FindCommand</code>.</p>
+</li>
+<li>
+<p>When editing/deleting by name, we need a more specific filter, rather than a general one. Instead of finding a <code>Person</code> that contains at least one identifier term in their name, the <code>Person</code> found must contain <strong>all</strong> identifier terms in their name.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The following sequence diagram shows how a command is generated by the <code>AddressBookParser</code>. When a <code>&lt;cmd&gt;</code> (<code>edit</code>/<code>delete</code>) is provided, the <code>&lt;cmd&gt;CommandParser</code> will either generate a <code>&lt;cmd&gt;Command</code> or a <code>&lt;cmd&gt;ByNameCommand</code>.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/ByNameCommandSequenceDiagram.png" alt="ByNameCommandSequenceDiagram" width="600">
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+In the following section, the shorthand format <code>_ByNameCommand</code> and <code>_Command</code> when used in the same context will refer to a similar type of command, e.g. <code>DeleteByNameCommand</code> and <code>DeleteCommand</code>, but <code>_</code> is general to refer to either <code>Delete</code> or <code>Edit</code>.
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect3">
+<h4 id="design-considerations"><a class="link" href="#design-considerations">Design Considerations</a></h4>
+<div class="sect4">
+<h5 id="aspect-whether-a-code-_bynamecommand-code-should-extend-the-regular-code-_command-code"><a class="link" href="#aspect-whether-a-code-_bynamecommand-code-should-extend-the-regular-code-_command-code">Aspect: Whether a <code>_ByNameCommand</code> should Extend the Regular <code>_Command</code></a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1 (current choice):</strong> It extends the <code>Command</code> as shown:</p>
+</li>
+</ul>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/ByNameCommandClassDiagram.png" alt="ByNameCommandClassDiagram" width="200">
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Due to polymorphism, a <code>_ByNameCommand</code> can replace instances of <code>_Command</code> seamlessly in the code without having to
+change many parts to add this additional feature. It also makes sense, because a <code>_ByNameCommand</code> "is a" <code>_Command</code> (e.g. an <code>EditByNameCommand</code> is an <code>EditCommand</code>)</p>
+</li>
+<li>
+<p>Cons: There is an unused field in <code>EditCommand</code> (<code>index</code>).</p>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 2:</strong> Create a new <code>_ByNameCommand</code>, standalone from the <code>_Command</code></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Pros: Can save a bit of memory space on execution, since parts of the <code>_Command</code> that are not used do not provide extra baggage to the <code>_ByNameCommand</code> (e.g. no extra <code>Index</code> in the <code>EditByNameCommand</code>)</p>
+</li>
+<li>
+<p>Cons: There is a need to modify more parts of the Logic component in the code base to accommodate a new command.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect4">
+<h5 id="aspect-when-the-person-is-searched-matched"><a class="link" href="#aspect-when-the-person-is-searched-matched">Aspect: When the Person is Searched/Matched</a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1 (current choice):</strong> During the execution of <code>execute</code></p>
+<div class="ulist">
+<ul>
+<li>
+<p>Additional details: A <code>String personIdentifier</code> will be stored in the command, and upon <code>execute</code>, a person is first matched, then the edit is carried out.</p>
+</li>
+<li>
+<p>Pros: Execute takes in the model as an argument, making searching for a <code>Person</code> convenient.</p>
+</li>
+<li>
+<p>Cons: The same <code>_ByNameCommand</code> executed at a different time can have a different result since it does not have a unique <code>Person</code>, but an identifier to find a name.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2:</strong> Before creation of the command</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Additional details: The command will have a <code>Person</code></p>
+</li>
+<li>
+<p>Pros: The command is deterministic, since it targets a unique <code>Person</code>.</p>
+</li>
+<li>
+<p>Cons: Need to gain access to the model before the person can be found, which is not usually done by <code>AddressBookParser</code>; high level changes are necessary.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="edit-by-name-feature"><a class="link" href="#edit-by-name-feature">Edit By Name feature</a></h4>
+<div class="sect4">
+<h5 id="current-implementation"><a class="link" href="#current-implementation">Current Implementation</a></h5>
+<div class="paragraph">
+<p>The edit by name mechanism is facilitated by the new <code>Command</code>, <code>EditByNameCommand</code>.
+It extends <code>EditCommand</code> with a "Person Identifier" String that is used in place of the Index (of a displayed list) used in the normal <code>EditCommand</code>.
+Additionally, it implements/depends on the following operations:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>EditByNameCommand#execute()</code>&#8201;&#8212;&#8201;Executes the command encapsulated by this <code>EditByNameCommand</code>.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Given below is an example usage scenario and how the Edit-By-Name mechanism behaves at each step.</p>
+</div>
+<div class="paragraph">
+<p>Step 1. The user launches the application and already has at least one client&#8217;s contact in InsuRen.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/EditByNameCommand1StateDiagram.png" alt="EditByNameCommand1StateDiagram" width="800">
+</div>
+</div>
+<div class="paragraph">
+<p>Step 2. The user executes <code>edit Alice p/91232233</code> to edit Alice&#8217;s phone number. However, there are more than two people with a name that matches Alice, so InsuRen notifies the user.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/EditByNameCommand2StateDiagram.png" alt="EditByNameCommand2StateDiagram" width="800">
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+If a command fails its execution due to multiple or no people matching the identifier, it will not edit any contact details.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Step 3. The user uses a much more specific name identifier, <code>edit Alice Tay Ren Ying p/91232233</code>, but this does not match any contact, so InsuRen notifies the user.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/EditByNameCommand3StateDiagram.png" alt="EditByNameCommand3StateDiagram" width="800">
+</div>
+</div>
+<div class="paragraph">
+<p>Step 4. The user uses a name identifier that uniquely identifies one person, <code>edit Alice Tay p/91232233</code>. The edit command is carried out, and the contact details of the identified person are changed accordingly.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/EditByNameCommand4StateDiagram.png" alt="EditByNameCommand4StateDiagram" width="800">
+</div>
+</div>
+<div class="paragraph">
+<p>The following activity diagram summarizes what happens when a user executes the <code>EditByNameCommand</code>:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/EditByNameCommandActivityDiagram.png" alt="EditByNameCommandActivityDiagram" width="500">
+</div>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="delete-by-name-feature"><a class="link" href="#delete-by-name-feature">Delete By Name feature</a></h4>
+<div class="sect4">
+<h5 id="current-implementation-2"><a class="link" href="#current-implementation-2">Current Implementation</a></h5>
+<div class="paragraph">
+<p>The delete by name mechanism is facilitated by the new <code>Command</code>, <code>DeleteByNameCommand</code>.
+It extends <code>DeleteCommand</code> with a "Person Identifier" String that is used in place of the Index (of a displayed list) used in the normal <code>DeleteCommand</code>.
+Additionally, it implements the following operations:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>DeleteByNameCommand#execute()</code>&#8201;&#8212;&#8201;Executes the command encapsulated by this <code>DeleteByNameCommand</code>.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Given below is an example usage scenario and how the Delete-By-Name mechanism behaves at each step.</p>
+</div>
+<div class="paragraph">
+<p>Step 1. The user launches the application and already has at least one client&#8217;s contact in InsuRen.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/DeleteByNameCommand1StateDiagram.png" alt="DeleteByNameCommand1StateDiagram" width="800">
+</div>
+</div>
+<div class="paragraph">
+<p>Step 2. The user executes <code>delete Alice</code> to delete Alice from InsuRen. However, there are more than two people with a name that matches Alice, so InsuRen notifies the user.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/DeleteByNameCommand2StateDiagram.png" alt="DeleteByNameCommand2StateDiagram" width="800">
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+If a command fails its execution due to multiple or no people matching the identifier, it will not delete any contact details.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Step 3. The user uses a much more specific name identifier, <code>delete Alice Tay Ren Ying</code>, but this does not match any contact, so InsuRen notifies the user.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/DeleteByNameCommand3StateDiagram.png" alt="DeleteByNameCommand3StateDiagram" width="800">
+</div>
+</div>
+<div class="paragraph">
+<p>Step 4. The user uses a name identifier that uniquely identifies one person, <code>delete Alice Tay</code>. The delete command is carried out, Alice Tay is removed from InsuRen&#8217;s contact list.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/DeleteByNameCommand4StateDiagram.png" alt="DeleteByNameCommand4StateDiagram" width="800">
+</div>
+</div>
+<div class="paragraph">
+<p>The following activity diagram summarizes what happens when a user executes the <code>DeleteByNameCommand</code>:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/DeleteByNameCommandActivityDiagram.png" alt="DeleteByNameCommandActivityDiagram" width="500">
+</div>
+</div>
+<h3 id="use-case-add-clients" class="discrete">Use Case: Add Clients</h3>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>User requests to add client, specifying the compulsory field (name) and non-compulsory fields (address, email, phone number, and tags).</p>
+</li>
+<li>
+<p>InsuRen stores the new client, and displays a confirmation message.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Extensions</strong></p>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1a. The user does not include the person’s name.</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1a1. InsuRen shows an error message.
+Use case resumes at step 1.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<h3 id="use-case-edit-clients-by-name" class="discrete">Use Case: Edit Clients by Name</h3>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>User requests to edit client, specifying the name of the client and any fields to be modified.</p>
+</li>
+<li>
+<p>InsuRen edits the client’s respective fields, and displays a confirmation message.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Extensions</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>1a. The user does not include the person’s name.</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1a1. InsuRen shows an error message.</p>
+<div class="paragraph">
+<p>Use case resumes at step 1.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>1b. The user does not include any field to edit.</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1b1. InsuRen shows an error message.</p>
+<div class="paragraph">
+<p>Use case resumes at step 1.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>1c. There are multiple clients with the same name.</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1c1. InsuRen shows an error message, prompting the user to either use a more specific name, or edit by index.</p>
+<div class="paragraph">
+<p>Use case resumes at step 1.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<h3 id="use-case-delete-clients-by-name" class="discrete">Use Case: Delete Clients by Name</h3>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>User requests to delete a client, specifying the name of the client.</p>
+</li>
+<li>
+<p>InsuRen deletes the specified client from storage, and displays a confirmation message.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Extensions</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>1a. The user does not include the person’s name.</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1a1. InsuRen shows an error message.</p>
+<div class="paragraph">
+<p>Use case resumes at step 1.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>1b. There are multiple clients with the same name.</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1b1. InsuRen shows an error message, prompting the user to either use a more specific name, or delete by index.</p>
+<div class="paragraph">
+<p>Use case resumes at step 1.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="adding-a-person"><a class="link" href="#adding-a-person">Adding a person</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Adding a person to InsuRen</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisites: No <code>Person</code> in the list is identifiable as identical to those that are to be added during this test.</p>
+<div class="olist lowerroman">
+<ol class="lowerroman" type="i">
+<li>
+<p>Identifiable as identical means that:</p>
+<div class="olist upperalpha">
+<ol class="upperalpha" type="A">
+<li>
+<p><code>name</code> is the same <strong>and</strong></p>
+</li>
+<li>
+<p><code>phone</code> <strong>or</strong> <code>email</code> is the same</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Test case: <code>add n/Anne Loh p/11114444 e/abc@email.com a/44th Street t/Friend</code><br>
+Expected: Anne Loh is added. Details of the client are shown in the status message. Timestamp in the status bar is updated.</p>
+</li>
+<li>
+<p>Test case: <code>add n/Ben Chua t/Friend</code><br>
+Expected: Ben Chua is added. Details of the client are shown in the status message. Timestamp in the status bar is updated.</p>
+</li>
+<li>
+<p>Test case: <code>add n/Anne Loh p/22223333 e/def@email.com</code><br>
+Expected: Anne Loh is added. Details of the client are shown in the status message. Timestamp in the status bar is updated.</p>
+</li>
+<li>
+<p>Test case: <code>add n/Anne Loh p/22223333</code><br>
+Expected: Nothing is updated. Error details shown in the status message. Status bar remains the same.</p>
+</li>
+<li>
+<p>Test case: <code>add n/Anne Loh p/22223333 a/abc street</code><br>
+Expected: Nothing is updated. Error details shown in the status message. Status bar remains the same.</p>
+</li>
+<li>
+<p>Test case: <code>add n/Anne Loh e/abc@email.com a/abc street</code><br>
+Expected: Nothing is updated. Error details shown in the status message. Status bar remains the same.</p>
+</li>
+<li>
+<p>Test case: <code>add n/Anne Loh</code><br>
+Expected: Anne Loh is added. Details of the client are shown in the status message. Timestamp in the status bar is updated.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="editing-a-person"><a class="link" href="#editing-a-person">Editing a person</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Editing a person</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Editing by Index</p>
+<div class="olist lowerroman">
+<ol class="lowerroman" type="i">
+<li>
+<p>Prerequisites: List all persons using the <code>list</code> command. Multiple persons in the list.</p>
+</li>
+<li>
+<p>Test case: <code>edit 1 n/Abcde t/</code><br>
+Expected: First client is renamed "Abcde" and tags are deleted. Details of the edited client shown in the status message. Timestamp in the status bar is updated.</p>
+</li>
+<li>
+<p>Test case: <code>edit 0 p/18854835 t/friend t/jailed</code><br>
+Expected: No person is edited. Error details shown in the status message. Status bar remains the same.</p>
+</li>
+<li>
+<p>Other incorrect edit commands to try: <code>edit</code> (no arguments), <code>edit x t/friend</code> (where x is larger than the list size or negative), <code>edit 3</code> (where no fields are provided)<br>
+Expected: Similar to previous.</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Editing by Name</p>
+<div class="olist lowerroman">
+<ol class="lowerroman" type="i">
+<li>
+<p>Prerequisites: Make sure that nobody in InsuRen has the name/part of their name as Alice, Lee, Lim, Chua or Bob, then add people to the list with the names <code>Alice Lee</code>, <code>Alice Chua</code>, <code>Alice Lim</code> and <code>Bob</code>.</p>
+</li>
+<li>
+<p>Test case: <code>edit Bob e/abc@email.com</code>
+Expected: Bob&#8217;s email is changed to <a href="mailto:abc@email.com">abc@email.com</a>. Details of the edited client shown in the status message. Timestamp in the status bar is updated.</p>
+</li>
+<li>
+<p>Test case: <code>edit Alice Chua n/Bobby Chua</code>
+Expected: Alice Chua is renamed to Bobby Chua. Details of the edited client shown in the status message. Timestamp in the status bar is updated.</p>
+</li>
+<li>
+<p>Test case: <code>edit Alice p/883838333</code><br>
+Expected: No person is edited. Error details shown in the status message. Status bar remains the same.</p>
+</li>
+<li>
+<p>Other incorrect edit commands to try: <code>edit x n/abc</code> (where x matches nobody in the list), <code>edit Alice Lim</code> (where no fields are provided)<br>
+Expected: Similar to previous.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="deleting-a-person"><a class="link" href="#deleting-a-person">Deleting a person</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Deleting a person</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Deleting by Index</p>
+<div class="olist lowerroman">
+<ol class="lowerroman" type="i">
+<li>
+<p>Prerequisites: List all persons using the <code>list</code> command. Multiple persons in the list.</p>
+</li>
+<li>
+<p>Test case: <code>delete 1</code><br>
+Expected: First client is deleted from the list. Details of the deleted client shown in the status message. Timestamp in the status bar is updated.</p>
+</li>
+<li>
+<p>Test case: <code>delete 0</code><br>
+Expected: No person is deleted. Error details shown in the status message. Status bar remains the same.</p>
+</li>
+<li>
+<p>Other incorrect delete commands to try: <code>delete</code>, <code>delete x</code> (where x is larger than the list size or negative)<br>
+Expected: Similar to previous.</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Deleting by Name</p>
+<div class="olist lowerroman">
+<ol class="lowerroman" type="i">
+<li>
+<p>Prerequisites: Make sure that nobody in InsuRen has the name/part of their name as Alice, Lee, Lim, Chua or Bob, then add people to the list with the names <code>Alice Lee</code>, <code>Alice Chua</code>, <code>Alice Lim</code> and <code>Bob</code>.</p>
+</li>
+<li>
+<p>Test case: <code>delete Bob</code>
+Expected: Bob is deleted. Details of the deleted client shown in the status message. Timestamp in the status bar is updated.</p>
+</li>
+<li>
+<p>Test case: <code>delete Alice Chua</code>
+Expected: Alice Chua is deleted. Details of the deleted client shown in the status message. Timestamp in the status bar is updated.</p>
+</li>
+<li>
+<p>Test case: <code>delete Alice</code><br>
+Expected: No person is deleted. Error details shown in the status message. Status bar remains the same.</p>
+</li>
+<li>
+<p>Other incorrect delete commands to try: <code>delete x</code> (where x matches nobody in the list)<br>
+Expected: Similar to previous.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+</div>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-11-12 11:49:57 UTC</div></div></div></body></html>
